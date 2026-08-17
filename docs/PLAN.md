@@ -337,8 +337,8 @@ sus propias limitaciones de paridad) para cubrir el target web del plan original
 | Fase | Entregable | Valida |
 |---|---|---|
 | **0. Scaffold** | `flutter create`, modelos Dart (`lib/models/`), 1 mazo semilla de cada tipo en `assets/data/` | `flutter analyze` limpio, `flutter run` levanta y muestra conteos |
-| **1. Datos semilla** | ~30-50 verbos A1/A2 + sustantivos y reglas migrados de Notion + adjetivos | el schema aguanta datos reales |
-| **2. Núcleo** | `useLocalStorage` + `ConfigContext` + engine (`session`/`check`/`srs`) con self-check | lógica pura verificada |
+| ✅ **1. Datos semilla** | 20 verbos + 24 sustantivos + 12 reglas + 19 adjetivos + 6 frases, curados de Notion | el schema aguanta datos reales |
+| ✅ **2. Núcleo** | `StorageService` + `ConfigNotifier` + engine (`conjugation`/`session`/`check`/`srs`) con self-check | 8 tests de lógica pura en verde |
 | **3. Primer modo** | Flashcard + `QuizShell` + `AudioButton` (TTS) | el motor + schema funcionan end-to-end |
 | **4. Género der/die/das** | Quiz de género + "por qué" inline enlazado a reglas | el sistema de reglas cierra el loop |
 | **5. Escribir + Completar** | WriteConjugation + FillPhrase (chips) | cubre conjugación y contexto |
