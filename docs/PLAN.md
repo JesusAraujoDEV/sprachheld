@@ -339,7 +339,7 @@ sus propias limitaciones de paridad) para cubrir el target web del plan original
 | **0. Scaffold** | `flutter create`, modelos Dart (`lib/models/`), 1 mazo semilla de cada tipo en `assets/data/` | `flutter analyze` limpio, `flutter run` levanta y muestra conteos |
 | ✅ **1. Datos semilla** | 20 verbos + 24 sustantivos + 12 reglas + 19 adjetivos + 6 frases, curados de Notion | el schema aguanta datos reales |
 | ✅ **2. Núcleo** | `StorageService` + `ConfigNotifier` + engine (`conjugation`/`session`/`check`/`srs`) con self-check | 8 tests de lógica pura en verde |
-| **3. Primer modo** | Flashcard + `QuizShell` + `AudioButton` (TTS) | el motor + schema funcionan end-to-end |
+| ✅ **3. Primer modo** | Flashcard (verbos + der/die/das) + `QuizShell` + `AudioButton` (TTS) + tema "aura" | el motor + schema funcionan end-to-end en pantalla real |
 | **4. Género der/die/das** | Quiz de género + "por qué" inline enlazado a reglas | el sistema de reglas cierra el loop |
 | **5. Escribir + Completar** | WriteConjugation + FillPhrase (chips) | cubre conjugación y contexto |
 | **6. Tips** | Mazo de reglas navegable + deep-link desde quizzes | micro-lecciones |
