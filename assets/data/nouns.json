@@ -106,5 +106,113 @@
     "es": "Cerveza",
     "level": "A1",
     "ruleId": null
+  },
+  {
+    "id": "hund",
+    "word": "Hund",
+    "gender": "der",
+    "plural": "Hunde",
+    "es": "Perro",
+    "level": "A1",
+    "ruleId": null
+  },
+  {
+    "id": "mann",
+    "word": "Mann",
+    "gender": "der",
+    "plural": "Männer",
+    "es": "Hombre",
+    "level": "A1",
+    "ruleId": null
+  },
+  {
+    "id": "vater",
+    "word": "Vater",
+    "gender": "der",
+    "plural": "Väter",
+    "es": "Padre",
+    "level": "A1",
+    "ruleId": null
+  },
+  {
+    "id": "schueler",
+    "word": "Schüler",
+    "gender": "der",
+    "plural": "Schüler",
+    "es": "Alumno de colegio",
+    "level": "A1",
+    "ruleId": "rule_der_er"
+  },
+  {
+    "id": "student",
+    "word": "Student",
+    "gender": "der",
+    "plural": "Studenten",
+    "es": "Estudiante universitario",
+    "level": "A2",
+    "ruleId": "rule_der_and_ent"
+  },
+  {
+    "id": "frau",
+    "word": "Frau",
+    "gender": "die",
+    "plural": "Frauen",
+    "es": "Mujer",
+    "level": "A1",
+    "ruleId": null
+  },
+  {
+    "id": "mutter",
+    "word": "Mutter",
+    "gender": "die",
+    "plural": "Mütter",
+    "es": "Madre",
+    "level": "A1",
+    "ruleId": null
+  },
+  {
+    "id": "kirche",
+    "word": "Kirche",
+    "gender": "die",
+    "plural": "Kirchen",
+    "es": "Iglesia",
+    "level": "A1",
+    "ruleId": "rule_die_e"
+  },
+  {
+    "id": "toilette",
+    "word": "Toilette",
+    "gender": "die",
+    "plural": "Toiletten",
+    "es": "Baño",
+    "level": "A1",
+    "ruleId": "rule_die_e"
+  },
+  {
+    "id": "haus",
+    "word": "Haus",
+    "gender": "das",
+    "plural": "Häuser",
+    "es": "Casa",
+    "level": "A1",
+    "ruleId": null
+  },
+  {
+    "id": "buch",
+    "word": "Buch",
+    "gender": "das",
+    "plural": "Bücher",
+    "es": "Libro",
+    "level": "A1",
+    "ruleId": null
+  },
+  {
+    "id": "gold",
+    "word": "Gold",
+    "gender": "das",
+    "plural": "-",
+    "es": "Oro",
+    "level": "A2",
+    "ruleId": "rule_das_metall"
   }
 ]

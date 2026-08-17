@@ -25,5 +25,32 @@
     "es": "El periódico está sobre la mesa.",
     "level": "A1",
     "note": "Zeitung termina en -ung → die."
+  },
+  {
+    "id": "phrase_spreche",
+    "sentence": "Ich ___ ein bisschen Deutsch.",
+    "answer": "spreche",
+    "options": ["spreche", "sprichst", "spricht", "sprechen"],
+    "es": "Hablo un poco de alemán.",
+    "level": "A1",
+    "note": "Präsens, 1ª persona (ich) → sin el cambio vocálico e→i (solo en du/er)."
+  },
+  {
+    "id": "phrase_liest",
+    "sentence": "Er ___ ein Buch.",
+    "answer": "liest",
+    "options": ["lese", "liest", "lesen", "las"],
+    "es": "Él lee un libro.",
+    "level": "A1",
+    "note": "Präsens, 3ª persona (er) → cambio vocálico e→ie."
+  },
+  {
+    "id": "phrase_der_hund",
+    "sentence": "___ Hund schläft.",
+    "answer": "Der",
+    "options": ["Der", "Die", "Das"],
+    "es": "El perro duerme.",
+    "level": "A1",
+    "note": "Hund es masculino — sin regla de terminación, hay que memorizarlo."
   }
 ]

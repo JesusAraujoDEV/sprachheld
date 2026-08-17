@@ -6,5 +6,15 @@
   { "id": "schnell", "de": "schnell", "es": "rápido", "level": "A1", "opposite": "langsam" },
   { "id": "gemein", "de": "gemein", "es": "malo/cruel", "level": "A2", "opposite": "nett" },
   { "id": "muede", "de": "müde", "es": "cansado", "level": "A1", "opposite": "wach" },
-  { "id": "krank", "de": "krank", "es": "enfermo", "level": "A1", "opposite": "gesund" }
+  { "id": "krank", "de": "krank", "es": "enfermo", "level": "A1", "opposite": "gesund" },
+  { "id": "komisch", "de": "komisch", "es": "raro/extraño", "level": "A2" },
+  { "id": "witzig", "de": "witzig", "es": "gracioso/chistoso", "level": "A2" },
+  { "id": "voll", "de": "voll", "es": "lleno", "level": "A1", "opposite": "leer" },
+  { "id": "guenstig", "de": "günstig", "es": "barato/a buen precio", "level": "A2", "opposite": "teuer" },
+  { "id": "froehlich", "de": "fröhlich", "es": "alegre/feliz", "level": "A1", "opposite": "traurig" },
+  { "id": "suess", "de": "süß", "es": "dulce/tierno", "level": "A1", "opposite": "sauer" },
+  { "id": "stark", "de": "stark", "es": "fuerte", "level": "A1", "opposite": "schwach" },
+  { "id": "duenn", "de": "dünn", "es": "delgado/flaco", "level": "A2", "opposite": "dick" },
+  { "id": "klug", "de": "klug", "es": "listo/inteligente", "level": "A2", "opposite": "dumm" },
+  { "id": "hell", "de": "hell", "es": "claro (luz/color)", "level": "A2", "opposite": "dunkel" }
 ]

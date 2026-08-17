@@ -88,5 +88,23 @@
     "explanation": "Palabras importadas de otros idiomas tienden a ser neutrales.",
     "examples": ["Sushi"],
     "exceptions": []
+  },
+  {
+    "id": "rule_der_and_ent",
+    "gender": "der",
+    "kind": "ending",
+    "pattern": "-and/-ent",
+    "explanation": "Sustantivos de persona terminados en -and o -ent (participantes/estudiantes) son masculinos.",
+    "examples": ["Student", "Doktorand"],
+    "exceptions": []
+  },
+  {
+    "id": "rule_das_metall",
+    "gender": "das",
+    "kind": "semantic",
+    "pattern": "metales",
+    "explanation": "Los metales (oro, plata, hierro) casi siempre son neutrales.",
+    "examples": ["Gold", "Silber", "Eisen"],
+    "exceptions": []
   }
 ]
