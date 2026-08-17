@@ -30,11 +30,12 @@ Pensado para reusar lo que ya manejo (ver mi CV/experiencia), no para aprender u
 
 | Capa | Elección | Por qué |
 |---|---|---|
-| Frontend | React + TypeScript + Vite | Mismo stack que uso en `wallets-frontend`, curva de aprendizaje cero. |
-| Estado/datos de progreso | `localStorage` en v1 (sin cuenta de usuario) | Es una app personal de un solo usuario al inicio — no hay razón para backend/auth todavía. Se puede migrar a backend real si algún día se vuelve multi-usuario. |
-| Datos de verbos | Archivo(s) JSON estático(s) en el repo, curado a mano (empezando con los verbos más comunes A1-B1) | No hace falta una base de datos para una lista de verbos que no cambia en tiempo real. |
-| Estilo | Tailwind CSS | Rápido para armar UI de quiz/tarjetas sin reinventar componentes. |
-| Hosting | Vercel o GitHub Pages (build estático) | Sin backend en v1, cualquiera de los dos sirve gratis. |
+| Frontend | Flutter (Dart) | Un solo codebase para **móvil + web + desktop** — la app "también orientada a teléfono" sin mantener dos proyectos. Es mi stack de tesis, curva de aprendizaje cero. Ya instalado en la máquina (3.41.x). |
+| Estado/datos de progreso | `shared_preferences` en v1 (sin cuenta de usuario) | Equivalente Flutter de `localStorage`. Es una app personal de un solo usuario al inicio — no hay razón para backend/auth todavía. Se puede migrar a backend real si algún día se vuelve multi-usuario. |
+| Datos de verbos | Archivo(s) JSON estático(s) como assets del repo, curado a mano (empezando con los verbos más comunes A1-B1) | No hace falta una base de datos para una lista de verbos que no cambia en tiempo real. |
+| Estilo | `ThemeData`/widgets nativos de Flutter (Material 3) | Rápido para armar UI de quiz/tarjetas sin reinventar componentes ni añadir libs de CSS. |
+| Audio | `flutter_tts` (wrapper nativo de TTS por plataforma) | Feature nativa de cada SO (iOS/Android/desktop/web), cero backend ni archivos de audio en v1. |
+| Hosting/distribución | Build estático web (Vercel/GitHub Pages) + APK/IPA para instalar en el teléfono | Sin backend en v1; Flutter compila las tres formas desde el mismo código. |
 
 **Si crece a v2** (multi-usuario, progreso sincronizado entre dispositivos, contribuciones de la comunidad a la base de verbos): ahí sí se justificaría un backend (Node.js/Express + PostgreSQL, mismo patrón que `wallets-backend`) — no antes.
 
