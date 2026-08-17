@@ -1,0 +1,110 @@
+[
+  {
+    "id": "lehrer",
+    "word": "Lehrer",
+    "gender": "der",
+    "plural": "Lehrer",
+    "es": "Profesor de colegio",
+    "level": "A1",
+    "ruleId": "rule_der_er"
+  },
+  {
+    "id": "professor",
+    "word": "Professor",
+    "gender": "der",
+    "plural": "Professoren",
+    "es": "Profesor de universidad",
+    "level": "A2",
+    "ruleId": "rule_der_or"
+  },
+  {
+    "id": "wein",
+    "word": "Wein",
+    "gender": "der",
+    "plural": "Weine",
+    "es": "Vino",
+    "level": "A1",
+    "ruleId": "rule_der_alkohol"
+  },
+  {
+    "id": "norden",
+    "word": "Norden",
+    "gender": "der",
+    "plural": "-",
+    "es": "Norte",
+    "level": "A2",
+    "ruleId": "rule_der_himmelsrichtung"
+  },
+  {
+    "id": "zeitung",
+    "word": "Zeitung",
+    "gender": "die",
+    "plural": "Zeitungen",
+    "es": "Periódico",
+    "level": "A1",
+    "ruleId": "rule_die_ung"
+  },
+  {
+    "id": "tomate",
+    "word": "Tomate",
+    "gender": "die",
+    "plural": "Tomaten",
+    "es": "Tomate",
+    "level": "A1",
+    "ruleId": "rule_die_e"
+  },
+  {
+    "id": "krankheit",
+    "word": "Krankheit",
+    "gender": "die",
+    "plural": "Krankheiten",
+    "es": "Enfermedad",
+    "level": "A2",
+    "ruleId": "rule_die_heit_keit"
+  },
+  {
+    "id": "maedchen",
+    "word": "Mädchen",
+    "gender": "das",
+    "plural": "Mädchen",
+    "es": "Niña/Chica",
+    "level": "A1",
+    "ruleId": "rule_das_chen"
+  },
+  {
+    "id": "auto",
+    "word": "Auto",
+    "gender": "das",
+    "plural": "Autos",
+    "es": "Carro",
+    "level": "A1",
+    "ruleId": "rule_das_o"
+  },
+  {
+    "id": "sushi",
+    "word": "Sushi",
+    "gender": "das",
+    "plural": "-",
+    "es": "Sushi",
+    "level": "A2",
+    "ruleId": "rule_das_fremdwort"
+  },
+  {
+    "id": "kaese",
+    "word": "Käse",
+    "gender": "der",
+    "plural": "Käse",
+    "es": "Queso",
+    "level": "A1",
+    "ruleId": null
+  },
+  {
+    "id": "bier",
+    "word": "Bier",
+    "gender": "das",
+    "plural": "Biere",
+    "es": "Cerveza",
+    "level": "A1",
+    "ruleId": null
+  }
+]

@@ -1,0 +1,10 @@
+[
+  { "id": "schoen", "de": "schön", "es": "hermoso/bonito", "level": "A1", "opposite": "hässlich" },
+  { "id": "gross", "de": "groß", "es": "grande/alto", "level": "A1", "opposite": "klein" },
+  { "id": "neu", "de": "neu", "es": "nuevo", "level": "A1", "opposite": "alt" },
+  { "id": "gut", "de": "gut", "es": "bueno", "level": "A1", "opposite": "schlecht" },
+  { "id": "schnell", "de": "schnell", "es": "rápido", "level": "A1", "opposite": "langsam" },
+  { "id": "gemein", "de": "gemein", "es": "malo/cruel", "level": "A2", "opposite": "nett" },
+  { "id": "muede", "de": "müde", "es": "cansado", "level": "A1", "opposite": "wach" },
+  { "id": "krank", "de": "krank", "es": "enfermo", "level": "A1", "opposite": "gesund" }
+]

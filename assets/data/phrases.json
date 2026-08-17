@@ -1,0 +1,29 @@
+[
+  {
+    "id": "phrase_gehe",
+    "sentence": "Ich ___ nach Berlin.",
+    "answer": "gehe",
+    "options": ["gehe", "geht", "gehst", "gegangen"],
+    "es": "Voy a Berlín.",
+    "level": "A1",
+    "note": "Präsens, 1ª persona (ich) → terminación -e."
+  },
+  {
+    "id": "phrase_neu",
+    "sentence": "Das Auto ist ___.",
+    "answer": "neu",
+    "options": ["neu", "alt", "schnell", "müde"],
+    "es": "El carro es nuevo.",
+    "level": "A1",
+    "note": "Adjetivo predicativo (después de sein): no se declina."
+  },
+  {
+    "id": "phrase_die_zeitung",
+    "sentence": "___ Zeitung liegt auf dem Tisch.",
+    "answer": "Die",
+    "options": ["Der", "Die", "Das"],
+    "es": "El periódico está sobre la mesa.",
+    "level": "A1",
+    "note": "Zeitung termina en -ung → die."
+  }
+]

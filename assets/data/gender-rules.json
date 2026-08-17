@@ -1,0 +1,92 @@
+[
+  {
+    "id": "rule_der_er",
+    "gender": "der",
+    "kind": "ending",
+    "pattern": "-er",
+    "explanation": "Sustantivos terminados en -er que designan profesiones o personas suelen ser masculinos.",
+    "examples": ["Lehrer", "Schüler"],
+    "exceptions": []
+  },
+  {
+    "id": "rule_der_or",
+    "gender": "der",
+    "kind": "ending",
+    "pattern": "-or",
+    "explanation": "Sustantivos terminados en -or (a menudo de origen latino) son masculinos.",
+    "examples": ["Professor"],
+    "exceptions": []
+  },
+  {
+    "id": "rule_der_alkohol",
+    "gender": "der",
+    "kind": "semantic",
+    "pattern": "alcoholes",
+    "explanation": "El 90% de las bebidas alcohólicas son der.",
+    "examples": ["Wein", "Wodka", "Schnaps"],
+    "exceptions": ["Bier"]
+  },
+  {
+    "id": "rule_der_himmelsrichtung",
+    "gender": "der",
+    "kind": "semantic",
+    "pattern": "puntos cardinales",
+    "explanation": "Los puntos cardinales son siempre der.",
+    "examples": ["Norden", "Süden", "Osten", "Westen"],
+    "exceptions": []
+  },
+  {
+    "id": "rule_die_e",
+    "gender": "die",
+    "kind": "ending",
+    "pattern": "-e",
+    "explanation": "El 80% de las palabras terminadas en -e son femeninas.",
+    "examples": ["Tomate", "Limonade"],
+    "exceptions": ["Käse"]
+  },
+  {
+    "id": "rule_die_ung",
+    "gender": "die",
+    "kind": "ending",
+    "pattern": "-ung",
+    "explanation": "Sustantivos terminados en -ung son femeninos.",
+    "examples": ["Zeitung", "Wohnung"],
+    "exceptions": []
+  },
+  {
+    "id": "rule_die_heit_keit",
+    "gender": "die",
+    "kind": "ending",
+    "pattern": "-heit/-keit",
+    "explanation": "Sustantivos terminados en -heit o -keit son femeninos.",
+    "examples": ["Krankheit"],
+    "exceptions": []
+  },
+  {
+    "id": "rule_das_chen",
+    "gender": "das",
+    "kind": "ending",
+    "pattern": "-chen",
+    "explanation": "El diminutivo -chen siempre es neutral, sin importar el género de la palabra base.",
+    "examples": ["Mädchen", "Hähnchen"],
+    "exceptions": []
+  },
+  {
+    "id": "rule_das_o",
+    "gender": "das",
+    "kind": "ending",
+    "pattern": "-o",
+    "explanation": "Muchas palabras terminadas en -o (a menudo préstamos) son neutrales.",
+    "examples": ["Auto"],
+    "exceptions": []
+  },
+  {
+    "id": "rule_das_fremdwort",
+    "gender": "das",
+    "kind": "semantic",
+    "pattern": "préstamos extranjeros",
+    "explanation": "Palabras importadas de otros idiomas tienden a ser neutrales.",
+    "examples": ["Sushi"],
+    "exceptions": []
+  }
+]
