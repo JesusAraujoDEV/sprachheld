@@ -20,9 +20,16 @@ void main() {
     expect(find.text('Verbos'), findsOneWidget);
 
     await tester.tap(find.text('Verbos'));
+    // Abre el selector de mazo (Top 100/500/1000/Todos): el bottom sheet
+    // tarda una transición en deslizarse a la vista, un solo pump() lo
+    // deja a mitad de camino y el tap subsiguiente no le pega.
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 300));
+
+    await tester.tap(find.text('Top 100'));
     await tester.pump(); // dispara la navegación
 
-    // Cargar y parsear assets/data/verbs.json (ya con cientos de verbos)
+    // Cargar y parsear assets/data/verbs.json (ya con miles de verbos)
     // implica I/O real de archivo, no solo trabajo en memoria — el reloj
     // simulado de pump(duration) no lo destraba. runAsync deja correr el
     // event loop real un instante para que la carga efectivamente termine.

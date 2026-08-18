@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 
 import '../data/repository.dart';
 import '../engine/question.dart';
-import '../engine/session.dart';
+import '../engine/srs.dart';
 import '../models/verb.dart';
 import '../state/progress_notifier.dart';
 import '../theme/app_theme.dart';
 import '../widgets/glow_card_face.dart';
 import '../widgets/quiz_shell.dart';
+
+const _sessionSize = 12;
 
 enum _Direction { deToEs, esToDe }
 
@@ -35,7 +37,11 @@ class _VerbQuizItem {
 class VerbQuizScreen extends StatefulWidget {
   final ProgressNotifier progress;
 
-  const VerbQuizScreen({required this.progress, super.key});
+  /// Si viene, limita el mazo a los N verbos más usados (Top 100/500/1000
+  /// del selector en Home). Null = todos.
+  final int? maxRank;
+
+  const VerbQuizScreen({required this.progress, this.maxRank, super.key});
 
   @override
   State<VerbQuizScreen> createState() => _VerbQuizScreenState();
@@ -54,16 +60,40 @@ class _VerbQuizScreenState extends State<VerbQuizScreen> {
   }
 
   Future<void> _load() async {
-    final verbs = await DataRepository.loadVerbs();
+    final allVerbs = await DataRepository.loadVerbs();
+    final maxRank = widget.maxRank;
+    final pool = maxRank == null
+        ? allVerbs
+        : allVerbs.where((v) => v.frequencyRank != null && v.frequencyRank! <= maxRank).toList();
+
+    // Prioriza/selecciona sobre Verb (barato) ANTES de armar preguntas con
+    // distractores — antes se construía una Question completa (con su
+    // búsqueda de distractores) para cada verbo del mazo entero y recién
+    // después se recortaba a 12, o sea O(n²) sobre miles de verbos. Ahora
+    // el filtrado es O(n) y los distractores se calculan solo para los
+    // ~12 elegidos.
     final rnd = Random();
+    final shuffled = List<Verb>.from(pool)..shuffle(rnd);
+    final now = DateTime.now();
+    final due = <Verb>[];
+    final fresh = <Verb>[];
+    final notDue = <Verb>[];
+    for (final v in shuffled) {
+      final state = widget.progress.states[v.id];
+      if (state == null) {
+        fresh.add(v);
+      } else if (Srs.isDue(state, now)) {
+        due.add(v);
+      } else {
+        notDue.add(v);
+      }
+    }
+    final selected = [...due, ...fresh, ...notDue].take(_sessionSize).toList();
+
     final questions = <Question>[
-      for (final v in verbs) _buildQuestion(v, verbs, rnd),
+      for (final v in selected) _buildQuestion(v, pool, rnd),
     ];
-    final session = buildSession(
-      questions,
-      SessionOptions(size: 12, srs: widget.progress.states),
-    );
-    if (mounted) setState(() => _session = session);
+    if (mounted) setState(() => _session = questions);
   }
 
   Question _buildQuestion(Verb v, List<Verb> deck, Random rnd) {

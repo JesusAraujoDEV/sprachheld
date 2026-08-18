@@ -45,7 +45,7 @@ class HomeScreen extends StatelessWidget {
                   title: 'Verbos',
                   subtitle: 'Elegí la traducción correcta',
                   accent: kPrimary,
-                  onTap: () => _push(context, VerbQuizScreen(progress: progress)),
+                  onTap: () => _pickVerbDeck(context),
                 ),
                 const SizedBox(height: 16),
                 _ModeCard(
@@ -100,8 +100,67 @@ class HomeScreen extends StatelessWidget {
                     activeThumbColor: kPrimary,
                   ),
                 ),
+                const SizedBox(height: 24),
+                Center(
+                  child: Text(
+                    'Desarrollado por Jesús Araujo',
+                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                          color: kOnSurfaceVariant.withValues(alpha: 0.6),
+                        ),
+                  ),
+                ),
               ],
             ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _pickVerbDeck(BuildContext context) {
+    showModalBottomSheet<void>(
+      context: context,
+      backgroundColor: kSurfaceContainer,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (sheetContext) => SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('¿Qué verbos practicás?', style: Theme.of(context).textTheme.headlineSmall),
+              const SizedBox(height: 4),
+              Text(
+                'Según qué tan usados son en alemán real',
+                style: Theme.of(context).textTheme.labelSmall,
+              ),
+              const SizedBox(height: 20),
+              for (final option in const [
+                (label: 'Top 100', maxRank: 100),
+                (label: 'Top 500', maxRank: 500),
+                (label: 'Top 1000', maxRank: 1000),
+                (label: 'Todos', maxRank: null),
+              ])
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 12),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: OutlinedButton(
+                      onPressed: () {
+                        Navigator.of(sheetContext).pop();
+                        _push(
+                          context,
+                          VerbQuizScreen(progress: progress, maxRank: option.maxRank),
+                        );
+                      },
+                      child: Text(option.label),
+                    ),
+                  ),
+                ),
+            ],
           ),
         ),
       ),

@@ -28,6 +28,11 @@ class Verb {
   final List<String> examples;
   final String? conjugationNote;
 
+  /// Posición en el ranking de frecuencia real de uso (1 = más usado). Null
+  /// si el verbo no aparece en la lista de referencia (muy raro/técnico) —
+  /// alimenta el selector "Top 100/500/1000/Todos" del modo de verbos.
+  final int? frequencyRank;
+
   const Verb({
     required this.id,
     required this.infinitiv,
@@ -42,6 +47,7 @@ class Verb {
     this.konjunktivII,
     required this.examples,
     this.conjugationNote,
+    this.frequencyRank,
   });
 
   factory Verb.fromJson(Map<String, dynamic> json) => Verb(
@@ -60,5 +66,6 @@ class Verb {
             : null,
         examples: List<String>.from(json['examples'] as List),
         conjugationNote: json['conjugationNote'] as String?,
+        frequencyRank: json['frequencyRank'] as int?,
       );
 }
