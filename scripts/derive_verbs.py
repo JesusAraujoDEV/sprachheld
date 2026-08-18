@@ -152,17 +152,13 @@ def main():
     out_path.write_text(json.dumps(batch, ensure_ascii=False, indent=2), encoding="utf-8")
 
     prompt_path = OUTPUT_DIR / f"verbs_batch_{args.start}_{end}_prompt.txt"
+    infinitivos = ", ".join(v["infinitiv"] for v in batch)
     prompt_path.write_text(
-        "Te paso un array JSON de verbos alemanes para una app de aprendizaje de "
-        "aleman A1-B1. Completa SOLO dos campos en cada objeto:\n"
-        '- "es": la traduccion al espanol mas comun y natural del infinitivo '
-        "(si el verbo tiene un uso tecnico raro, preferi el significado basico/cotidiano).\n"
-        '- "level": "A1", "A2" o "B1" segun que tan basico/frecuente es el verbo.\n\n'
-        "No cambies NINGUN otro campo (praesens, praeteritum, partizipII, aux, "
-        "separable, regularity, id, infinitiv quedan exactamente igual). No agregues "
-        "ni quites verbos. Devolveme SOLO el array JSON completo, sin explicaciones "
-        "antes ni despues, listo para copiar y pegar:\n\n"
-        + json.dumps(batch, ensure_ascii=False, indent=2),
+        "Traduce estos verbos alemanes (infinitivo) al espanol, para una app de "
+        "aprendizaje de aleman A1-B1. Da SOLO la traduccion mas comun y natural, "
+        "una por linea, en el mismo orden, formato 'infinitivo -> traduccion'. "
+        "Si un verbo tiene un uso tecnico raro, preferi el significado mas "
+        "basico/cotidiano:\n\n" + infinitivos,
         encoding="utf-8",
     )
 

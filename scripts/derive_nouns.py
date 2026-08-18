@@ -130,16 +130,12 @@ def main():
     out_path.write_text(json.dumps(derived, ensure_ascii=False, indent=2), encoding="utf-8")
 
     prompt_path = OUTPUT_DIR / f"nouns_batch_{args.start}_{end}_prompt.txt"
+    words = ", ".join(f"{n['gender']} {n['word']}" for n in derived)
     prompt_path.write_text(
-        "Te paso un array JSON de sustantivos alemanes para una app de aprendizaje "
-        "de aleman A1-B1. Completa SOLO dos campos en cada objeto:\n"
-        '- "es": la traduccion al espanol mas comun y natural (sin articulo, solo '
-        "la palabra o expresion en espanol).\n"
-        '- "level": "A1", "A2" o "B1" segun que tan basico/frecuente es el sustantivo.\n\n'
-        "No cambies NINGUN otro campo (word, gender, plural, ruleId, id quedan "
-        "exactamente igual). No agregues ni quites sustantivos. Devolveme SOLO el "
-        "array JSON completo, sin explicaciones antes ni despues, listo para copiar "
-        "y pegar:\n\n" + json.dumps(derived, ensure_ascii=False, indent=2),
+        "Traduce estos sustantivos alemanes (con su articulo) al espanol, para "
+        "una app de aprendizaje de aleman A1-B1. Da SOLO la traduccion mas comun, "
+        "una por linea, mismo orden, formato 'der/die/das Wort -> traduccion':\n\n"
+        + words,
         encoding="utf-8",
     )
 

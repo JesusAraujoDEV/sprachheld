@@ -14,20 +14,31 @@ sin dependencias (`urllib`/`csv`/`json` de la librería estándar).
    Cada uno deja dos archivos en `scripts/output/` (gitignored, se regeneran):
    - `..._batch_N_M.json` — el lote en el formato exacto de `verbs.json`/`nouns.json`,
      con `es`/`level` vacíos (y `separable`/`ruleId` ya resueltos).
-   - `..._batch_N_M_prompt.txt` — el array JSON completo embebido en un pedido a
-     Gemini: "completá solo `es` y `level`, no toques nada más, devolveme el
-     mismo array JSON". No hace falta transcribir traducciones a mano.
+   - `..._batch_N_M_prompt.txt` — **liviano**: solo la lista de palabras y el
+     pedido de traducción ("infinitivo -> traducción" / "der/die/das Wort ->
+     traducción"). Gemini nunca ve el JSON pesado (praesens/praeteritum/etc.).
 
-2. Pegá el contenido de `_prompt.txt` en Gemini tal cual. Te devuelve el mismo
-   array JSON, con `es`/`level` ya rellenos.
+2. Pegá el contenido de `_prompt.txt` en Gemini. Te devuelve una lista de
+   líneas `clave -> traducción`, una por palabra.
 
-3. Revisá las traducciones que puso Gemini antes de seguir — es el único paso
-   humano que queda, y el que evita que una traducción rara entre a la app.
+3. Guardá esa respuesta tal cual en un `.txt` (ej.
+   `scripts/output/verbs_batch_0_200_translations.txt`) y fusionala con el
+   lote:
+   ```bash
+   python scripts/apply_translations.py \
+       scripts/output/verbs_batch_0_200.json \
+       scripts/output/verbs_batch_0_200_translations.txt \
+       --level A1
+   ```
+   `--level` es opcional — si el lote completo es del mismo nivel, se lo pone
+   a todos de una; si no, lo editás a mano por objeto en el `_merged.json`
+   que genera. El script avisa si alguna palabra quedó sin traducción
+   (línea con formato distinto a `clave -> traducción`).
 
-4. Pegame el array JSON completo (con `es`/`level` ya rellenos) — lo appendeo
-   al final de `assets/data/verbs.json` o `nouns.json` y corro `flutter test`.
-   `test/data_integrity_test.dart` avisa solo si metiste un id duplicado o un
-   `ruleId` que no existe.
+4. Revisá el `_merged.json` (traducciones y niveles) y pegame el array
+   completo — lo appendeo al final de `assets/data/verbs.json` o `nouns.json`
+   y corro `flutter test`. `test/data_integrity_test.dart` avisa solo si
+   metiste un id duplicado o un `ruleId` que no existe.
 
 ## Qué hace cada script
 
@@ -44,6 +55,10 @@ sin dependencias (`urllib`/`csv`/`json` de la librería estándar).
   primero. Auto-asigna `ruleId` cuando la terminación de la palabra matchea
   alguna regla ya en `gender-rules.json`; si no, queda `null` (igual que el
   resto del banco — nunca se inventa una regla).
+
+- **`apply_translations.py`** — fusiona la respuesta liviana de Gemini
+  (`clave -> traducción`, una por línea) con el `.json` del lote, sin que
+  Gemini tenga que ver ni tocar los campos ya derivados.
 
 ## Límites conocidos
 
