@@ -123,6 +123,7 @@ class _GenderQuizScreenState extends State<GenderQuizScreen> {
   void _showResults(int total) {
     showDialog<void>(
       context: context,
+      barrierDismissible: false,
       builder: (dialogContext) => AlertDialog(
         backgroundColor: kSurfaceContainer,
         title: const Text('¡Ronda terminada!'),

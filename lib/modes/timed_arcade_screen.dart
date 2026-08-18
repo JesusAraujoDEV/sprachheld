@@ -133,6 +133,7 @@ class _TimedArcadeScreenState extends State<TimedArcadeScreen>
   void _showResults() {
     showDialog<void>(
       context: context,
+      barrierDismissible: false,
       builder: (dialogContext) => AlertDialog(
         backgroundColor: kSurfaceContainer,
         title: const Text('¡Tiempo!'),
@@ -159,10 +160,27 @@ class _TimedArcadeScreenState extends State<TimedArcadeScreen>
     if (!_started) {
       return Scaffold(
         backgroundColor: kBackground,
-        body: Center(
-          child: Text(
-            _finished ? '' : (_countdown > 0 ? '$_countdown' : '¡Ya!'),
-            style: Theme.of(context).textTheme.displayLarge?.copyWith(fontSize: 80),
+        body: SafeArea(
+          child: Stack(
+            children: [
+              // Red de seguridad: si el diálogo de resultados no llegó a
+              // mostrarse o se cerró sin pasar por "Volver", esto siempre
+              // deja una salida (antes esta pantalla no tenía ninguna).
+              Align(
+                alignment: Alignment.topLeft,
+                child: IconButton(
+                  icon: const Icon(Icons.close_rounded),
+                  color: kOnSurfaceVariant,
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+              ),
+              Center(
+                child: Text(
+                  _finished ? '' : (_countdown > 0 ? '$_countdown' : '¡Ya!'),
+                  style: Theme.of(context).textTheme.displayLarge?.copyWith(fontSize: 80),
+                ),
+              ),
+            ],
           ),
         ),
       );

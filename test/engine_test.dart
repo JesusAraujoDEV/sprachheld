@@ -122,5 +122,26 @@ void main() {
       expect(session.length, 2);
       expect(session.first.id, 'q0');
     });
+
+    test('nunca queda vacía cuando el mazo ya fue jugado pero nada está due '
+        '(regresión: crasheaba con RangeError en mazos chicos ya dominados)', () {
+      final now = DateTime.now();
+      final deck = List.generate(
+        3,
+        (i) => Question(id: 'q$i', mode: QuizMode.flashcard, prompt: i, answer: i),
+      );
+      // Las 3 preguntas ya se contestaron bien: box 2, due mañana — nada 'due'.
+      final srs = {
+        for (final q in deck)
+          q.id: SrsState(
+            box: 2,
+            dueDate: now.add(const Duration(days: 1)),
+            wrongCount: 0,
+            lastSeen: now,
+          ),
+      };
+      final session = buildSession(deck, SessionOptions(size: 3, srs: srs));
+      expect(session.length, 3);
+    });
   });
 }

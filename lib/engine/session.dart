@@ -27,14 +27,20 @@ List<Question> buildSession(List<Question> deck, SessionOptions options) {
   final now = DateTime.now();
   final due = <Question>[];
   final fresh = <Question>[];
+  final notDue = <Question>[];
   for (final q in pool) {
     final state = options.srs![q.id];
     if (state == null) {
       fresh.add(q);
     } else if (Srs.isDue(state, now)) {
       due.add(q);
+    } else {
+      notDue.add(q);
     }
   }
 
-  return [...due, ...fresh].take(options.size).toList();
+  // due/fresh tienen prioridad, pero un mazo nunca debe quedar vacío solo
+  // porque nada esté "vencido" todavía — notDue es el relleno de último
+  // recurso (ej.: un mazo chico ya dominado, jugado dos veces seguidas).
+  return [...due, ...fresh, ...notDue].take(options.size).toList();
 }
