@@ -142,9 +142,16 @@ class _ConjugationTableScreenState extends State<ConjugationTableScreen> {
 
   Widget _buildTable(Verb verb) {
     final werden = _verbs!.firstWhere((v) => v.id == 'werden', orElse: () => verb);
+    final auxLookup = {
+      Aux.haben: _verbs!.firstWhere((v) => v.id == 'haben', orElse: () => verb),
+      Aux.sein: _verbs!.firstWhere((v) => v.id == 'sein', orElse: () => verb),
+    };
+    // Perfekt ya trae el auxiliar correcto por fila (habe/bin según el verbo)
+    // — no hace falta un badge aparte para distinguir haben de sein.
     final tenses = <String, List<String>>{
       'Presente': verb.praesens,
-      'Pasado': verb.praeteritum,
+      'Pasado simple': verb.praeteritum,
+      'Pasado compuesto': Conjugation.perfekt(verb, auxLookup),
       'Futuro': Conjugation.futurI(verb, werden),
     };
     return DefaultTabController(
@@ -155,13 +162,16 @@ class _ConjugationTableScreenState extends State<ConjugationTableScreen> {
           Text(verb.infinitiv, style: Theme.of(context).textTheme.headlineSmall),
           Text(verb.es, style: Theme.of(context).textTheme.labelSmall),
           const SizedBox(height: 12),
-          const TabBar(
+          TabBar(
+            isScrollable: true,
+            tabAlignment: TabAlignment.start,
             labelColor: kPrimary,
             unselectedLabelColor: kOnSurfaceVariant,
             indicatorColor: kPrimary,
-            tabs: [
+            tabs: const [
               Tab(icon: Icon(Icons.wb_sunny_rounded), text: 'Presente'),
-              Tab(icon: Icon(Icons.history_rounded), text: 'Pasado'),
+              Tab(icon: Icon(Icons.history_rounded), text: 'Pasado simple'),
+              Tab(icon: Icon(Icons.done_all_rounded), text: 'Pasado compuesto'),
               Tab(icon: Icon(Icons.arrow_forward_rounded), text: 'Futuro'),
             ],
           ),
