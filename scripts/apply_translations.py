@@ -9,7 +9,12 @@ Sirve tanto para verbos (clave = infinitivo, ej. "lieben -> amar") como
 para sustantivos (clave = "der/die/das Wort -> traduccion" -- el articulo
 se descarta al matchear, es solo la palabra la que identifica la fila).
 
-Uso:
+Uso (el archivo de traducciones se infiere del batch_json si no se pasa
+-- ya lo crea vacio derive_verbs.py/derive_nouns.py, solo hay que pegarle
+la respuesta de Gemini adentro):
+    python scripts/apply_translations.py scripts/output/verbs_batch_0_200.json --level A1
+
+O explicito, si el archivo de traducciones tiene otro nombre:
     python scripts/apply_translations.py \
         scripts/output/verbs_batch_0_200.json \
         scripts/output/verbs_batch_0_200_translations.txt \
@@ -43,12 +48,26 @@ def parse_translations(text: str) -> dict:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("batch_json", type=Path)
-    parser.add_argument("translations_txt", type=Path)
+    parser.add_argument(
+        "translations_txt",
+        type=Path,
+        nargs="?",
+        default=None,
+        help="Si se omite, se infiere reemplazando '.json' por '_translations.txt'",
+    )
     parser.add_argument("--level", default=None, help='Asigna este nivel a todo el lote, ej. A1')
     args = parser.parse_args()
 
+    translations_path = args.translations_txt or args.batch_json.with_name(
+        args.batch_json.stem + "_translations.txt"
+    )
+    if not translations_path.exists() or not translations_path.read_text(encoding="utf-8").strip():
+        print(f"ERROR: {translations_path} no existe o esta vacio.")
+        print("Pega ahi la respuesta de Gemini (formato 'clave -> traduccion') y volve a correr.")
+        return
+
     batch = json.loads(args.batch_json.read_text(encoding="utf-8"))
-    translations = parse_translations(args.translations_txt.read_text(encoding="utf-8"))
+    translations = parse_translations(translations_path.read_text(encoding="utf-8"))
 
     missing = []
     for item in batch:

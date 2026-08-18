@@ -74,7 +74,12 @@ def split_prefix(form: str):
 def derive_praeteritum(ich_form: str):
     stem, prefix = split_prefix(ich_form)
     wir_sie = stem + "n" if stem.endswith("e") else stem + "en"
-    forms = [stem, stem + "st", stem, wir_sie, stem + "t", wir_sie]
+    # ihr necesita una -e- de apoyo si la raiz termina en d/t y esa -e- no
+    # esta ya incluida (verbos fuertes tipo "band" -> "bandet", no "bandt";
+    # los debiles como "arbeitete" ya la traen en el propio ich-form, que
+    # termina en "e" y cae en la rama normal).
+    ihr = stem + "et" if stem.endswith(("d", "t")) else stem + "t"
+    forms = [stem, stem + "st", stem, wir_sie, ihr, wir_sie]
     if prefix:
         forms = [f"{f} {prefix}" for f in forms]
     return forms
@@ -162,9 +167,17 @@ def main():
         encoding="utf-8",
     )
 
+    translations_path = OUTPUT_DIR / f"verbs_batch_{args.start}_{end}_translations.txt"
+    if not translations_path.exists():
+        translations_path.write_text("", encoding="utf-8")
+
     print(f"{len(derived)} verbos nuevos disponibles en total (no estan en verbs.json).")
     print(f"Lote generado: {out_path} ({len(batch)} verbos)")
     print(f"Prompt para Gemini: {prompt_path}")
+    print(f"Pegá la respuesta de Gemini en: {translations_path}")
+    print(
+        f"Despues fusionalo con: python scripts/apply_translations.py {out_path} --level A1"
+    )
 
 
 if __name__ == "__main__":

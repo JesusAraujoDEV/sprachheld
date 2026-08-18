@@ -6,34 +6,38 @@ sin dependencias (`urllib`/`csv`/`json` de la librería estándar).
 
 ## Flujo de trabajo
 
-1. Corré el script pidiendo un lote:
+1. Corré el script pidiendo un lote (no hace falta pasar `--start`, el
+   default ya es `0` y el script excluye solo lo que ya esté en
+   `verbs.json`/`nouns.json` — nunca hay que llevar la cuenta a mano):
    ```bash
-   python scripts/derive_verbs.py --batch-size 200 --start 0
-   python scripts/derive_nouns.py --batch-size 200 --start 0
+   python scripts/derive_verbs.py --batch-size 200
+   python scripts/derive_nouns.py --batch-size 200
    ```
-   Cada uno deja dos archivos en `scripts/output/` (gitignored, se regeneran):
+   Cada uno deja **tres** archivos en `scripts/output/` (gitignored, se
+   regeneran) y te imprime el comando exacto del paso 3, ya con las rutas
+   completas — copiar y pegar:
    - `..._batch_N_M.json` — el lote en el formato exacto de `verbs.json`/`nouns.json`,
      con `es`/`level` vacíos (y `separable`/`ruleId` ya resueltos).
    - `..._batch_N_M_prompt.txt` — **liviano**: solo la lista de palabras y el
      pedido de traducción ("infinitivo -> traducción" / "der/die/das Wort ->
      traducción"). Gemini nunca ve el JSON pesado (praesens/praeteritum/etc.).
+   - `..._batch_N_M_translations.txt` — **vacío**, creado a propósito para que
+     solo tengas que abrirlo y pegar ahí la respuesta de Gemini. Al tener
+     siempre el mismo nombre que el `.json` del lote (cambiando el sufijo),
+     el siguiente paso lo encuentra solo — no hay forma de mezclar el
+     `.txt` de un lote con el `.json` de otro.
 
-2. Pegá el contenido de `_prompt.txt` en Gemini. Te devuelve una lista de
-   líneas `clave -> traducción`, una por palabra.
+2. Pegá el contenido de `_prompt.txt` en Gemini, y su respuesta pegala tal
+   cual en el `_translations.txt` que ya existe (guardalo).
 
-3. Guardá esa respuesta tal cual en un `.txt` (ej.
-   `scripts/output/verbs_batch_0_200_translations.txt`) y fusionala con el
-   lote:
+3. Fusioná — un solo argumento, el `.txt` se infiere solo:
    ```bash
-   python scripts/apply_translations.py \
-       scripts/output/verbs_batch_0_200.json \
-       scripts/output/verbs_batch_0_200_translations.txt \
-       --level A1
+   python scripts/apply_translations.py scripts/output/verbs_batch_0_200.json --level A1
    ```
    `--level` es opcional — si el lote completo es del mismo nivel, se lo pone
    a todos de una; si no, lo editás a mano por objeto en el `_merged.json`
-   que genera. El script avisa si alguna palabra quedó sin traducción
-   (línea con formato distinto a `clave -> traducción`).
+   que genera. Si el `.txt` todavía está vacío o mal formado, el script lo
+   dice y no genera nada a medias.
 
 4. Revisá el `_merged.json` (traducciones y niveles) y pegame el array
    completo — lo appendeo al final de `assets/data/verbs.json` o `nouns.json`

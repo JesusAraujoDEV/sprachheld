@@ -139,9 +139,17 @@ def main():
         encoding="utf-8",
     )
 
+    translations_path = OUTPUT_DIR / f"nouns_batch_{args.start}_{end}_translations.txt"
+    if not translations_path.exists():
+        translations_path.write_text("", encoding="utf-8")
+
     print(f"{len(candidates)} sustantivos nuevos disponibles en total (no estan en nouns.json).")
     print(f"Lote generado: {out_path} ({len(batch)} sustantivos)")
     print(f"Prompt para Gemini: {prompt_path}")
+    print(f"Pegá la respuesta de Gemini en: {translations_path}")
+    print(
+        f"Despues fusionalo con: python scripts/apply_translations.py {out_path} --level A1"
+    )
 
 
 if __name__ == "__main__":
