@@ -1,14 +1,14 @@
-// Smoke test de Fase 3: Home carga, y abrir un modo Flashcard levanta una
-// sesión real con datos de assets/data/ (sigue probando indirectamente que
-// el schema/parsing de Fase 0 funciona, ahora a través de la UI real).
+// Smoke test: Home carga y abrir un modo levanta una sesión real con datos
+// de assets/data/ (prueba indirectamente que el schema/parsing funciona).
 
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:sprachheld/main.dart';
 
 void main() {
-  testWidgets('Home abre una sesión de Flashcard con datos reales', (tester) async {
+  testWidgets('Home abre el quiz de verbos con datos reales', (tester) async {
     SharedPreferences.setMockInitialValues({});
     await tester.pumpWidget(const SprachheldApp());
 
@@ -23,6 +23,8 @@ void main() {
     await tester.pump(); // dispara la navegación
     await tester.pump(const Duration(milliseconds: 300)); // resuelve la carga de assets
 
-    expect(find.text('Toca la carta para voltear'), findsOneWidget);
+    // La sesión cargó preguntas reales: el ícono de audio confirma que la
+    // pantalla de quiz (no un loader) terminó de renderizar.
+    expect(find.byIcon(Icons.volume_up_rounded), findsOneWidget);
   });
 }

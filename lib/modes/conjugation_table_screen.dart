@@ -4,6 +4,7 @@ import '../data/repository.dart';
 import '../engine/conjugation.dart';
 import '../models/verb.dart';
 import '../theme/app_theme.dart';
+import '../widgets/audio_button.dart';
 import '../widgets/aura_background.dart';
 
 const _personLabels = ['ich', 'du', 'er/sie/es', 'wir', 'ihr', 'sie/Sie'];
@@ -205,6 +206,7 @@ class _ConjugationTableScreenState extends State<ConjugationTableScreen> {
               style: Theme.of(context).textTheme.displayLarge?.copyWith(fontSize: 26),
             ),
           ),
+          AudioButton(text: '${_personLabels[i]} ${forms[i]}'),
         ],
       ),
     );

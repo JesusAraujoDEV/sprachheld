@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 
 import '../modes/conjugation_table_screen.dart';
-import '../modes/flashcard_screen.dart';
+import '../modes/fill_phrase_screen.dart';
 import '../modes/gender_quiz_screen.dart';
 import '../modes/gender_tips_screen.dart';
+import '../modes/timed_arcade_screen.dart';
+import '../modes/verb_quiz_screen.dart';
+import '../modes/write_conjugation_screen.dart';
 import '../state/config_notifier.dart';
+import '../state/progress_notifier.dart';
 import '../theme/app_theme.dart';
 import '../widgets/aura_background.dart';
 
 class HomeScreen extends StatelessWidget {
   final ConfigNotifier config;
+  final ProgressNotifier progress;
 
-  const HomeScreen({required this.config, super.key});
+  const HomeScreen({required this.config, required this.progress, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,19 +38,42 @@ class HomeScreen extends StatelessWidget {
                   'Practica alemán',
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: kOnSurfaceVariant),
                 ),
-                const SizedBox(height: 32),
+                const SizedBox(height: 20),
+                ListenableBuilder(listenable: progress, builder: (context, _) => _buildStats(context)),
+                const SizedBox(height: 24),
                 _ModeCard(
                   title: 'Verbos',
-                  subtitle: 'Flashcard · infinitivo ↔ traducción',
+                  subtitle: 'Elegí la traducción correcta',
                   accent: kPrimary,
-                  onTap: () => _push(context, const FlashcardScreen()),
+                  onTap: () => _push(context, VerbQuizScreen(progress: progress)),
                 ),
                 const SizedBox(height: 16),
                 _ModeCard(
                   title: 'der / die / das',
                   subtitle: 'Elegí el artículo correcto',
                   accent: kGenderDas,
-                  onTap: () => _push(context, const GenderQuizScreen()),
+                  onTap: () => _push(context, GenderQuizScreen(progress: progress)),
+                ),
+                const SizedBox(height: 16),
+                _ModeCard(
+                  title: 'Escribir conjugación',
+                  subtitle: 'Infinitivo · persona · tiempo → escribí la forma',
+                  accent: kSecondary,
+                  onTap: () => _push(context, WriteConjugationScreen(progress: progress)),
+                ),
+                const SizedBox(height: 16),
+                _ModeCard(
+                  title: 'Completar la frase',
+                  subtitle: 'Oración con hueco + opciones',
+                  accent: kGenderDer,
+                  onTap: () => _push(context, FillPhraseScreen(progress: progress)),
+                ),
+                const SizedBox(height: 16),
+                _ModeCard(
+                  title: 'Contrarreloj',
+                  subtitle: '60 segundos, racha y puntos',
+                  accent: kError,
+                  onTap: () => _push(context, TimedArcadeScreen(progress: progress)),
                 ),
                 const SizedBox(height: 16),
                 _ModeCard(
@@ -58,8 +86,8 @@ class HomeScreen extends StatelessWidget {
                 _ModeCard(
                   title: 'Tips: der/die/das',
                   subtitle: 'Reglas de género, una por una',
-                  accent: kGenderDer,
-                  onTap: () => _push(context, const GenderTipsScreen()),
+                  accent: kGenderDie,
+                  onTap: () => _push(context, GenderTipsScreen(progress: progress)),
                 ),
                 const SizedBox(height: 32),
                 ListenableBuilder(
@@ -80,8 +108,46 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
+  Widget _buildStats(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      decoration: BoxDecoration(
+        color: kSurfaceContainer,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: kOutline),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          _StatChip(icon: '🔥', label: '${progress.streakDays} días'),
+          _StatChip(icon: '⭐', label: '${progress.xp} XP'),
+          _StatChip(icon: '✅', label: '${progress.masteredCount} dominados'),
+          _StatChip(icon: '📌', label: '${progress.weakCount} débiles'),
+        ],
+      ),
+    );
+  }
+
   void _push(BuildContext context, Widget screen) {
     Navigator.of(context).push(MaterialPageRoute(builder: (_) => screen));
+  }
+}
+
+class _StatChip extends StatelessWidget {
+  final String icon;
+  final String label;
+
+  const _StatChip({required this.icon, required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(icon, style: const TextStyle(fontSize: 18)),
+        const SizedBox(height: 2),
+        Text(label, style: Theme.of(context).textTheme.labelSmall),
+      ],
+    );
   }
 }
 

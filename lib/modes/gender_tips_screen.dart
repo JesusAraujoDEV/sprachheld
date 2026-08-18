@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../data/repository.dart';
 import '../models/gender_rule.dart';
+import '../state/progress_notifier.dart';
 import '../theme/app_theme.dart';
 import '../widgets/quiz_shell.dart';
 import 'gender_quiz_screen.dart';
@@ -12,7 +13,9 @@ enum _RuleFilter { all, ending, semantic }
 /// micro-lecciones (docs/PLAN.md §4, §6.5). No es quiz: no hay respuesta,
 /// solo consulta + un atajo a practicarla.
 class GenderTipsScreen extends StatefulWidget {
-  const GenderTipsScreen({super.key});
+  final ProgressNotifier progress;
+
+  const GenderTipsScreen({required this.progress, super.key});
 
   @override
   State<GenderTipsScreen> createState() => _GenderTipsScreenState();
@@ -86,7 +89,7 @@ class _GenderTipsScreenState extends State<GenderTipsScreen> {
                           onPageChanged: (i) => setState(() => _page = i),
                           itemBuilder: (context, i) => Padding(
                             padding: const EdgeInsets.all(24),
-                            child: _RuleCard(rule: rules[i]),
+                            child: _RuleCard(rule: rules[i], progress: widget.progress),
                           ),
                         ),
                         Positioned(
@@ -188,8 +191,9 @@ class _NavArrow extends StatelessWidget {
 
 class _RuleCard extends StatelessWidget {
   final GenderRule rule;
+  final ProgressNotifier progress;
 
-  const _RuleCard({required this.rule});
+  const _RuleCard({required this.rule, required this.progress});
 
   @override
   Widget build(BuildContext context) {
@@ -267,7 +271,9 @@ class _RuleCard extends StatelessWidget {
               width: double.infinity,
               child: OutlinedButton(
                 onPressed: () => Navigator.of(context).push(
-                  MaterialPageRoute(builder: (_) => GenderQuizScreen(ruleId: rule.id)),
+                  MaterialPageRoute(
+                    builder: (_) => GenderQuizScreen(progress: progress, ruleId: rule.id),
+                  ),
                 ),
                 child: const Text('⚡ Prueba esto'),
               ),
