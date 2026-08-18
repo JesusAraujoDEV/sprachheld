@@ -21,7 +21,13 @@ void main() {
 
     await tester.tap(find.text('Verbos'));
     await tester.pump(); // dispara la navegación
-    await tester.pump(const Duration(milliseconds: 300)); // resuelve la carga de assets
+
+    // Cargar y parsear assets/data/verbs.json (ya con cientos de verbos)
+    // implica I/O real de archivo, no solo trabajo en memoria — el reloj
+    // simulado de pump(duration) no lo destraba. runAsync deja correr el
+    // event loop real un instante para que la carga efectivamente termine.
+    await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 300)));
+    await tester.pump();
 
     // La sesión cargó preguntas reales: el ícono de audio confirma que la
     // pantalla de quiz (no un loader) terminó de renderizar.
