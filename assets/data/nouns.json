@@ -214,5 +214,338 @@
     "es": "Oro",
     "level": "A2",
     "ruleId": "rule_das_metall"
+  },
+  {
+    "id": "optimismus",
+    "word": "Optimismus",
+    "gender": "der",
+    "plural": "-",
+    "es": "Optimismo",
+    "level": "B1",
+    "ruleId": "rule_der_ismus"
+  },
+  {
+    "id": "tourismus",
+    "word": "Tourismus",
+    "gender": "der",
+    "plural": "-",
+    "es": "Turismo",
+    "level": "A2",
+    "ruleId": "rule_der_ismus"
+  },
+  {
+    "id": "polizist",
+    "word": "Polizist",
+    "gender": "der",
+    "plural": "Polizisten",
+    "es": "Policía (persona)",
+    "level": "A1",
+    "ruleId": "rule_der_ist"
+  },
+  {
+    "id": "journalist",
+    "word": "Journalist",
+    "gender": "der",
+    "plural": "Journalisten",
+    "es": "Periodista",
+    "level": "A2",
+    "ruleId": "rule_der_ist"
+  },
+  {
+    "id": "honig",
+    "word": "Honig",
+    "gender": "der",
+    "plural": "-",
+    "es": "Miel",
+    "level": "A1",
+    "ruleId": "rule_der_ig"
+  },
+  {
+    "id": "koenig",
+    "word": "König",
+    "gender": "der",
+    "plural": "Könige",
+    "es": "Rey",
+    "level": "A2",
+    "ruleId": "rule_der_ig"
+  },
+  {
+    "id": "schmetterling",
+    "word": "Schmetterling",
+    "gender": "der",
+    "plural": "Schmetterlinge",
+    "es": "Mariposa",
+    "level": "A2",
+    "ruleId": "rule_der_ling"
+  },
+  {
+    "id": "fruehling",
+    "word": "Frühling",
+    "gender": "der",
+    "plural": "Frühlinge",
+    "es": "Primavera",
+    "level": "A1",
+    "ruleId": "rule_der_ling"
+  },
+  {
+    "id": "garten",
+    "word": "Garten",
+    "gender": "der",
+    "plural": "Gärten",
+    "es": "Jardín",
+    "level": "A1",
+    "ruleId": "rule_der_en"
+  },
+  {
+    "id": "teppich",
+    "word": "Teppich",
+    "gender": "der",
+    "plural": "Teppiche",
+    "es": "Alfombra",
+    "level": "A1",
+    "ruleId": "rule_der_ich"
+  },
+  {
+    "id": "ingenieur",
+    "word": "Ingenieur",
+    "gender": "der",
+    "plural": "Ingenieure",
+    "es": "Ingeniero",
+    "level": "A2",
+    "ruleId": "rule_der_eur"
+  },
+  {
+    "id": "friseur",
+    "word": "Friseur",
+    "gender": "der",
+    "plural": "Friseure",
+    "es": "Peluquero",
+    "level": "A2",
+    "ruleId": "rule_der_eur"
+  },
+  {
+    "id": "mechaniker",
+    "word": "Mechaniker",
+    "gender": "der",
+    "plural": "Mechaniker",
+    "es": "Mecánico",
+    "level": "A2",
+    "ruleId": "rule_der_iker"
+  },
+  {
+    "id": "musiker",
+    "word": "Musiker",
+    "gender": "der",
+    "plural": "Musiker",
+    "es": "Músico",
+    "level": "A2",
+    "ruleId": "rule_der_iker"
+  },
+  {
+    "id": "sohn",
+    "word": "Sohn",
+    "gender": "der",
+    "plural": "Söhne",
+    "es": "Hijo",
+    "level": "A1",
+    "ruleId": null
+  },
+  {
+    "id": "tochter",
+    "word": "Tochter",
+    "gender": "die",
+    "plural": "Töchter",
+    "es": "Hija",
+    "level": "A1",
+    "ruleId": null
+  },
+  {
+    "id": "schwester",
+    "word": "Schwester",
+    "gender": "die",
+    "plural": "Schwestern",
+    "es": "Hermana",
+    "level": "A1",
+    "ruleId": null
+  },
+  {
+    "id": "grossvater",
+    "word": "Großvater",
+    "gender": "der",
+    "plural": "Großväter",
+    "es": "Abuelo",
+    "level": "A1",
+    "ruleId": null
+  },
+  {
+    "id": "grossmutter",
+    "word": "Großmutter",
+    "gender": "die",
+    "plural": "Großmütter",
+    "es": "Abuela",
+    "level": "A1",
+    "ruleId": null
+  },
+  {
+    "id": "onkel",
+    "word": "Onkel",
+    "gender": "der",
+    "plural": "Onkel",
+    "es": "Tío",
+    "level": "A1",
+    "ruleId": null
+  },
+  {
+    "id": "cousin",
+    "word": "Cousin",
+    "gender": "der",
+    "plural": "Cousins",
+    "es": "Primo",
+    "level": "A2",
+    "ruleId": null
+  },
+  {
+    "id": "cousine",
+    "word": "Cousine",
+    "gender": "die",
+    "plural": "Cousinen",
+    "es": "Prima",
+    "level": "A2",
+    "ruleId": "rule_die_e"
+  },
+  {
+    "id": "apfel",
+    "word": "Apfel",
+    "gender": "der",
+    "plural": "Äpfel",
+    "es": "Manzana",
+    "level": "A1",
+    "ruleId": null
+  },
+  {
+    "id": "gurke",
+    "word": "Gurke",
+    "gender": "die",
+    "plural": "Gurken",
+    "es": "Pepino",
+    "level": "A1",
+    "ruleId": "rule_die_e"
+  },
+  {
+    "id": "kartoffel",
+    "word": "Kartoffel",
+    "gender": "die",
+    "plural": "Kartoffeln",
+    "es": "Papa/patata",
+    "level": "A1",
+    "ruleId": null
+  },
+  {
+    "id": "milch",
+    "word": "Milch",
+    "gender": "die",
+    "plural": "-",
+    "es": "Leche",
+    "level": "A1",
+    "ruleId": null
+  },
+  {
+    "id": "wurst",
+    "word": "Wurst",
+    "gender": "die",
+    "plural": "Würste",
+    "es": "Salchicha",
+    "level": "A1",
+    "ruleId": null
+  },
+  {
+    "id": "ampel",
+    "word": "Ampel",
+    "gender": "die",
+    "plural": "Ampeln",
+    "es": "Semáforo",
+    "level": "A1",
+    "ruleId": null
+  },
+  {
+    "id": "film",
+    "word": "Film",
+    "gender": "der",
+    "plural": "Filme",
+    "es": "Película",
+    "level": "A1",
+    "ruleId": null
+  },
+  {
+    "id": "park",
+    "word": "Park",
+    "gender": "der",
+    "plural": "Parks",
+    "es": "Parque",
+    "level": "A1",
+    "ruleId": null
+  },
+  {
+    "id": "platz",
+    "word": "Platz",
+    "gender": "der",
+    "plural": "Plätze",
+    "es": "Plaza/asiento",
+    "level": "A2",
+    "ruleId": null
+  },
+  {
+    "id": "biologie",
+    "word": "Biologie",
+    "gender": "die",
+    "plural": "-",
+    "es": "Biología",
+    "level": "A2",
+    "ruleId": null
+  },
+  {
+    "id": "schildkroete",
+    "word": "Schildkröte",
+    "gender": "die",
+    "plural": "Schildkröten",
+    "es": "Tortuga",
+    "level": "A2",
+    "ruleId": "rule_die_e"
+  },
+  {
+    "id": "flagge",
+    "word": "Flagge",
+    "gender": "die",
+    "plural": "Flaggen",
+    "es": "Bandera",
+    "level": "A1",
+    "ruleId": "rule_die_e"
+  },
+  {
+    "id": "bild",
+    "word": "Bild",
+    "gender": "das",
+    "plural": "Bilder",
+    "es": "Imagen/cuadro",
+    "level": "A1",
+    "ruleId": null
+  },
+  {
+    "id": "krieg",
+    "word": "Krieg",
+    "gender": "der",
+    "plural": "Kriege",
+    "es": "Guerra",
+    "level": "B1",
+    "ruleId": null
+  },
+  {
+    "id": "salat",
+    "word": "Salat",
+    "gender": "der",
+    "plural": "Salate",
+    "es": "Ensalada/lechuga",
+    "level": "A1",
+    "ruleId": null
   }
 ]

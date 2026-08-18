@@ -106,5 +106,77 @@
     "explanation": "Los metales (oro, plata, hierro) casi siempre son neutrales.",
     "examples": ["Gold", "Silber", "Eisen"],
     "exceptions": []
+  },
+  {
+    "id": "rule_der_ismus",
+    "gender": "der",
+    "kind": "ending",
+    "pattern": "-ismus",
+    "explanation": "Sustantivos abstractos terminados en -ismus (corrientes, ideologías, fenómenos) son siempre masculinos.",
+    "examples": ["Optimismus", "Tourismus", "Kapitalismus"],
+    "exceptions": []
+  },
+  {
+    "id": "rule_der_ist",
+    "gender": "der",
+    "kind": "ending",
+    "pattern": "-ist",
+    "explanation": "El sufijo -ist designa personas (profesión o adscripción) y es masculino. El femenino se forma con -istin.",
+    "examples": ["Polizist", "Journalist", "Tourist"],
+    "exceptions": ["die Frist"]
+  },
+  {
+    "id": "rule_der_ig",
+    "gender": "der",
+    "kind": "ending",
+    "pattern": "-ig",
+    "explanation": "Sustantivos terminados en -ig son masculinos.",
+    "examples": ["Honig", "König", "Essig"],
+    "exceptions": ["das Reisig"]
+  },
+  {
+    "id": "rule_der_ling",
+    "gender": "der",
+    "kind": "ending",
+    "pattern": "-ling",
+    "explanation": "El sufijo -ling es masculino sin excepciones, incluso cuando la palabra base es femenina o neutra.",
+    "examples": ["Schmetterling", "Frühling", "Lehrling"],
+    "exceptions": []
+  },
+  {
+    "id": "rule_der_en",
+    "gender": "der",
+    "kind": "ending",
+    "pattern": "-en",
+    "explanation": "Muchos sustantivos terminados en -en son masculinos y tienen plural idéntico al singular. Regla con menos fuerza que las demás.",
+    "examples": ["Schinken", "Garten", "Wagen"],
+    "exceptions": ["das Essen", "das Leben"]
+  },
+  {
+    "id": "rule_der_ich",
+    "gender": "der",
+    "kind": "ending",
+    "pattern": "-ich",
+    "explanation": "Sustantivos terminados en -ich son masculinos.",
+    "examples": ["Teppich", "Rettich", "Kranich"],
+    "exceptions": []
+  },
+  {
+    "id": "rule_der_eur",
+    "gender": "der",
+    "kind": "ending",
+    "pattern": "-eur",
+    "explanation": "Sufijo de origen francés que designa personas por su oficio; siempre masculino. Femenino en -eurin.",
+    "examples": ["Ingenieur", "Friseur", "Regisseur"],
+    "exceptions": []
+  },
+  {
+    "id": "rule_der_iker",
+    "gender": "der",
+    "kind": "ending",
+    "pattern": "-iker",
+    "explanation": "Designa a la persona que practica una disciplina (Mechanik → Mechaniker). Siempre masculino, plural idéntico al singular.",
+    "examples": ["Mechaniker", "Musiker", "Politiker"],
+    "exceptions": []
   }
 ]
