@@ -41,4 +41,27 @@ void main() {
     final ids = rules.map((r) => r.id).toList();
     expect(ids.toSet().length, ids.length, reason: 'hay ids de regla duplicados');
   });
+
+  test('frequencyRank de verbos es posición entre verbos, no entre todas las '
+      'palabras del idioma (regresión: "Top 100" mostraba solo ~7 verbos '
+      'porque el rango era el de la lista de frecuencia completa, dominada '
+      'por artículos/pronombres)', () async {
+    final verbs = await DataRepository.loadVerbs();
+    final top100 = verbs.where((v) => (v.frequencyRank ?? 999999) <= 100).length;
+    expect(
+      top100,
+      100,
+      reason: 'debería haber exactamente 100 verbos con frequencyRank <= 100 '
+          '(es la definición de "Top 100" entre verbos)',
+    );
+    // haber/ser/poder son verbos centrales del idioma: si no están en el
+    // puñado más frecuente, el ranking está mal calculado otra vez.
+    final topIds = verbs
+        .where((v) => (v.frequencyRank ?? 999999) <= 10)
+        .map((v) => v.id)
+        .toSet();
+    for (final expected in ['haben', 'sein', 'koennen']) {
+      expect(topIds.contains(expected), isTrue, reason: '$expected debería estar en el top 10');
+    }
+  });
 }
