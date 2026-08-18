@@ -341,13 +341,63 @@ sus propias limitaciones de paridad) para cubrir el target web del plan original
 | ✅ **2. Núcleo** | `StorageService` + `ConfigNotifier` + engine (`conjugation`/`session`/`check`/`srs`) con self-check | 8 tests de lógica pura en verde |
 | ✅ **3. Primer modo** | Flashcard (verbos + der/die/das) + `QuizShell` + `AudioButton` (TTS) + tema "aura" | el motor + schema funcionan end-to-end en pantalla real |
 | ✅ **4. Género der/die/das** | Quiz de género (palabra+3 botones+flip) + Tips navegables + Tabla de conjugación con buscador | el sistema de reglas cierra el loop |
-| **5. Escribir + Completar** | WriteConjugation + FillPhrase (chips) | cubre conjugación y contexto |
-| **6. Tips** | Mazo de reglas navegable + deep-link desde quizzes | micro-lecciones |
-| **7. Progreso** | Leitner + Home (racha/XP/dominados) + "Repaso débiles" | gancho de retención |
-| **8. Arcade** | Contrarreloj/racha con multiplier + high score | el modo estrella |
-| **9. Pulido** | Estética aura, reduced-motion, a11y, deploy estático | listo para uso diario |
+| ✅ **5. Escribir + Completar** | WriteConjugationScreen + FillPhraseScreen (chips) | cubre conjugación y contexto |
+| ✅ **6. Tips** | Mazo de reglas navegable + deep-link tip→quiz filtrado por regla | micro-lecciones |
+| ✅ **7. Progreso** | `ProgressNotifier` (Leitner por ítem) + Home (racha/XP/dominados/débiles) | `buildSession` prioriza due/débiles en todos los modos |
+| ✅ **8. Arcade** | `TimedArcadeScreen`: cuenta atrás, 60s, streak multiplier, high score persistido | el modo estrella |
+| ✅ **9. Pulido** | Quiz de verbos rehecho a opción múltiple bidireccional (diseño ux-architect), audio por fila en la tabla de conjugación, 71 verbos / 61 sustantivos / 20 reglas (curados de Notion + data-architect) | roadmap v1 completo |
 
-## 11. Decisiones abiertas (confirmar antes de construir)
+**Fase 9, alcance real vs. plan original:** el "pulido" del plan original (reduced-motion,
+a11y exhaustiva) ya venía cubierto desde Fase 3 (`AuraBackground`/`FlipCard` respetan
+`disableAnimations`, botones nativos son focuseables). Lo que se agregó en esta iteración
+fue pulido de contenido y del modo de verbos, no una pasada de accesibilidad aparte — queda
+como trabajo abierto de bajo riesgo, no bloqueante para uso diario.
+
+## 11. Fase futura (anotada, no implementada): preposiciones + caso
+
+Pedido del usuario para más adelante: un "doble quiz" tipo *"Ich gehe ___ Park"* que
+combine (1) elegir la preposición correcta según si es movimiento o ubicación
+(*Wechselpräpositionen*: in/an/auf rigen acusativo o dativo según el contexto) y (2) elegir
+el artículo **declinado** por caso (*den* Park, no *der* Park — acusativo masculino).
+
+Por qué no entra en esta iteración (vía ux-architect):
+- Nuevo dato: qué preposición rige qué caso en qué contexto — hoy no existe ese modelo,
+  es una tabla de reglas contextuales, no un campo fijo por palabra.
+- Nuevo dato: declinación completa por caso además del género — `Noun` hoy solo guarda
+  género+plural (nominativo), no las formas acusativo/dativo/genitivo.
+- La pregunta evalúa dos decisiones a la vez (preposición + artículo declinado), no una
+  sola respuesta — el engine actual (`checkAnswer`, `Question`) asume una respuesta.
+- Depende pedagógicamente de que el usuario ya domine género (prerequisito natural).
+
+Cuando se retome: nuevo modelo `CaseDeclension` (o extender `Noun` con las 3 formas no
+nominativas) + tabla de reglas de preposición/caso + un modo nuevo que reutilice
+`buildSession`/`QuizShell` pero con un `checkAnswer` de dos partes.
+
+## 12. Escalar el contenido más allá de curación manual (anotado, no implementado)
+
+El usuario preguntó por escalar a ~1000 verbos y los sustantivos más comunes. Investigación
+de `researcher` (ver `docs/work/` para el detalle): no existe una fuente única, licenciada
+sin ambigüedad, con las 6 formas de Präsens+Präteritum+Partizip II+auxiliar+separabilidad+
+traducción al español lista para importar. Plan realista en lotes, para una sesión futura:
+
+1. **Sustantivos primero** (más barato): `gambolputty/german-nouns` (CC BY-SA 4.0, género+
+   plural+declinación completa) + `mejutoco/german-grammar-statistics` (CC BY 4.0, lista de
+   frecuencia) para priorizar. Script de import (Python) → `Noun.fromJson`, `ruleId` asignado
+   reutilizando la heurística de sufijos ya en `gender-rules.json`. Traducción al español vía
+   LLM **en lotes de 50-100 con revisión humana** antes de mergear — sin revisión, el riesgo
+   de traducciones erróneas en una app de aprendizaje es real.
+2. **Verbos regulares**: derivables por regla una vez que se tenga una lista de frecuencia
+   de verbos (pendiente de buscar). El 80% de los verbos alemanes son regulares — su
+   conjugación completa es mecánica, no hay que curarla a mano.
+3. **Verbos irregulares** (~150-200 verbos fuertes en total): sin atajo honesto — siguen
+   necesitando curación manual verificada uno por uno, como se hizo en Fase 9.
+
+No se implementa ahora porque escribir y validar el script de import es trabajo de varias
+sesiones, no de esta. Los 71 verbos y 61 sustantivos actuales (Fase 9) ya cubren un tramo
+sólido de A1-A2 curado con alta confianza (Partizip II verificado contra las notas de clase
+reales del usuario donde estaba disponible).
+
+## 13. Decisiones abiertas (confirmar antes de construir)
 
 Los 4 toggles de §2 ya vienen con recomendación tomada — cámbialos aquí si no te cuadran:
 1. **Verbos:** ¿forma individual (elegido) o tabla completa? Si nunca preguntas Futur II por
