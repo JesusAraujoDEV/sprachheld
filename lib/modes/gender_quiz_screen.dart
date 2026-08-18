@@ -7,6 +7,7 @@ import '../engine/question.dart';
 import '../engine/session.dart';
 import '../models/gender_rule.dart';
 import '../models/noun.dart';
+import '../state/progress_notifier.dart';
 import '../theme/app_theme.dart';
 import '../widgets/flip_card.dart';
 import '../widgets/glow_card_face.dart';
@@ -34,11 +35,13 @@ class _GenderQuizItem {
 }
 
 class GenderQuizScreen extends StatefulWidget {
+  final ProgressNotifier progress;
+
   /// Si viene, filtra el mazo a sustantivos de esa regla (deep-link desde
   /// GenderTipsScreen — "⚡ Prueba esto"). Null = todas.
   final String? ruleId;
 
-  const GenderQuizScreen({this.ruleId, super.key});
+  const GenderQuizScreen({required this.progress, this.ruleId, super.key});
 
   @override
   State<GenderQuizScreen> createState() => _GenderQuizScreenState();
@@ -83,7 +86,10 @@ class _GenderQuizScreenState extends State<GenderQuizScreen> {
           answer: n.gender.name,
         ),
     ];
-    final session = buildSession(questions, const SessionOptions(size: 12));
+    final session = buildSession(
+      questions,
+      SessionOptions(size: 12, srs: widget.progress.states),
+    );
     if (mounted) setState(() => _session = session);
   }
 
@@ -91,7 +97,9 @@ class _GenderQuizScreenState extends State<GenderQuizScreen> {
 
   void _choose(Gender gender) {
     if (_chosen != null) return;
-    if (gender == _current.gender) _correct++;
+    final correct = gender == _current.gender;
+    widget.progress.record(_session![_index].id, correct: correct);
+    if (correct) _correct++;
     setState(() => _chosen = gender);
     Timer(const Duration(milliseconds: 450), () {
       if (mounted) _flipKey.currentState?.flip();
@@ -101,6 +109,7 @@ class _GenderQuizScreenState extends State<GenderQuizScreen> {
   void _next() {
     final session = _session!;
     if (_index + 1 >= session.length) {
+      widget.progress.recordSessionComplete();
       _showResults(session.length);
       return;
     }

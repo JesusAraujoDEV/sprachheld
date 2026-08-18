@@ -3,10 +3,18 @@ import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
 import 'services/storage_service.dart';
 import 'state/config_notifier.dart';
+import 'state/progress_notifier.dart';
 import 'theme/app_theme.dart';
 
 void main() {
   runApp(const SprachheldApp());
+}
+
+class _Bootstrap {
+  final ConfigNotifier config;
+  final ProgressNotifier progress;
+
+  const _Bootstrap(this.config, this.progress);
 }
 
 class SprachheldApp extends StatelessWidget {
@@ -18,21 +26,21 @@ class SprachheldApp extends StatelessWidget {
       title: 'Sprachheld',
       debugShowCheckedModeBanner: false,
       theme: buildAppTheme(),
-      home: FutureBuilder<ConfigNotifier>(
+      home: FutureBuilder<_Bootstrap>(
         future: _bootstrap(),
         builder: (context, snapshot) {
-          final config = snapshot.data;
-          if (config == null) {
+          final data = snapshot.data;
+          if (data == null) {
             return const Scaffold(body: Center(child: CircularProgressIndicator()));
           }
-          return HomeScreen(config: config);
+          return HomeScreen(config: data.config, progress: data.progress);
         },
       ),
     );
   }
 
-  Future<ConfigNotifier> _bootstrap() async {
+  Future<_Bootstrap> _bootstrap() async {
     final storage = await StorageService.create();
-    return ConfigNotifier.load(storage);
+    return _Bootstrap(ConfigNotifier.load(storage), ProgressNotifier.load(storage));
   }
 }
