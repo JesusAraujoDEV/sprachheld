@@ -13,24 +13,21 @@ sin dependencias (`urllib`/`csv`/`json` de la librería estándar).
    ```
    Cada uno deja dos archivos en `scripts/output/` (gitignored, se regeneran):
    - `..._batch_N_M.json` — el lote en el formato exacto de `verbs.json`/`nouns.json`,
-     con `es`/`level` vacíos (y `separable` a revisar en verbos).
-   - `..._batch_N_M_prompt.txt` — el texto listo para pegarle a Gemini.
+     con `es`/`level` vacíos (y `separable`/`ruleId` ya resueltos).
+   - `..._batch_N_M_prompt.txt` — el array JSON completo embebido en un pedido a
+     Gemini: "completá solo `es` y `level`, no toques nada más, devolveme el
+     mismo array JSON". No hace falta transcribir traducciones a mano.
 
-2. Pegá el contenido del `_prompt.txt` en Gemini. Te devuelve la traducción
-   en el mismo orden, una línea por palabra/verbo.
+2. Pegá el contenido de `_prompt.txt` en Gemini tal cual. Te devuelve el mismo
+   array JSON, con `es`/`level` ya rellenos.
 
-3. Volvé al `.json` del lote y completá:
-   - `es`: la traducción que dio Gemini (revisala vos, no la pegues a ciegas).
-   - `level`: A1/A2/B1 a tu criterio.
-   - En verbos, `separable` ya viene autodetectado — solo verificalo si te
-     genera dudas.
+3. Revisá las traducciones que puso Gemini antes de seguir — es el único paso
+   humano que queda, y el que evita que una traducción rara entre a la app.
 
-4. Pegá los objetos completados al final del array en `assets/data/verbs.json`
-   o `nouns.json` (antes del `]` final, con una coma después del último
-   elemento existente).
-
-5. Corré `flutter test` — `test/data_integrity_test.dart` avisa si metiste
-   un id duplicado o un `ruleId` que no existe.
+4. Pegame el array JSON completo (con `es`/`level` ya rellenos) — lo appendeo
+   al final de `assets/data/verbs.json` o `nouns.json` y corro `flutter test`.
+   `test/data_integrity_test.dart` avisa solo si metiste un id duplicado o un
+   `ruleId` que no existe.
 
 ## Qué hace cada script
 
