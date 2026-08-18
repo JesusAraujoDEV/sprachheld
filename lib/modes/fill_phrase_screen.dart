@@ -6,6 +6,7 @@ import '../engine/session.dart';
 import '../models/phrase.dart';
 import '../state/progress_notifier.dart';
 import '../theme/app_theme.dart';
+import '../widgets/audio_button.dart';
 import '../widgets/quiz_shell.dart';
 
 /// "Completar la frase": oración con hueco + chips de opción. docs/PLAN.md §6.3.
@@ -107,14 +108,24 @@ class _FillPhraseScreenState extends State<FillPhraseScreen> {
           child: Column(
             children: [
               const Spacer(),
-              Text(
-                sentence,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      color: _chosen == null
-                          ? kOnSurface
-                          : (_chosen == phrase.answer ? kGenderDas : kError),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Flexible(
+                    child: Text(
+                      sentence,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                            color: _chosen == null
+                                ? kOnSurface
+                                : (_chosen == phrase.answer ? kGenderDas : kError),
+                          ),
                     ),
+                  ),
+                  // Siempre pronuncia la frase completa y correcta (con el
+                  // hueco resuelto), sin importar si ya se contestó.
+                  AudioButton(text: phrase.sentence.replaceFirst('___', phrase.answer)),
+                ],
               ),
               const SizedBox(height: 12),
               Text(
