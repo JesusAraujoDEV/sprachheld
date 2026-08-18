@@ -132,6 +132,8 @@ def main():
         aux = row["Hilfsverb"].strip()
         if not all([ich, du, er, praet_ich, partizip, aux]):
             continue  # fila incompleta en la fuente, se salta
+        if aux not in ("haben", "sein"):
+            continue  # algunas filas traen basura de comentarios HTML de Wiktionary
 
         praet_stem, prefix = split_prefix(praet_ich)
         derived.append(
