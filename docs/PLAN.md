@@ -373,29 +373,34 @@ Cuando se retome: nuevo modelo `CaseDeclension` (o extender `Noun` con las 3 for
 nominativas) + tabla de reglas de preposición/caso + un modo nuevo que reutilice
 `buildSession`/`QuizShell` pero con un `checkAnswer` de dos partes.
 
-## 12. Escalar el contenido más allá de curación manual (anotado, no implementado)
+## 12. Escalar el contenido más allá de curación manual — implementado
 
-El usuario preguntó por escalar a ~1000 verbos y los sustantivos más comunes. Investigación
-de `researcher` (ver `docs/work/` para el detalle): no existe una fuente única, licenciada
-sin ambigüedad, con las 6 formas de Präsens+Präteritum+Partizip II+auxiliar+separabilidad+
-traducción al español lista para importar. Plan realista en lotes, para una sesión futura:
+✅ El usuario preguntó por escalar a ~1000 verbos y los sustantivos más comunes.
+`scripts/derive_verbs.py` y `scripts/derive_nouns.py` (ver `scripts/README.md` para el
+flujo completo) resuelven la parte mecánica:
 
-1. **Sustantivos primero** (más barato): `gambolputty/german-nouns` (CC BY-SA 4.0, género+
-   plural+declinación completa) + `mejutoco/german-grammar-statistics` (CC BY 4.0, lista de
-   frecuencia) para priorizar. Script de import (Python) → `Noun.fromJson`, `ruleId` asignado
-   reutilizando la heurística de sufijos ya en `gender-rules.json`. Traducción al español vía
-   LLM **en lotes de 50-100 con revisión humana** antes de mergear — sin revisión, el riesgo
-   de traducciones erróneas en una app de aprendizaje es real.
-2. **Verbos regulares**: derivables por regla una vez que se tenga una lista de frecuencia
-   de verbos (pendiente de buscar). El 80% de los verbos alemanes son regulares — su
-   conjugación completa es mecánica, no hay que curarla a mano.
-3. **Verbos irregulares** (~150-200 verbos fuertes en total): sin atajo honesto — siguen
-   necesitando curación manual verificada uno por uno, como se hizo en Fase 9.
+- **Verbos**: `github.com/viorelsfetea/german-verbs-database` (8049 verbos, dato derivado
+  de Wiktionary CC BY-SA) trae infinitivo + 3 personas de Präsens + 1 de Präteritum +
+  Partizip II + auxiliar. Las 8 formas que faltan (wir/ihr/sie de Präsens, 5 de Präteritum)
+  se derivan con reglas gramaticales fijas — no heurísticas de traducción, documentadas en
+  el docstring del script y verificadas al 100% contra los 71 verbos ya curados a mano.
+  Los verbos separables (CSV ya los da con el prefijo separado, ej. "breche ab") se
+  detectan y `separable` se autoasigna.
+- **Sustantivos**: `github.com/gambolputty/german-nouns` (CC BY-SA 4.0, género+plural+
+  declinación) cruzado con `github.com/mejutoco/german-grammar-statistics` (CC BY 4.0,
+  frecuencia) para priorizar los más comunes primero. `ruleId` se auto-asigna reutilizando
+  las reglas de `gender-rules.json`.
+- **Traducción al español**: sigue siendo manual vía Gemini, en lotes (el script genera el
+  prompt listo para pegar) **con revisión humana antes de mergear** — eso no se automatiza,
+  es la salvaguarda real contra traducciones erróneas en una app de aprendizaje.
+- **Verbos irregulares**: la derivación mecánica ya cubre esto también (el patrón de
+  Präteritum es 100% regular incluso en verbos fuertes, una vez que se tiene el ich-form) —
+  a diferencia de lo que se pensaba en la investigación original de `researcher`, no hacía
+  falta curar cada irregular a mano uno por uno.
 
-No se implementa ahora porque escribir y validar el script de import es trabajo de varias
-sesiones, no de esta. Los 71 verbos y 61 sustantivos actuales (Fase 9) ya cubren un tramo
-sólido de A1-A2 curado con alta confianza (Partizip II verificado contra las notas de clase
-reales del usuario donde estaba disponible).
+Los 71 verbos y 61 sustantivos curados en Fase 9 siguen siendo la base verificada más
+sólida; los scripts son para crecer desde ahí en lotes, con Gemini + revisión humana como
+único paso manual restante.
 
 ## 13. Decisiones abiertas (confirmar antes de construir)
 

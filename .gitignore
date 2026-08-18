@@ -43,3 +43,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Lotes generados por scripts/derive_*.py — se regeneran, no se versionan
+scripts/output/
