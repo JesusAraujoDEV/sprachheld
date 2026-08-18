@@ -3,38 +3,24 @@ import 'package:flutter/material.dart';
 import '../data/repository.dart';
 import '../engine/question.dart';
 import '../engine/session.dart';
-import '../models/gender_rule.dart';
-import '../models/noun.dart';
 import '../theme/app_theme.dart';
-import '../widgets/audio_button.dart';
 import '../widgets/flip_card.dart';
+import '../widgets/glow_card_face.dart';
 import '../widgets/quiz_shell.dart';
 
-enum FlashcardDeck { verbs, nouns }
-
-/// Contenido de una tarjeta. Vive solo en este modo — no forma parte del
-/// engine genérico (docs/PLAN.md §9: prompt/answer del Question son
-/// `dynamic`, cada modo define su propia forma).
+/// Flashcard verbo↔traducción. El género der/die/das tiene su propio modo
+/// (GenderQuizScreen) — la interacción de "voltear y autoevaluarse" no
+/// encajaba con "elegir el artículo correcto".
 class FlashcardItem {
   final String front;
   final String back;
   final String speak;
-  final Color accent;
-  final String? note;
 
-  const FlashcardItem({
-    required this.front,
-    required this.back,
-    required this.speak,
-    this.accent = kPrimary,
-    this.note,
-  });
+  const FlashcardItem({required this.front, required this.back, required this.speak});
 }
 
 class FlashcardScreen extends StatefulWidget {
-  final FlashcardDeck deck;
-
-  const FlashcardScreen({required this.deck, super.key});
+  const FlashcardScreen({super.key});
 
   @override
   State<FlashcardScreen> createState() => _FlashcardScreenState();
@@ -54,42 +40,18 @@ class _FlashcardScreenState extends State<FlashcardScreen> {
   }
 
   Future<void> _load() async {
-    final items = widget.deck == FlashcardDeck.verbs
-        ? await _verbItems()
-        : await _nounItems();
+    final verbs = await DataRepository.loadVerbs();
     final questions = [
-      for (final item in items)
-        Question(id: item.speak, mode: QuizMode.flashcard, prompt: item, answer: item.back),
+      for (final v in verbs)
+        Question(
+          id: v.id,
+          mode: QuizMode.flashcard,
+          prompt: FlashcardItem(front: v.infinitiv, back: v.es, speak: v.infinitiv),
+          answer: v.es,
+        ),
     ];
     final session = buildSession(questions, const SessionOptions(size: 12));
     if (mounted) setState(() => _session = session);
-  }
-
-  Future<List<FlashcardItem>> _verbItems() async {
-    final verbs = await DataRepository.loadVerbs();
-    return [
-      for (final v in verbs)
-        FlashcardItem(front: v.infinitiv, back: v.es, speak: v.infinitiv),
-    ];
-  }
-
-  Future<List<FlashcardItem>> _nounItems() async {
-    final results = await Future.wait([
-      DataRepository.loadNouns(),
-      DataRepository.loadGenderRules(),
-    ]);
-    final nouns = results[0] as List<Noun>;
-    final rules = {for (final r in results[1] as List<GenderRule>) r.id: r};
-    return [
-      for (final n in nouns)
-        FlashcardItem(
-          front: n.word,
-          back: '${n.gender.name} ${n.word} · Pl. ${n.plural}\n${n.es}',
-          speak: '${n.gender.name} ${n.word}',
-          accent: colorForGender(n.gender),
-          note: n.ruleId != null ? rules[n.ruleId]?.explanation : null,
-        ),
-    ];
   }
 
   void _advance({required bool knew}) {
@@ -169,8 +131,8 @@ class _FlashcardScreenState extends State<FlashcardScreen> {
       height: width * 1.3,
       child: FlipCard(
         key: _flipKey,
-        front: _cardFace(
-          accent: item.accent,
+        front: GlowCardFace(
+          accent: kPrimary,
           audioText: item.speak,
           child: Text(
             item.front,
@@ -178,62 +140,15 @@ class _FlashcardScreenState extends State<FlashcardScreen> {
             style: Theme.of(context).textTheme.displayLarge,
           ),
         ),
-        back: _cardFace(
-          accent: item.accent,
+        back: GlowCardFace(
+          accent: kPrimary,
           audioText: item.speak,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                item.back,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headlineSmall,
-              ),
-              if (item.note != null) ...[
-                const SizedBox(height: 12),
-                Text(
-                  item.note!,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.labelSmall,
-                ),
-              ],
-            ],
+          child: Text(
+            item.back,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.headlineSmall,
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _cardFace({
-    required Widget child,
-    required Color accent,
-    required String audioText,
-  }) {
-    return Container(
-      padding: const EdgeInsets.all(24),
-      decoration: BoxDecoration(
-        color: kSurfaceContainer.withValues(alpha: 0.92),
-        borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: kOutline),
-        boxShadow: [
-          BoxShadow(
-            color: accent.withValues(alpha: 0.4),
-            blurRadius: 60,
-            spreadRadius: -10,
-            offset: const Offset(0, 20),
-          ),
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.4),
-            blurRadius: 20,
-            offset: const Offset(0, 8),
-          ),
-        ],
-      ),
-      child: Stack(
-        children: [
-          Align(alignment: Alignment.topRight, child: AudioButton(text: audioText)),
-          Center(child: child),
-        ],
       ),
     );
   }

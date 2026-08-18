@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../modes/conjugation_table_screen.dart';
 import '../modes/flashcard_screen.dart';
+import '../modes/gender_quiz_screen.dart';
+import '../modes/gender_tips_screen.dart';
 import '../state/config_notifier.dart';
 import '../theme/app_theme.dart';
 import '../widgets/aura_background.dart';
@@ -16,7 +19,7 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Colors.transparent,
       body: AuraBackground(
         child: SafeArea(
-          child: Padding(
+          child: SingleChildScrollView(
             padding: const EdgeInsets.all(24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,16 +38,30 @@ class HomeScreen extends StatelessWidget {
                   title: 'Verbos',
                   subtitle: 'Flashcard · infinitivo ↔ traducción',
                   accent: kPrimary,
-                  onTap: () => _openFlashcards(context, FlashcardDeck.verbs),
+                  onTap: () => _push(context, const FlashcardScreen()),
                 ),
                 const SizedBox(height: 16),
                 _ModeCard(
                   title: 'der / die / das',
-                  subtitle: 'Flashcard · sustantivo ↔ género',
+                  subtitle: 'Elegí el artículo correcto',
                   accent: kGenderDas,
-                  onTap: () => _openFlashcards(context, FlashcardDeck.nouns),
+                  onTap: () => _push(context, const GenderQuizScreen()),
                 ),
-                const Spacer(),
+                const SizedBox(height: 16),
+                _ModeCard(
+                  title: 'Tabla de conjugación',
+                  subtitle: 'Buscá un verbo y mirá sus formas',
+                  accent: kSecondary,
+                  onTap: () => _push(context, const ConjugationTableScreen()),
+                ),
+                const SizedBox(height: 16),
+                _ModeCard(
+                  title: 'Tips: der/die/das',
+                  subtitle: 'Reglas de género, una por una',
+                  accent: kGenderDer,
+                  onTap: () => _push(context, const GenderTipsScreen()),
+                ),
+                const SizedBox(height: 32),
                 ListenableBuilder(
                   listenable: config,
                   builder: (context, _) => SwitchListTile(
@@ -63,10 +80,8 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  void _openFlashcards(BuildContext context, FlashcardDeck deck) {
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => FlashcardScreen(deck: deck)),
-    );
+  void _push(BuildContext context, Widget screen) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (_) => screen));
   }
 }
 
