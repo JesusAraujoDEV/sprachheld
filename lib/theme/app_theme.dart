@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../models/noun.dart';
 
@@ -39,19 +38,22 @@ Color colorForGender(Gender gender) => switch (gender) {
 
 ThemeData buildAppTheme() {
   final textTheme = TextTheme(
-    displayLarge: GoogleFonts.spaceGrotesk(
+    displayLarge: const TextStyle(
+      fontFamily: 'SpaceGrotesk',
       fontSize: 40,
       fontWeight: FontWeight.w700,
       letterSpacing: -0.5,
       color: kOnSurface,
     ),
-    headlineSmall: GoogleFonts.spaceGrotesk(
+    headlineSmall: const TextStyle(
+      fontFamily: 'SpaceGrotesk',
       fontSize: 22,
       fontWeight: FontWeight.w600,
       color: kOnSurface,
     ),
-    bodyLarge: GoogleFonts.inter(fontSize: 16, color: kOnSurface),
-    labelSmall: GoogleFonts.inter(
+    bodyLarge: const TextStyle(fontFamily: 'Inter', fontSize: 16, color: kOnSurface),
+    labelSmall: const TextStyle(
+      fontFamily: 'Inter',
       fontSize: 13,
       fontWeight: FontWeight.w500,
       color: kOnSurfaceVariant,
