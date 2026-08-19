@@ -12,6 +12,7 @@ import '../theme/app_theme.dart';
 import '../widgets/flip_card.dart';
 import '../widgets/glow_card_face.dart';
 import '../widgets/quiz_shell.dart';
+import '../widgets/ranking_result_dialog.dart';
 
 /// Quiz de género: palabra + 3 botones der/die/das. Al elegir, feedback
 /// inmediato en el botón (verde/ámbar) y la carta voltea mostrando la
@@ -121,23 +122,12 @@ class _GenderQuizScreenState extends State<GenderQuizScreen> {
   }
 
   void _showResults(int total) {
-    showDialog<void>(
+    showRankingResult(
       context: context,
-      barrierDismissible: false,
-      builder: (dialogContext) => AlertDialog(
-        backgroundColor: kSurfaceContainer,
-        title: const Text('¡Ronda terminada!'),
-        content: Text('Acertaste $_correct de $total.'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(dialogContext).pop();
-              Navigator.of(context).pop();
-            },
-            child: const Text('Volver'),
-          ),
-        ],
-      ),
+      mode: 'gender',
+      correct: _correct,
+      total: total,
+      onClose: () => Navigator.of(context).pop(),
     );
   }
 

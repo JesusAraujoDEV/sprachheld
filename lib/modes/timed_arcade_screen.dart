@@ -9,15 +9,26 @@ import '../models/phrase.dart';
 import '../services/score_service.dart';
 import '../state/progress_notifier.dart';
 import '../theme/app_theme.dart';
+import '../widgets/audio_button.dart';
 
 /// Modo arcade: cuenta atrás 3-2-1, ráfaga de preguntas (género + completar
 /// frase) solo con tap, timer de 60s, streak multiplier. docs/PLAN.md §6.6.
 class _ArcadeItem {
-  final String prompt;
+  final String prompt; // palabra alemana o frase, mostrada grande
+  final String? subtitle; // significado en español, pequeño debajo
+  final String speakText; // lo que pronuncia el botón de audio
+  final bool isWord; // true → prompt es una sola palabra (fuente grande)
   final List<String> options;
   final String answer;
 
-  const _ArcadeItem({required this.prompt, required this.options, required this.answer});
+  const _ArcadeItem({
+    required this.prompt,
+    required this.subtitle,
+    required this.speakText,
+    required this.isWord,
+    required this.options,
+    required this.answer,
+  });
 }
 
 class TimedArcadeScreen extends StatefulWidget {
@@ -75,11 +86,19 @@ class _TimedArcadeScreenState extends State<TimedArcadeScreen>
 
     final genderItems = nouns.map((n) => _ArcadeItem(
           prompt: n.word,
-          options: [for (final g in Gender.values) g.name]..shuffle(rnd),
+          subtitle: n.es,
+          speakText: '${n.gender.name} ${n.word}',
+          isWord: true,
+          // Orden fijo (der/die/das) — no baraja, para que el usuario
+          // pueda apuntar por posición sin releer cada vez.
+          options: [for (final g in Gender.values) g.name],
           answer: n.gender.name,
         ));
     final phraseItems = phrases.map((p) => _ArcadeItem(
           prompt: p.sentence,
+          subtitle: p.es,
+          speakText: p.sentence.replaceAll('___', p.answer),
+          isWord: false,
           options: List<String>.from(p.options)..shuffle(rnd),
           answer: p.answer,
         ));
@@ -289,8 +308,23 @@ class _TimedArcadeScreenState extends State<TimedArcadeScreen>
                     Text(
                       item.prompt,
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.headlineSmall,
+                      style: item.isWord
+                          ? Theme.of(context).textTheme.displayLarge
+                          : Theme.of(context).textTheme.headlineSmall,
                     ),
+                    if (item.subtitle != null) ...[
+                      const SizedBox(height: 8),
+                      Text(
+                        item.subtitle!,
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyMedium
+                            ?.copyWith(color: kOnSurfaceVariant),
+                      ),
+                    ],
+                    const SizedBox(height: 4),
+                    AudioButton(text: item.speakText),
                     const Spacer(),
                     Wrap(
                       alignment: WrapAlignment.center,

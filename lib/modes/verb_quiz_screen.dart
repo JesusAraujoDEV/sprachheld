@@ -10,6 +10,7 @@ import '../state/progress_notifier.dart';
 import '../theme/app_theme.dart';
 import '../widgets/glow_card_face.dart';
 import '../widgets/quiz_shell.dart';
+import '../widgets/ranking_result_dialog.dart';
 
 const _sessionSize = 12;
 
@@ -142,23 +143,12 @@ class _VerbQuizScreenState extends State<VerbQuizScreen> {
   }
 
   void _showResults(int total) {
-    showDialog<void>(
+    showRankingResult(
       context: context,
-      barrierDismissible: false,
-      builder: (dialogContext) => AlertDialog(
-        backgroundColor: kSurfaceContainer,
-        title: const Text('¡Ronda terminada!'),
-        content: Text('Acertaste $_correct de $total.'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(dialogContext).pop();
-              Navigator.of(context).pop();
-            },
-            child: const Text('Volver'),
-          ),
-        ],
-      ),
+      mode: 'verbs',
+      correct: _correct,
+      total: total,
+      onClose: () => Navigator.of(context).pop(),
     );
   }
 
