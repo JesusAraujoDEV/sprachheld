@@ -149,20 +149,28 @@ class _ClockQuizScreenState extends State<ClockQuizScreen> {
               AudioButton(text: item.speakText),
               const SizedBox(height: 24),
               Expanded(
-                child: GridView.count(
-                  crossAxisCount: 2,
-                  childAspectRatio: 2.4,
-                  mainAxisSpacing: 12,
-                  crossAxisSpacing: 12,
-                  children: [
-                    for (final option in item.options)
-                      OptionChip(
-                        label: option,
-                        chosen: _chosen,
-                        correctValue: item.correct,
-                        onTap: () => _choose(option),
-                      ),
-                  ],
+                child: Center(
+                  child: Wrap(
+                    alignment: WrapAlignment.center,
+                    spacing: 12,
+                    runSpacing: 12,
+                    children: [
+                      for (final option in item.options)
+                        SizedBox(
+                          // Dos columnas, pero cada chip crece en alto con su
+                          // contenido — las expresiones informales ("zehn vor
+                          // halb neun") no entran en una sola línea como sí
+                          // entran las de otros quizzes (ancho fijo, alto libre).
+                          width: (MediaQuery.sizeOf(context).width - 48 - 12) / 2,
+                          child: OptionChip(
+                            label: option,
+                            chosen: _chosen,
+                            correctValue: item.correct,
+                            onTap: () => _choose(option),
+                          ),
+                        ),
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(height: 16),

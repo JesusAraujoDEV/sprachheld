@@ -52,7 +52,13 @@ class OptionChip extends StatelessWidget {
           onTap: answered ? null : onTap,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-            child: Text(label, style: Theme.of(context).textTheme.bodyLarge),
+            child: Text(
+              label,
+              textAlign: TextAlign.center,
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
           ),
         ),
       ),
