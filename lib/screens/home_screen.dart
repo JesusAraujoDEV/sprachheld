@@ -4,6 +4,7 @@ import '../modes/conjugation_table_screen.dart';
 import '../modes/fill_phrase_screen.dart';
 import '../modes/gender_quiz_screen.dart';
 import '../modes/gender_tips_screen.dart';
+import '../modes/preposition_double_screen.dart';
 import '../modes/timed_arcade_screen.dart';
 import '../modes/verb_quiz_screen.dart';
 import '../modes/write_conjugation_screen.dart';
@@ -73,13 +74,7 @@ class HomeScreen extends StatelessWidget {
                   title: 'Preposiciones de lugar',
                   subtitle: 'in / an / auf + el caso correcto',
                   accent: kGenderDer,
-                  onTap: () => _push(
-                    context,
-                    FillPhraseScreen(
-                      progress: progress,
-                      asset: 'assets/data/preposition-phrases.json',
-                    ),
-                  ),
+                  onTap: () => _pickPrepositionLevel(context),
                 ),
                 const SizedBox(height: 16),
                 _ModeCard(
@@ -173,6 +168,63 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _pickPrepositionLevel(BuildContext context) {
+    showModalBottomSheet<void>(
+      context: context,
+      backgroundColor: kSurfaceContainer,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (sheetContext) => SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('¿Qué querés practicar?', style: Theme.of(context).textTheme.headlineSmall),
+              const SizedBox(height: 4),
+              Text(
+                'Empezá por la preposición; después sumá el artículo',
+                style: Theme.of(context).textTheme.labelSmall,
+              ),
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: OutlinedButton(
+                    onPressed: () {
+                      Navigator.of(sheetContext).pop();
+                      _push(
+                        context,
+                        FillPhraseScreen(
+                          progress: progress,
+                          asset: 'assets/data/preposition-phrases.json',
+                        ),
+                      );
+                    },
+                    child: const Text('Solo la preposición'),
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: OutlinedButton(
+                  onPressed: () {
+                    Navigator.of(sheetContext).pop();
+                    _push(context, PrepositionDoubleScreen(progress: progress));
+                  },
+                  child: const Text('Preposición + artículo'),
+                ),
+              ),
             ],
           ),
         ),

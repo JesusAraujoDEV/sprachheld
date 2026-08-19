@@ -67,6 +67,22 @@ void main() {
     }
   });
 
+  test('preposition-double.json (Nivel 2): dos huecos, ambas respuestas en sus '
+      'opciones, ids únicos', () async {
+    final items = await DataRepository.loadPrepositionItems();
+    expect(items, isNotEmpty);
+    final ids = items.map((it) => it.id).toList();
+    expect(ids.toSet().length, ids.length, reason: 'hay ids de ítem duplicados');
+    for (final it in items) {
+      expect('___'.allMatches(it.sentence).length, 2,
+          reason: '${it.id}: debe tener exactamente 2 huecos (preposición + artículo)');
+      expect(it.prepOptions.contains(it.prep), isTrue,
+          reason: '${it.id}: la preposición "${it.prep}" no está en prepOptions');
+      expect(it.articleOptions.contains(it.article), isTrue,
+          reason: '${it.id}: el artículo "${it.article}" no está en articleOptions');
+    }
+  });
+
   test('frequencyRank de verbos es posición entre verbos, no entre todas las '
       'palabras del idioma (regresión: "Top 100" mostraba solo ~7 verbos '
       'porque el rango era el de la lista de frecuencia completa, dominada '

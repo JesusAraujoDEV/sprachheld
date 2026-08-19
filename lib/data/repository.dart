@@ -7,6 +7,7 @@ import '../models/gender_rule.dart';
 import '../models/noun.dart';
 import '../models/phrase.dart';
 import '../models/preposition.dart';
+import '../models/preposition_item.dart';
 import '../models/verb.dart';
 
 /// Carga los mazos desde `assets/data/*.json`. Cada método parsea una vez;
@@ -34,6 +35,9 @@ class DataRepository {
 
   static Future<List<Preposition>> loadPrepositions() =>
       _loadList('assets/data/prepositions.json', Preposition.fromJson);
+
+  static Future<List<PrepositionItem>> loadPrepositionItems() =>
+      _loadList('assets/data/preposition-double.json', PrepositionItem.fromJson);
 
   static Future<List<T>> _loadList<T>(
     String assetPath,

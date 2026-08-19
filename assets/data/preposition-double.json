@@ -1,0 +1,200 @@
+[
+  {
+    "id": "dbl_in_park_mov",
+    "sentence": "Ich gehe ___ ___ Park.",
+    "prep": "in",
+    "prepOptions": ["in", "an", "auf", "zu"],
+    "article": "den",
+    "articleOptions": ["den", "dem", "die", "der"],
+    "es": "Voy al parque.",
+    "level": "A2",
+    "note": "in + movimiento → acusativo. der Park → den → in den Park."
+  },
+  {
+    "id": "dbl_auf_tisch_mov",
+    "sentence": "Ich lege das Buch ___ ___ Tisch.",
+    "prep": "auf",
+    "prepOptions": ["auf", "in", "an", "unter"],
+    "article": "den",
+    "articleOptions": ["den", "dem", "die", "der"],
+    "es": "Pongo el libro sobre la mesa.",
+    "level": "A2",
+    "note": "auf + movimiento (legen) → acusativo. der Tisch → den → auf den Tisch."
+  },
+  {
+    "id": "dbl_an_see_mov",
+    "sentence": "Wir fahren ___ ___ See.",
+    "prep": "an",
+    "prepOptions": ["an", "auf", "in", "zu"],
+    "article": "den",
+    "articleOptions": ["den", "dem", "die", "der"],
+    "es": "Vamos al lago.",
+    "level": "A2",
+    "note": "an + movimiento → acusativo. der See → den → an den See (agua = an)."
+  },
+  {
+    "id": "dbl_auf_stuhl_mov",
+    "sentence": "Die Katze springt ___ ___ Stuhl.",
+    "prep": "auf",
+    "prepOptions": ["auf", "unter", "neben", "an"],
+    "article": "den",
+    "articleOptions": ["den", "dem", "die", "der"],
+    "es": "El gato salta a la silla.",
+    "level": "A2",
+    "note": "auf + movimiento (springen) → acusativo. der Stuhl → den → auf den Stuhl."
+  },
+  {
+    "id": "dbl_an_wand_mov",
+    "sentence": "Ich hänge das Bild ___ ___ Wand.",
+    "prep": "an",
+    "prepOptions": ["an", "auf", "in", "über"],
+    "article": "die",
+    "articleOptions": ["die", "der", "den", "das"],
+    "es": "Cuelgo el cuadro en la pared.",
+    "level": "A2",
+    "note": "an + movimiento (hängen transitivo) → acusativo. die Wand → die → an die Wand."
+  },
+  {
+    "id": "dbl_in_schule_mov",
+    "sentence": "Ich gehe ___ ___ Schule.",
+    "prep": "in",
+    "prepOptions": ["in", "an", "auf", "zu"],
+    "article": "die",
+    "articleOptions": ["die", "der", "den", "das"],
+    "es": "Voy a la escuela.",
+    "level": "A2",
+    "note": "in + movimiento → acusativo. die Schule → die → in die Schule."
+  },
+  {
+    "id": "dbl_in_apotheke_mov",
+    "sentence": "Er geht ___ ___ Apotheke.",
+    "prep": "in",
+    "prepOptions": ["in", "auf", "zu", "an"],
+    "article": "die",
+    "articleOptions": ["die", "der", "den", "das"],
+    "es": "Él va a la farmacia.",
+    "level": "A2",
+    "note": "in + movimiento → acusativo. die Apotheke → die → in die Apotheke."
+  },
+  {
+    "id": "dbl_in_tasche_mov",
+    "sentence": "Sie legt das Handy ___ ___ Tasche.",
+    "prep": "in",
+    "prepOptions": ["in", "auf", "unter", "an"],
+    "article": "die",
+    "articleOptions": ["die", "der", "den", "das"],
+    "es": "Ella mete el móvil en el bolso.",
+    "level": "A2",
+    "note": "in + movimiento (legen) → acusativo. die Tasche → die → in die Tasche."
+  },
+  {
+    "id": "dbl_zwischen_baeume_mov",
+    "sentence": "Ich stelle die Bank ___ ___ Bäume.",
+    "prep": "zwischen",
+    "prepOptions": ["zwischen", "neben", "vor", "hinter"],
+    "article": "die",
+    "articleOptions": ["die", "den", "der", "dem"],
+    "es": "Pongo el banco entre los árboles.",
+    "level": "B1",
+    "note": "zwischen + movimiento → acusativo. Plural die Bäume → die → zwischen die Bäume."
+  },
+  {
+    "id": "dbl_an_wand_ubic",
+    "sentence": "Das Bild hängt ___ ___ Wand.",
+    "prep": "an",
+    "prepOptions": ["an", "auf", "in", "vor"],
+    "article": "der",
+    "articleOptions": ["der", "die", "den", "dem"],
+    "es": "El cuadro cuelga en la pared.",
+    "level": "A2",
+    "note": "an + ubicación (hängen intransitivo) → dativo. die Wand → der → an der Wand."
+  },
+  {
+    "id": "dbl_in_schule_ubic",
+    "sentence": "Ich bin ___ ___ Schule.",
+    "prep": "in",
+    "prepOptions": ["in", "an", "bei", "auf"],
+    "article": "der",
+    "articleOptions": ["der", "die", "den", "dem"],
+    "es": "Estoy en la escuela.",
+    "level": "A2",
+    "note": "in + ubicación → dativo. die Schule → der → in der Schule."
+  },
+  {
+    "id": "dbl_vor_tuer_ubic",
+    "sentence": "Ich warte ___ ___ Tür.",
+    "prep": "vor",
+    "prepOptions": ["vor", "hinter", "an", "neben"],
+    "article": "der",
+    "articleOptions": ["der", "die", "den", "dem"],
+    "es": "Espero delante de la puerta.",
+    "level": "A2",
+    "note": "vor + ubicación → dativo. die Tür → der → vor der Tür."
+  },
+  {
+    "id": "dbl_neben_tuer_ubic",
+    "sentence": "Die Lampe steht ___ ___ Tür.",
+    "prep": "neben",
+    "prepOptions": ["neben", "vor", "hinter", "zwischen"],
+    "article": "der",
+    "articleOptions": ["der", "die", "den", "dem"],
+    "es": "La lámpara está junto a la puerta.",
+    "level": "A2",
+    "note": "neben + ubicación (stehen) → dativo. die Tür → der → neben der Tür."
+  },
+  {
+    "id": "dbl_auf_strasse_ubic",
+    "sentence": "Das Auto steht ___ ___ Straße.",
+    "prep": "auf",
+    "prepOptions": ["auf", "in", "an", "unter"],
+    "article": "der",
+    "articleOptions": ["der", "die", "den", "dem"],
+    "es": "El coche está en la calle.",
+    "level": "A2",
+    "note": "auf + ubicación (stehen) → dativo. die Straße → der → auf der Straße."
+  },
+  {
+    "id": "dbl_zwischen_baeume_ubic",
+    "sentence": "Die Bank steht ___ ___ Bäumen.",
+    "prep": "zwischen",
+    "prepOptions": ["zwischen", "neben", "vor", "hinter"],
+    "article": "den",
+    "articleOptions": ["den", "die", "der", "dem"],
+    "es": "El banco está entre los árboles.",
+    "level": "B1",
+    "note": "zwischen + ubicación → dativo. Plural dativo → den (Bäumen) → zwischen den Bäumen."
+  },
+  {
+    "id": "dbl_unter_buecher_ubic",
+    "sentence": "Die Brille liegt ___ ___ Büchern.",
+    "prep": "unter",
+    "prepOptions": ["unter", "auf", "neben", "zwischen"],
+    "article": "den",
+    "articleOptions": ["den", "die", "der", "dem"],
+    "es": "Las gafas están debajo de los libros.",
+    "level": "B1",
+    "note": "unter + ubicación → dativo. Plural dativo → den (Büchern) → unter den Büchern."
+  },
+  {
+    "id": "dbl_hinter_tuer_ubic",
+    "sentence": "Der Besen steht ___ ___ Tür.",
+    "prep": "hinter",
+    "prepOptions": ["hinter", "vor", "neben", "an"],
+    "article": "der",
+    "articleOptions": ["der", "die", "den", "dem"],
+    "es": "La escoba está detrás de la puerta.",
+    "level": "A2",
+    "note": "hinter + ubicación → dativo. die Tür → der → hinter der Tür."
+  },
+  {
+    "id": "dbl_in_garten_mov",
+    "sentence": "Der Hund läuft ___ ___ Garten.",
+    "prep": "in",
+    "prepOptions": ["in", "auf", "an", "zu"],
+    "article": "den",
+    "articleOptions": ["den", "dem", "die", "der"],
+    "es": "El perro corre al jardín.",
+    "level": "A2",
+    "note": "in + movimiento (laufen) → acusativo. der Garten → den → in den Garten."
+  }
+]

@@ -7,6 +7,7 @@ import '../models/phrase.dart';
 import '../state/progress_notifier.dart';
 import '../theme/app_theme.dart';
 import '../widgets/audio_button.dart';
+import '../widgets/option_chip.dart';
 import '../widgets/quiz_shell.dart';
 
 /// "Completar la frase": oración con hueco + chips de opción. docs/PLAN.md §6.3.
@@ -157,7 +158,7 @@ class _FillPhraseScreenState extends State<FillPhraseScreen> {
                 runSpacing: 12,
                 children: [
                   for (final option in phrase.options)
-                    _OptionChip(
+                    OptionChip(
                       label: option,
                       chosen: _chosen,
                       correctValue: phrase.answer,
@@ -180,55 +181,3 @@ class _FillPhraseScreenState extends State<FillPhraseScreen> {
   }
 }
 
-class _OptionChip extends StatelessWidget {
-  final String label;
-  final String? chosen;
-  final String correctValue;
-  final VoidCallback onTap;
-
-  const _OptionChip({
-    required this.label,
-    required this.chosen,
-    required this.correctValue,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final answered = chosen != null;
-    final isCorrectOption = label == correctValue;
-    final isChosenOption = label == chosen;
-
-    var background = kSurfaceContainer;
-    var border = kOutline;
-    if (answered) {
-      if (isCorrectOption) {
-        background = kGenderDas.withValues(alpha: 0.22);
-        border = kGenderDas;
-      } else if (isChosenOption) {
-        background = kError.withValues(alpha: 0.22);
-        border = kError;
-      }
-    }
-
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 200),
-      decoration: BoxDecoration(
-        color: background,
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: border, width: 2),
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          borderRadius: BorderRadius.circular(14),
-          onTap: answered ? null : onTap,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-            child: Text(label, style: Theme.of(context).textTheme.bodyLarge),
-          ),
-        ),
-      ),
-    );
-  }
-}
