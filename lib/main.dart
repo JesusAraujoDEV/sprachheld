@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
+import 'config/supabase_config.dart';
 import 'screens/home_screen.dart';
 import 'services/storage_service.dart';
 import 'state/config_notifier.dart';
 import 'state/progress_notifier.dart';
 import 'theme/app_theme.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // Best-effort: si Supabase no inicializa (sin red, etc.), la app arranca
+  // igual y el ranking simplemente no está disponible (ADR 0001).
+  try {
+    await Supabase.initialize(
+      url: SupabaseConfig.url,
+      // La anon key es la publishable key (pública por diseño, ver ADR 0001).
+      publishableKey: SupabaseConfig.anonKey,
+    );
+  } catch (_) {}
   runApp(const SprachheldApp());
 }
 

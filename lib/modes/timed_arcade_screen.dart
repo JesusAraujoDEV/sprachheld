@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import '../data/repository.dart';
 import '../models/noun.dart';
 import '../models/phrase.dart';
+import '../services/score_service.dart';
 import '../state/progress_notifier.dart';
 import '../theme/app_theme.dart';
 
@@ -36,6 +37,7 @@ class _TimedArcadeScreenState extends State<TimedArcadeScreen>
   int _index = 0;
   int _score = 0;
   int _combo = 0;
+  int _bestCombo = 0;
   String? _chosen;
   late final AnimationController _timerController;
   bool _started = false;
@@ -108,6 +110,7 @@ class _TimedArcadeScreenState extends State<TimedArcadeScreen>
       if (correct) {
         _score += 10 * _multiplier;
         _combo++;
+        if (_combo > _bestCombo) _bestCombo = _combo;
       } else {
         _combo = 0;
       }
@@ -131,22 +134,67 @@ class _TimedArcadeScreenState extends State<TimedArcadeScreen>
   }
 
   void _showResults() {
+    final nameController = TextEditingController();
+    // 'idle' → mostrar campo + botón; 'sending' → subiendo; 'done'/'failed' → resultado.
+    var submitState = 'idle';
+
     showDialog<void>(
       context: context,
       barrierDismissible: false,
-      builder: (dialogContext) => AlertDialog(
-        backgroundColor: kSurfaceContainer,
-        title: const Text('¡Tiempo!'),
-        content: Text('Puntos: $_score\nMejor puntaje: ${widget.progress.arcadeHighScore}'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(dialogContext).pop();
-              Navigator.of(context).pop();
-            },
-            child: const Text('Volver'),
-          ),
-        ],
+      builder: (dialogContext) => StatefulBuilder(
+        builder: (dialogContext, setDialogState) {
+          Future<void> submit() async {
+            setDialogState(() => submitState = 'sending');
+            final ok = await ScoreService.submit(
+              mode: 'arcade',
+              score: _score,
+              bestCombo: _bestCombo,
+              durationSeconds: 60,
+              name: nameController.text,
+            );
+            setDialogState(() => submitState = ok ? 'done' : 'failed');
+          }
+
+          return AlertDialog(
+            backgroundColor: kSurfaceContainer,
+            title: const Text('¡Tiempo!'),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Puntos: $_score  ·  combo máx. ×$_bestCombo'),
+                Text('Mejor puntaje: ${widget.progress.arcadeHighScore}'),
+                const SizedBox(height: 16),
+                if (submitState == 'idle') ...[
+                  TextField(
+                    controller: nameController,
+                    maxLength: 24,
+                    decoration: const InputDecoration(
+                      labelText: 'Tu nombre (opcional)',
+                      counterText: '',
+                    ),
+                  ),
+                ] else if (submitState == 'sending')
+                  const Text('Subiendo…', style: TextStyle(color: kOnSurfaceVariant))
+                else if (submitState == 'done')
+                  const Text('¡Puntaje subido al ranking! 🎉', style: TextStyle(color: kGenderDas))
+                else
+                  const Text('No se pudo subir (sin conexión).', style: TextStyle(color: kError)),
+              ],
+            ),
+            actions: [
+              if (submitState == 'idle')
+                TextButton(onPressed: submit, child: const Text('Subir al ranking')),
+              TextButton(
+                onPressed: () {
+                  Navigator.of(dialogContext).pop();
+                  Navigator.of(context).pop();
+                },
+                child: const Text('Volver'),
+              ),
+            ],
+          );
+        },
       ),
     );
   }

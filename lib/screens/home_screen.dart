@@ -12,6 +12,7 @@ import '../state/config_notifier.dart';
 import '../state/progress_notifier.dart';
 import '../theme/app_theme.dart';
 import '../widgets/aura_background.dart';
+import 'leaderboard_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   final ConfigNotifier config;
@@ -82,6 +83,13 @@ class HomeScreen extends StatelessWidget {
                   subtitle: '60 segundos, racha y puntos',
                   accent: kError,
                   onTap: () => _push(context, TimedArcadeScreen(progress: progress)),
+                ),
+                const SizedBox(height: 16),
+                _ModeCard(
+                  title: 'Ranking',
+                  subtitle: 'Los mejores puntajes de Contrarreloj',
+                  accent: kPrimary,
+                  onTap: () => _push(context, const LeaderboardScreen()),
                 ),
                 const SizedBox(height: 16),
                 _ModeCard(
