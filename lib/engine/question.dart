@@ -1,4 +1,4 @@
-enum QuizMode { flashcard, writeConjugation, fillPhrase, genderQuiz, tips }
+enum QuizMode { flashcard, writeConjugation, fillPhrase, genderQuiz, tips, clockQuiz }
 
 /// Pregunta genérica de sesión. [prompt]/[answer] se narrowean por [mode] en
 /// el widget del modo correspondiente — cinco modos no justifican un union

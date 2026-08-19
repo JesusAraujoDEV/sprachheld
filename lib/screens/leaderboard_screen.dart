@@ -8,6 +8,7 @@ const _modes = [
   (value: 'arcade', label: 'Contrarreloj'),
   (value: 'verbs', label: 'Verbos'),
   (value: 'gender', label: 'der/die/das'),
+  (value: 'clock', label: 'La Hora'),
 ];
 
 /// Ranking online, uno por modo. Best-effort: si no hay red, muestra un
