@@ -87,7 +87,7 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(height: 16),
                 _ModeCard(
                   title: 'Ranking',
-                  subtitle: 'Los mejores puntajes de Contrarreloj',
+                  subtitle: 'Los mejores puntajes de cada modo',
                   accent: kPrimary,
                   onTap: () => _push(context, const LeaderboardScreen()),
                 ),
