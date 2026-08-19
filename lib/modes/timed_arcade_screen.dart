@@ -7,6 +7,7 @@ import '../data/repository.dart';
 import '../models/noun.dart';
 import '../models/phrase.dart';
 import '../services/score_service.dart';
+import '../services/storage_service.dart';
 import '../state/progress_notifier.dart';
 import '../theme/app_theme.dart';
 import '../widgets/audio_button.dart';
@@ -152,10 +153,14 @@ class _TimedArcadeScreenState extends State<TimedArcadeScreen>
     _showResults();
   }
 
-  void _showResults() {
-    final nameController = TextEditingController();
+  Future<void> _showResults() async {
+    final storage = await StorageService.create();
+    final savedName = storage.playerName;
+    final nameController = TextEditingController(text: savedName ?? '');
     // 'idle' → mostrar campo + botón; 'sending' → subiendo; 'done'/'failed' → resultado.
     var submitState = 'idle';
+
+    if (!mounted) return;
 
     showDialog<void>(
       context: context,
@@ -163,16 +168,20 @@ class _TimedArcadeScreenState extends State<TimedArcadeScreen>
       builder: (dialogContext) => StatefulBuilder(
         builder: (dialogContext, setDialogState) {
           Future<void> submit() async {
+            final name = nameController.text.trim();
             setDialogState(() => submitState = 'sending');
+            if (name.isNotEmpty) await storage.setPlayerName(name);
             final ok = await ScoreService.submit(
               mode: 'arcade',
               score: _score,
               bestCombo: _bestCombo,
               durationSeconds: 60,
-              name: nameController.text,
+              name: name.isEmpty ? null : name,
             );
             setDialogState(() => submitState = ok ? 'done' : 'failed');
           }
+
+          final hasName = savedName != null && savedName.isNotEmpty;
 
           return AlertDialog(
             backgroundColor: kSurfaceContainer,
@@ -185,14 +194,18 @@ class _TimedArcadeScreenState extends State<TimedArcadeScreen>
                 Text('Mejor puntaje: ${widget.progress.arcadeHighScore}'),
                 const SizedBox(height: 16),
                 if (submitState == 'idle') ...[
-                  TextField(
-                    controller: nameController,
-                    maxLength: 24,
-                    decoration: const InputDecoration(
-                      labelText: 'Tu nombre (opcional)',
-                      counterText: '',
+                  if (hasName)
+                    Text('Nombre: $savedName',
+                        style: const TextStyle(color: kOnSurfaceVariant))
+                  else
+                    TextField(
+                      controller: nameController,
+                      maxLength: 24,
+                      decoration: const InputDecoration(
+                        labelText: 'Tu nombre (opcional)',
+                        counterText: '',
+                      ),
                     ),
-                  ),
                 ] else if (submitState == 'sending')
                   const Text('Subiendo…', style: TextStyle(color: kOnSurfaceVariant))
                 else if (submitState == 'done')

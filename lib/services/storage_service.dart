@@ -27,4 +27,19 @@ class StorageService {
 
   Future<void> setJson(String key, Object value) =>
       _prefs.setString(key, jsonEncode(value));
+
+  // --- Player name (plain string, no JSON wrapping) ---
+
+  static const _kPlayerName = 'sh.playerName';
+
+  String? get playerName => _prefs.getString(_kPlayerName);
+
+  Future<void> setPlayerName(String? name) async {
+    final trimmed = name?.trim();
+    if (trimmed == null || trimmed.isEmpty) {
+      await _prefs.remove(_kPlayerName);
+    } else {
+      await _prefs.setString(_kPlayerName, trimmed);
+    }
+  }
 }
