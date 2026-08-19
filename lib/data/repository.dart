@@ -6,6 +6,7 @@ import '../models/adjective.dart';
 import '../models/gender_rule.dart';
 import '../models/noun.dart';
 import '../models/phrase.dart';
+import '../models/preposition.dart';
 import '../models/verb.dart';
 
 /// Carga los mazos desde `assets/data/*.json`. Cada método parsea una vez;
@@ -24,8 +25,15 @@ class DataRepository {
   static Future<List<Adjective>> loadAdjectives() =>
       _loadList('assets/data/adjectives.json', Adjective.fromJson);
 
-  static Future<List<Phrase>> loadPhrases() =>
-      _loadList('assets/data/phrases.json', Phrase.fromJson);
+  /// [asset] permite reutilizar el modo "Completar la frase" con otro banco
+  /// (ej. las frases de preposiciones), sin duplicar el modelo Phrase.
+  static Future<List<Phrase>> loadPhrases([
+    String asset = 'assets/data/phrases.json',
+  ]) =>
+      _loadList(asset, Phrase.fromJson);
+
+  static Future<List<Preposition>> loadPrepositions() =>
+      _loadList('assets/data/prepositions.json', Preposition.fromJson);
 
   static Future<List<T>> _loadList<T>(
     String assetPath,

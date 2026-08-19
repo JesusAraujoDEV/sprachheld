@@ -70,6 +70,19 @@ class HomeScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 _ModeCard(
+                  title: 'Preposiciones de lugar',
+                  subtitle: 'in / an / auf + el caso correcto',
+                  accent: kGenderDer,
+                  onTap: () => _push(
+                    context,
+                    FillPhraseScreen(
+                      progress: progress,
+                      asset: 'assets/data/preposition-phrases.json',
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                _ModeCard(
                   title: 'Contrarreloj',
                   subtitle: '60 segundos, racha y puntos',
                   accent: kError,

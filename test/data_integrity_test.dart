@@ -42,6 +42,31 @@ void main() {
     expect(ids.toSet().length, ids.length, reason: 'hay ids de regla duplicados');
   });
 
+  test('prepositions.json parsea y tiene ids únicos', () async {
+    final preps = await DataRepository.loadPrepositions();
+    expect(preps, isNotEmpty);
+    final ids = preps.map((p) => p.id).toList();
+    expect(ids.toSet().length, ids.length, reason: 'hay ids de preposición duplicados');
+    // Las wechsel rigen dos casos; el resto uno — es la invariante del modelo.
+    for (final p in preps) {
+      final expected = p.category.name == 'wechsel' ? 2 : 1;
+      expect(p.governs.length, expected, reason: '${p.prep} rige ${p.governs.length} casos');
+    }
+  });
+
+  test('preposition-phrases.json: answer siempre está entre options y hay hueco', () async {
+    final phrases =
+        await DataRepository.loadPhrases('assets/data/preposition-phrases.json');
+    expect(phrases, isNotEmpty);
+    final ids = phrases.map((p) => p.id).toList();
+    expect(ids.toSet().length, ids.length, reason: 'hay ids de frase duplicados');
+    for (final p in phrases) {
+      expect(p.options.contains(p.answer), isTrue,
+          reason: '${p.id}: la respuesta "${p.answer}" no está en las opciones');
+      expect(p.sentence.contains('___'), isTrue, reason: '${p.id}: falta el hueco ___');
+    }
+  });
+
   test('frequencyRank de verbos es posición entre verbos, no entre todas las '
       'palabras del idioma (regresión: "Top 100" mostraba solo ~7 verbos '
       'porque el rango era el de la lista de frecuencia completa, dominada '

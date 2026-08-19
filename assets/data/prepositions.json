@@ -1,0 +1,218 @@
+[
+  {
+    "id": "an",
+    "prep": "an",
+    "category": "wechsel",
+    "governs": ["akkusativ", "dativ"],
+    "es": "en / junto a (contacto vertical)",
+    "level": "A2",
+    "examples": ["Ich hänge das Bild an die Wand. (mov → Akk)", "Das Bild hängt an der Wand. (ubic → Dat)"]
+  },
+  {
+    "id": "auf",
+    "prep": "auf",
+    "category": "wechsel",
+    "governs": ["akkusativ", "dativ"],
+    "es": "sobre / encima de (superficie horizontal)",
+    "level": "A2",
+    "examples": ["Ich lege das Buch auf den Tisch. (mov → Akk)", "Das Buch liegt auf dem Tisch. (ubic → Dat)"]
+  },
+  {
+    "id": "hinter",
+    "prep": "hinter",
+    "category": "wechsel",
+    "governs": ["akkusativ", "dativ"],
+    "es": "detrás de",
+    "level": "A2",
+    "examples": ["Ich stelle den Stuhl hinter das Haus. (mov → Akk)", "Der Stuhl steht hinter dem Haus. (ubic → Dat)"]
+  },
+  {
+    "id": "in",
+    "prep": "in",
+    "category": "wechsel",
+    "governs": ["akkusativ", "dativ"],
+    "es": "en / dentro de",
+    "level": "A2",
+    "examples": ["Ich gehe in den Park. (mov → Akk)", "Ich bin im Park. (ubic → Dat)"]
+  },
+  {
+    "id": "neben",
+    "prep": "neben",
+    "category": "wechsel",
+    "governs": ["akkusativ", "dativ"],
+    "es": "al lado de / junto a",
+    "level": "A2",
+    "examples": ["Ich stelle den Stuhl neben die Tür. (mov → Akk)", "Der Stuhl steht neben der Tür. (ubic → Dat)"]
+  },
+  {
+    "id": "ueber",
+    "prep": "über",
+    "category": "wechsel",
+    "governs": ["akkusativ", "dativ"],
+    "es": "encima de / por encima de (sin contacto)",
+    "level": "A2",
+    "examples": ["Ich hänge die Lampe über den Tisch. (mov → Akk)", "Die Lampe hängt über dem Tisch. (ubic → Dat)"]
+  },
+  {
+    "id": "unter",
+    "prep": "unter",
+    "category": "wechsel",
+    "governs": ["akkusativ", "dativ"],
+    "es": "debajo de",
+    "level": "A2",
+    "examples": ["Ich stelle den Stuhl unter den Tisch. (mov → Akk)", "Der Stuhl steht unter dem Tisch. (ubic → Dat)"]
+  },
+  {
+    "id": "vor",
+    "prep": "vor",
+    "category": "wechsel",
+    "governs": ["akkusativ", "dativ"],
+    "es": "delante de",
+    "level": "A2",
+    "examples": ["Ich stelle den Stuhl vor das Haus. (mov → Akk)", "Der Stuhl steht vor dem Haus. (ubic → Dat)"]
+  },
+  {
+    "id": "zwischen",
+    "prep": "zwischen",
+    "category": "wechsel",
+    "governs": ["akkusativ", "dativ"],
+    "es": "entre",
+    "level": "A2",
+    "examples": ["Ich stelle den Stuhl zwischen die Betten. (mov → Akk)", "Der Stuhl steht zwischen den Betten. (ubic → Dat)"]
+  },
+  {
+    "id": "durch",
+    "prep": "durch",
+    "category": "akkusativ",
+    "governs": ["akkusativ"],
+    "es": "por / a través de",
+    "level": "A2",
+    "examples": ["Ich gehe durch den Park. (siempre Akk)"]
+  },
+  {
+    "id": "fuer",
+    "prep": "für",
+    "category": "akkusativ",
+    "governs": ["akkusativ"],
+    "es": "para",
+    "level": "A2",
+    "examples": ["Das Geschenk ist für die Lehrerin. (siempre Akk)"]
+  },
+  {
+    "id": "gegen",
+    "prep": "gegen",
+    "category": "akkusativ",
+    "governs": ["akkusativ"],
+    "es": "contra",
+    "level": "A2",
+    "examples": ["Das Auto fährt gegen die Wand. (siempre Akk)"]
+  },
+  {
+    "id": "ohne",
+    "prep": "ohne",
+    "category": "akkusativ",
+    "governs": ["akkusativ"],
+    "es": "sin",
+    "level": "A2",
+    "examples": ["Ich komme ohne den Schlüssel. (siempre Akk)"]
+  },
+  {
+    "id": "um",
+    "prep": "um",
+    "category": "akkusativ",
+    "governs": ["akkusativ"],
+    "es": "alrededor de",
+    "level": "A2",
+    "examples": ["Wir sitzen um den Tisch. (siempre Akk)"]
+  },
+  {
+    "id": "aus",
+    "prep": "aus",
+    "category": "dativ",
+    "governs": ["dativ"],
+    "es": "de / desde (origen, procedencia)",
+    "level": "A2",
+    "examples": ["Ich komme aus der Schweiz. (siempre Dat)"]
+  },
+  {
+    "id": "bei",
+    "prep": "bei",
+    "category": "dativ",
+    "governs": ["dativ"],
+    "es": "en casa de / cerca de",
+    "level": "A2",
+    "examples": ["Ich wohne bei meinen Eltern. (siempre Dat)"]
+  },
+  {
+    "id": "mit",
+    "prep": "mit",
+    "category": "dativ",
+    "governs": ["dativ"],
+    "es": "con",
+    "level": "A2",
+    "examples": ["Ich fahre mit dem Bus. (siempre Dat)"]
+  },
+  {
+    "id": "nach",
+    "prep": "nach",
+    "category": "dativ",
+    "governs": ["dativ"],
+    "es": "a (ciudades/países sin artículo) / después de",
+    "level": "A2",
+    "examples": ["Ich fahre nach Berlin. (siempre Dat)"]
+  },
+  {
+    "id": "seit",
+    "prep": "seit",
+    "category": "dativ",
+    "governs": ["dativ"],
+    "es": "desde (tiempo)",
+    "level": "A2",
+    "examples": ["Ich lerne seit einem Jahr Deutsch. (siempre Dat)"]
+  },
+  {
+    "id": "von",
+    "prep": "von",
+    "category": "dativ",
+    "governs": ["dativ"],
+    "es": "de / desde (punto de partida)",
+    "level": "A2",
+    "examples": ["Ich komme von der Arbeit. (siempre Dat)"]
+  },
+  {
+    "id": "zu",
+    "prep": "zu",
+    "category": "dativ",
+    "governs": ["dativ"],
+    "es": "a (dirección, sobre todo hacia personas)",
+    "level": "A2",
+    "examples": ["Ich gehe zu der Ärztin / zum Arzt. (siempre Dat)"]
+  },
+  {
+    "id": "waehrend",
+    "prep": "während",
+    "category": "genitiv",
+    "governs": ["genitiv"],
+    "es": "durante",
+    "level": "B1",
+    "examples": ["Während des Sommers reise ich viel. (Gen)", "Coloquial: während dem Sommer (Dat)"]
+  },
+  {
+    "id": "wegen",
+    "prep": "wegen",
+    "category": "genitiv",
+    "governs": ["genitiv"],
+    "es": "a causa de / por",
+    "level": "B1",
+    "examples": ["Wegen des Wetters bleiben wir zu Hause. (Gen)", "Coloquial: wegen dem Wetter (Dat)"]
+  },
+  {
+    "id": "trotz",
+    "prep": "trotz",
+    "category": "genitiv",
+    "governs": ["genitiv"],
+    "es": "a pesar de",
+    "level": "B1",
+    "examples": ["Trotz des Regens gehen wir spazieren. (Gen)", "Coloquial: trotz dem Regen (Dat)"]
+  }
+]

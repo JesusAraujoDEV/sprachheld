@@ -1,0 +1,272 @@
+[
+  {
+    "id": "prep_in_schule_mov",
+    "sentence": "Ich gehe ___ die Schule.",
+    "answer": "in",
+    "options": ["in", "an", "auf", "zu"],
+    "es": "Voy a la escuela.",
+    "level": "A2",
+    "note": "in + movimiento → acusativo → in DIE Schule."
+  },
+  {
+    "id": "prep_in_schule_ubic",
+    "sentence": "Ich bin ___ der Schule.",
+    "answer": "in",
+    "options": ["in", "an", "bei", "auf"],
+    "es": "Estoy en la escuela.",
+    "level": "A2",
+    "note": "in + ubicación → dativo → in DER Schule."
+  },
+  {
+    "id": "prep_an_wand_mov",
+    "sentence": "Ich hänge das Bild ___ die Wand.",
+    "answer": "an",
+    "options": ["an", "auf", "in", "über"],
+    "es": "Cuelgo el cuadro en la pared.",
+    "level": "A2",
+    "note": "an + movimiento → acusativo → an DIE Wand."
+  },
+  {
+    "id": "prep_an_wand_ubic",
+    "sentence": "Das Bild hängt ___ der Wand.",
+    "answer": "an",
+    "options": ["an", "auf", "in", "vor"],
+    "es": "El cuadro cuelga en la pared.",
+    "level": "A2",
+    "note": "an + ubicación → dativo → an DER Wand."
+  },
+  {
+    "id": "prep_auf_post",
+    "sentence": "Ich gehe ___ die Post.",
+    "answer": "auf",
+    "options": ["auf", "in", "an", "zu"],
+    "es": "Voy a correos.",
+    "level": "A2",
+    "note": "auf die Post: fórmula con acusativo (movimiento) para ir a correos."
+  },
+  {
+    "id": "prep_vor_tuer",
+    "sentence": "Ich warte ___ der Tür.",
+    "answer": "vor",
+    "options": ["vor", "hinter", "an", "bei"],
+    "es": "Espero delante de la puerta.",
+    "level": "A2",
+    "note": "vor + ubicación → dativo → vor DER Tür."
+  },
+  {
+    "id": "prep_unter_tisch",
+    "sentence": "Die Katze sitzt ___ dem Tisch.",
+    "answer": "unter",
+    "options": ["unter", "auf", "neben", "über"],
+    "es": "El gato está debajo de la mesa.",
+    "level": "A2",
+    "note": "unter + ubicación → dativo → unter DEM Tisch."
+  },
+  {
+    "id": "prep_auf_tisch",
+    "sentence": "Das Buch liegt ___ dem Tisch.",
+    "answer": "auf",
+    "options": ["auf", "unter", "an", "in"],
+    "es": "El libro está sobre la mesa.",
+    "level": "A2",
+    "note": "auf + ubicación → dativo → auf DEM Tisch."
+  },
+  {
+    "id": "prep_zwischen_betten",
+    "sentence": "Ich stelle den Stuhl ___ die Betten.",
+    "answer": "zwischen",
+    "options": ["zwischen", "neben", "unter", "vor"],
+    "es": "Pongo la silla entre las camas.",
+    "level": "B1",
+    "note": "zwischen + movimiento → acusativo → zwischen DIE Betten (plural)."
+  },
+  {
+    "id": "prep_zu_oma",
+    "sentence": "Ich gehe ___ meiner Oma.",
+    "answer": "zu",
+    "options": ["zu", "in", "an", "nach"],
+    "es": "Voy a casa de mi abuela.",
+    "level": "A2",
+    "note": "Destino = persona → SIEMPRE zu (dativo) → zu MEINER Oma."
+  },
+  {
+    "id": "prep_zu_freundin",
+    "sentence": "Ich gehe ___ meiner Freundin.",
+    "answer": "zu",
+    "options": ["zu", "in", "bei", "auf"],
+    "es": "Voy a casa de mi amiga.",
+    "level": "A2",
+    "note": "Destino = persona → SIEMPRE zu (dativo), nunca in/an/auf."
+  },
+  {
+    "id": "prep_zu_tante",
+    "sentence": "Wir fahren ___ unserer Tante.",
+    "answer": "zu",
+    "options": ["zu", "nach", "in", "bei"],
+    "es": "Vamos a casa de nuestra tía.",
+    "level": "A2",
+    "note": "Destino = persona → SIEMPRE zu (dativo) → zu UNSERER Tante."
+  },
+  {
+    "id": "prep_nach_hause",
+    "sentence": "Ich gehe ___ Hause.",
+    "answer": "nach",
+    "options": ["nach", "zu", "in", "an"],
+    "es": "Voy a casa.",
+    "level": "A2",
+    "note": "nach Hause: fórmula fija de movimiento (a casa), sin artículo."
+  },
+  {
+    "id": "prep_zu_hause",
+    "sentence": "Ich bin ___ Hause.",
+    "answer": "zu",
+    "options": ["zu", "nach", "in", "bei"],
+    "es": "Estoy en casa.",
+    "level": "A2",
+    "note": "zu Hause: fórmula fija de ubicación (en casa), sin artículo."
+  },
+  {
+    "id": "prep_aus_schweiz",
+    "sentence": "Ich komme ___ der Schweiz.",
+    "answer": "aus",
+    "options": ["aus", "von", "nach", "zu"],
+    "es": "Vengo de Suiza.",
+    "level": "A2",
+    "note": "aus = procedencia (país/lugar) → siempre dativo → aus DER Schweiz."
+  },
+  {
+    "id": "prep_mit_bus",
+    "sentence": "Ich fahre ___ dem Bus.",
+    "answer": "mit",
+    "options": ["mit", "in", "auf", "bei"],
+    "es": "Voy en autobús.",
+    "level": "A2",
+    "note": "mit = medio de transporte → siempre dativo → mit DEM Bus."
+  },
+  {
+    "id": "prep_von_arbeit",
+    "sentence": "Ich komme ___ der Arbeit.",
+    "answer": "von",
+    "options": ["von", "aus", "nach", "zu"],
+    "es": "Vengo del trabajo.",
+    "level": "A2",
+    "note": "von = punto de partida → siempre dativo → von DER Arbeit."
+  },
+  {
+    "id": "prep_bei_eltern",
+    "sentence": "Ich wohne ___ meinen Eltern.",
+    "answer": "bei",
+    "options": ["bei", "mit", "zu", "in"],
+    "es": "Vivo con mis padres.",
+    "level": "A2",
+    "note": "bei = en casa de → siempre dativo → bei MEINEN Eltern."
+  },
+  {
+    "id": "prep_nach_berlin",
+    "sentence": "Ich fahre ___ Berlin.",
+    "answer": "nach",
+    "options": ["nach", "zu", "in", "an"],
+    "es": "Voy a Berlín.",
+    "level": "A2",
+    "note": "nach = ciudades/países sin artículo → siempre dativo, sin artículo."
+  },
+  {
+    "id": "prep_durch_park",
+    "sentence": "Wir gehen ___ den Park.",
+    "answer": "durch",
+    "options": ["durch", "in", "um", "über"],
+    "es": "Caminamos por el parque.",
+    "level": "A2",
+    "note": "durch = atravesar → siempre acusativo → durch DEN Park."
+  },
+  {
+    "id": "prep_um_tisch",
+    "sentence": "Wir sitzen ___ den Tisch.",
+    "answer": "um",
+    "options": ["um", "an", "auf", "neben"],
+    "es": "Estamos sentados alrededor de la mesa.",
+    "level": "A2",
+    "note": "um = rodear → siempre acusativo → um DEN Tisch."
+  },
+  {
+    "id": "prep_gegen_wand",
+    "sentence": "Das Auto fährt ___ die Wand.",
+    "answer": "gegen",
+    "options": ["gegen", "an", "in", "auf"],
+    "es": "El coche choca contra la pared.",
+    "level": "B1",
+    "note": "gegen = contra → siempre acusativo → gegen DIE Wand."
+  },
+  {
+    "id": "prep_zum_arzt",
+    "sentence": "Ich gehe ___ Arzt.",
+    "answer": "zum",
+    "options": ["zum", "zur", "ins", "zu"],
+    "es": "Voy al médico.",
+    "level": "B1",
+    "note": "Persona → zu; contracción obligatoria zu + dem = zum Arzt."
+  },
+  {
+    "id": "prep_zur_uni",
+    "sentence": "Ich gehe ___ Universität.",
+    "answer": "zur",
+    "options": ["zur", "zum", "in", "ins"],
+    "es": "Voy a la universidad.",
+    "level": "B1",
+    "note": "Contracción obligatoria zu + der = zur Universität (femenino, dativo)."
+  },
+  {
+    "id": "prep_ins_kino_mov",
+    "sentence": "Wir gehen ___ Kino.",
+    "answer": "ins",
+    "options": ["ins", "im", "zum", "in"],
+    "es": "Vamos al cine.",
+    "level": "B1",
+    "note": "Movimiento → acusativo; contracción obligatoria in + das = ins Kino."
+  },
+  {
+    "id": "prep_am_fenster",
+    "sentence": "Das Bild hängt ___ Fenster.",
+    "answer": "am",
+    "options": ["am", "im", "an", "auf"],
+    "es": "El cuadro cuelga en la ventana.",
+    "level": "B1",
+    "note": "Ubicación → dativo; contracción obligatoria an + dem = am Fenster."
+  },
+  {
+    "id": "prep_im_kino_ubic",
+    "sentence": "Ich bin ___ Kino.",
+    "answer": "im",
+    "options": ["im", "ins", "am", "in"],
+    "es": "Estoy en el cine.",
+    "level": "B1",
+    "note": "Ubicación → dativo; contracción obligatoria in + dem = im Kino."
+  },
+  {
+    "id": "prep_hinter_haus",
+    "sentence": "Die Kinder spielen ___ dem Haus.",
+    "answer": "hinter",
+    "options": ["hinter", "vor", "neben", "unter"],
+    "es": "Los niños juegan detrás de la casa.",
+    "level": "A2",
+    "note": "hinter + ubicación → dativo → hinter DEM Haus."
+  },
+  {
+    "id": "prep_in_apotheke",
+    "sentence": "Ich gehe ___ die Apotheke.",
+    "answer": "in",
+    "options": ["in", "auf", "zu", "an"],
+    "es": "Voy a la farmacia.",
+    "level": "A2",
+    "note": "in + movimiento → acusativo → in DIE Apotheke (femenino)."
+  },
+  {
+    "id": "prep_in_tasche",
+    "sentence": "Ich lege den Stift ___ die Tasche.",
+    "answer": "in",
+    "options": ["in", "auf", "an", "unter"],
+    "es": "Meto el bolígrafo en el bolso.",
+    "level": "A2",
+    "note": "in + movimiento → acusativo → in DIE Tasche (femenino)."
+  }
+]

@@ -10,10 +10,19 @@ import '../widgets/audio_button.dart';
 import '../widgets/quiz_shell.dart';
 
 /// "Completar la frase": oración con hueco + chips de opción. docs/PLAN.md §6.3.
+///
+/// [asset] elige el banco de frases: el genérico por defecto, o el de
+/// preposiciones de lugar (Nivel 1, docs/PLAN-preposiciones.md §4.1). El
+/// mismo motor y UI sirven para ambos — solo cambia el JSON.
 class FillPhraseScreen extends StatefulWidget {
   final ProgressNotifier progress;
+  final String asset;
 
-  const FillPhraseScreen({required this.progress, super.key});
+  const FillPhraseScreen({
+    required this.progress,
+    this.asset = 'assets/data/phrases.json',
+    super.key,
+  });
 
   @override
   State<FillPhraseScreen> createState() => _FillPhraseScreenState();
@@ -32,7 +41,7 @@ class _FillPhraseScreenState extends State<FillPhraseScreen> {
   }
 
   Future<void> _load() async {
-    final phrases = await DataRepository.loadPhrases();
+    final phrases = await DataRepository.loadPhrases(widget.asset);
     final questions = [
       for (final p in phrases)
         Question(id: p.id, mode: QuizMode.fillPhrase, prompt: p, answer: p.answer),
