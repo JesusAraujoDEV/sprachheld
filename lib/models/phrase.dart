@@ -13,6 +13,10 @@ class Phrase {
   /// El "por qué": caso, preposición, orden verbal, etc.
   final String? note;
 
+  /// Grammatical case required by the preposition (dativ/akkusativ).
+  /// Only present in preposition-phrases.json; null for generic phrases.
+  final String? caseType;
+
   const Phrase({
     required this.id,
     required this.sentence,
@@ -21,6 +25,7 @@ class Phrase {
     required this.es,
     required this.level,
     this.note,
+    this.caseType,
   });
 
   factory Phrase.fromJson(Map<String, dynamic> json) => Phrase(
@@ -31,5 +36,6 @@ class Phrase {
         es: json['es'] as String,
         level: levelFromJson(json['level'] as String),
         note: json['note'] as String?,
+        caseType: json['caseType'] as String?,
       );
 }

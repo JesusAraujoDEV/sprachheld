@@ -67,6 +67,19 @@ void main() {
     }
   });
 
+  test('preposition-phrases.json: cada entrada tiene caseType dativ o akkusativ', () async {
+    final phrases =
+        await DataRepository.loadPhrases('assets/data/preposition-phrases.json');
+    const validCases = {'dativ', 'akkusativ'};
+    for (final p in phrases) {
+      expect(
+        validCases.contains(p.caseType),
+        isTrue,
+        reason: '${p.id}: caseType es "${p.caseType}", debe ser dativ o akkusativ',
+      );
+    }
+  });
+
   test('preposition-double.json (Nivel 2): dos huecos, ambas respuestas en sus '
       'opciones, ids únicos', () async {
     final items = await DataRepository.loadPrepositionItems();
