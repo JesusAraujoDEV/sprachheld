@@ -14,6 +14,7 @@ import '../widgets/quiz_shell.dart';
 import '../widgets/ranking_result_dialog.dart';
 import 'verb_quiz/verb_option_button.dart';
 import 'verb_quiz/verb_quiz_item.dart';
+import 'verb_quiz/verb_quiz_question_builder.dart';
 
 const _sessionSize = 12;
 
@@ -82,38 +83,9 @@ class _VerbQuizScreenState extends State<VerbQuizScreen> {
     final selected = [...due, ...fresh, ...notDue].take(_sessionSize).toList();
 
     final questions = <Question>[
-      for (final v in selected) _buildQuestion(v, pool, rnd),
+      for (final v in selected) buildVerbQuestion(v, pool, rnd, widget.direction),
     ];
     if (mounted) setState(() => _session = questions);
-  }
-
-  Question _buildQuestion(Verb v, List<Verb> deck, Random rnd) {
-    final VerbDirection dir;
-    switch (widget.direction) {
-      case VerbDirection.mixed:
-        dir = rnd.nextBool() ? VerbDirection.deToEs : VerbDirection.esToDe;
-      case VerbDirection.deToEs:
-      case VerbDirection.esToDe:
-        dir = widget.direction;
-    }
-    String valueOf(Verb x) => dir == VerbDirection.deToEs ? x.es : x.infinitiv;
-    final correct = valueOf(v);
-
-    var pool = deck
-        .where((x) => x.level == v.level && x.id != v.id && valueOf(x) != correct)
-        .toList();
-    if (pool.length < 3) {
-      pool = deck.where((x) => x.id != v.id && valueOf(x) != correct).toList();
-    }
-    pool.shuffle(rnd);
-    final options = [correct, ...pool.take(3).map(valueOf)]..shuffle(rnd);
-
-    return Question(
-      id: v.id,
-      mode: QuizMode.flashcard,
-      prompt: VerbQuizItem(verb: v, direction: dir, options: options, correct: correct),
-      answer: correct,
-    );
   }
 
   VerbQuizItem get _current => _session![_index].prompt as VerbQuizItem;
