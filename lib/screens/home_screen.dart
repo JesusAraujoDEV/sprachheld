@@ -9,6 +9,7 @@ import '../widgets/mode_card.dart';
 import '../widgets/player_name_tile.dart';
 import '../widgets/stat_chip.dart';
 import '../version.dart';
+import 'home/contact_dialog.dart';
 import 'home/lookup_list.dart';
 import 'home/practice_grid.dart';
 
@@ -73,11 +74,14 @@ class HomeScreen extends StatelessWidget {
                 const PlayerNameTile(),
                 const SizedBox(height: 24),
                 Center(
-                  child: Text(
-                    'Desarrollado por Jesús Araujo · v$kAppVersion',
-                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                          color: kOnSurfaceVariant.withValues(alpha: 0.6),
-                        ),
+                  child: InkWell(
+                    onTap: () => showContactDialog(context),
+                    child: Text(
+                      'Desarrollado por Jesús Araujo · v$kAppVersion',
+                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                            color: kOnSurfaceVariant.withValues(alpha: 0.6),
+                          ),
+                    ),
                   ),
                 ),
               ],
