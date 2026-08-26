@@ -2,4 +2,4 @@
 /// `version:` en pubspec.yaml al cerrar un cambio con entidad propia — sin
 /// dependencia nueva (package_info_plus) para leerla del build, ver
 /// docs/DEVIATIONS.md si eso cambia.
-const kAppVersion = '1.1.0';
+const kAppVersion = '1.2.0';
