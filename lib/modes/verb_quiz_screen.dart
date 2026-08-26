@@ -12,27 +12,10 @@ import '../theme/app_theme.dart';
 import '../widgets/glow_card_face.dart';
 import '../widgets/quiz_shell.dart';
 import '../widgets/ranking_result_dialog.dart';
+import 'verb_quiz/verb_option_button.dart';
+import 'verb_quiz/verb_quiz_item.dart';
 
 const _sessionSize = 12;
-
-/// Quiz de opción múltiple bidireccional (diseño de ux-architect): a veces
-/// alemán→español, a veces español→alemán, mezclado en la sesión. Reemplaza
-/// el flip-card de verbos — el usuario pidió específicamente este formato.
-class _VerbQuizItem {
-  final Verb verb;
-  final VerbDirection direction;
-  final List<String> options;
-  final String correct;
-
-  const _VerbQuizItem({
-    required this.verb,
-    required this.direction,
-    required this.options,
-    required this.correct,
-  });
-
-  String get prompt => direction == VerbDirection.deToEs ? verb.infinitiv : verb.es;
-}
 
 class VerbQuizScreen extends StatefulWidget {
   final ProgressNotifier progress;
@@ -128,12 +111,12 @@ class _VerbQuizScreenState extends State<VerbQuizScreen> {
     return Question(
       id: v.id,
       mode: QuizMode.flashcard,
-      prompt: _VerbQuizItem(verb: v, direction: dir, options: options, correct: correct),
+      prompt: VerbQuizItem(verb: v, direction: dir, options: options, correct: correct),
       answer: correct,
     );
   }
 
-  _VerbQuizItem get _current => _session![_index].prompt as _VerbQuizItem;
+  VerbQuizItem get _current => _session![_index].prompt as VerbQuizItem;
 
   void _choose(String option) {
     if (_chosen != null) return;
@@ -205,7 +188,7 @@ class _VerbQuizScreenState extends State<VerbQuizScreen> {
                   crossAxisSpacing: 12,
                   children: [
                     for (final option in item.options)
-                      _VerbOptionButton(
+                      VerbOptionButton(
                         label: option,
                         chosen: _chosen,
                         correctValue: item.correct,
@@ -222,67 +205,6 @@ class _VerbQuizScreenState extends State<VerbQuizScreen> {
                 ),
               const SizedBox(height: 12),
             ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _VerbOptionButton extends StatelessWidget {
-  final String label;
-  final String? chosen;
-  final String correctValue;
-  final VoidCallback onTap;
-
-  const _VerbOptionButton({
-    required this.label,
-    required this.chosen,
-    required this.correctValue,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final answered = chosen != null;
-    final isCorrect = label == correctValue;
-    final isChosen = label == chosen;
-
-    var background = kSurfaceContainer;
-    var border = kOutline;
-    if (answered) {
-      if (isCorrect) {
-        background = kGenderDas.withValues(alpha: 0.22);
-        border = kGenderDas;
-      } else if (isChosen) {
-        background = kError.withValues(alpha: 0.22);
-        border = kError;
-      }
-    }
-
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 200),
-      decoration: BoxDecoration(
-        color: background,
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: border, width: 2),
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          borderRadius: BorderRadius.circular(14),
-          onTap: answered ? null : onTap,
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: Text(
-                label,
-                textAlign: TextAlign.center,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
-            ),
           ),
         ),
       ),
