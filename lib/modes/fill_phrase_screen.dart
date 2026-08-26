@@ -19,9 +19,14 @@ class FillPhraseScreen extends StatefulWidget {
   final ProgressNotifier progress;
   final String asset;
 
+  /// When non-null, filters phrases to only those matching this case
+  /// (e.g. "dativ" or "akkusativ"). Null = no filtering (all phrases).
+  final String? caseFilter;
+
   const FillPhraseScreen({
     required this.progress,
     this.asset = 'assets/data/phrases.json',
+    this.caseFilter,
     super.key,
   });
 
@@ -42,7 +47,10 @@ class _FillPhraseScreenState extends State<FillPhraseScreen> {
   }
 
   Future<void> _load() async {
-    final phrases = await DataRepository.loadPhrases(widget.asset);
+    var phrases = await DataRepository.loadPhrases(widget.asset);
+    if (widget.caseFilter != null) {
+      phrases = phrases.where((p) => p.caseType == widget.caseFilter).toList();
+    }
     final questions = [
       for (final p in phrases)
         Question(id: p.id, mode: QuizMode.fillPhrase, prompt: p, answer: p.answer),

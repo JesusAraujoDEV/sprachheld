@@ -6,7 +6,8 @@
     "options": ["in", "an", "auf", "zu"],
     "es": "Voy a la escuela.",
     "level": "A2",
-    "note": "in + movimiento → acusativo → in DIE Schule."
+    "note": "in + movimiento → acusativo → in DIE Schule.",
+    "caseType": "akkusativ"
   },
   {
     "id": "prep_in_schule_ubic",
@@ -15,7 +16,8 @@
     "options": ["in", "an", "bei", "auf"],
     "es": "Estoy en la escuela.",
     "level": "A2",
-    "note": "in + ubicación → dativo → in DER Schule."
+    "note": "in + ubicación → dativo → in DER Schule.",
+    "caseType": "dativ"
   },
   {
     "id": "prep_an_wand_mov",
@@ -24,7 +26,8 @@
     "options": ["an", "auf", "in", "über"],
     "es": "Cuelgo el cuadro en la pared.",
     "level": "A2",
-    "note": "an + movimiento → acusativo → an DIE Wand."
+    "note": "an + movimiento → acusativo → an DIE Wand.",
+    "caseType": "akkusativ"
   },
   {
     "id": "prep_an_wand_ubic",
@@ -33,7 +36,8 @@
     "options": ["an", "auf", "in", "vor"],
     "es": "El cuadro cuelga en la pared.",
     "level": "A2",
-    "note": "an + ubicación → dativo → an DER Wand."
+    "note": "an + ubicación → dativo → an DER Wand.",
+    "caseType": "dativ"
   },
   {
     "id": "prep_auf_post",
@@ -42,7 +46,8 @@
     "options": ["auf", "in", "an", "zu"],
     "es": "Voy a correos.",
     "level": "A2",
-    "note": "auf die Post: fórmula con acusativo (movimiento) para ir a correos."
+    "note": "auf die Post: fórmula con acusativo (movimiento) para ir a correos.",
+    "caseType": "akkusativ"
   },
   {
     "id": "prep_vor_tuer",
@@ -51,7 +56,8 @@
     "options": ["vor", "hinter", "an", "bei"],
     "es": "Espero delante de la puerta.",
     "level": "A2",
-    "note": "vor + ubicación → dativo → vor DER Tür."
+    "note": "vor + ubicación → dativo → vor DER Tür.",
+    "caseType": "dativ"
   },
   {
     "id": "prep_unter_tisch",
@@ -60,7 +66,8 @@
     "options": ["unter", "auf", "neben", "über"],
     "es": "El gato está debajo de la mesa.",
     "level": "A2",
-    "note": "unter + ubicación → dativo → unter DEM Tisch."
+    "note": "unter + ubicación → dativo → unter DEM Tisch.",
+    "caseType": "dativ"
   },
   {
     "id": "prep_auf_tisch",
@@ -69,7 +76,8 @@
     "options": ["auf", "unter", "an", "in"],
     "es": "El libro está sobre la mesa.",
     "level": "A2",
-    "note": "auf + ubicación → dativo → auf DEM Tisch."
+    "note": "auf + ubicación → dativo → auf DEM Tisch.",
+    "caseType": "dativ"
   },
   {
     "id": "prep_zwischen_betten",
@@ -78,7 +86,8 @@
     "options": ["zwischen", "neben", "unter", "vor"],
     "es": "Pongo la silla entre las camas.",
     "level": "B1",
-    "note": "zwischen + movimiento → acusativo → zwischen DIE Betten (plural)."
+    "note": "zwischen + movimiento → acusativo → zwischen DIE Betten (plural).",
+    "caseType": "akkusativ"
   },
   {
     "id": "prep_zu_oma",
@@ -87,7 +96,8 @@
     "options": ["zu", "in", "an", "nach"],
     "es": "Voy a casa de mi abuela.",
     "level": "A2",
-    "note": "Destino = persona → SIEMPRE zu (dativo) → zu MEINER Oma."
+    "note": "Destino = persona → SIEMPRE zu (dativo) → zu MEINER Oma.",
+    "caseType": "dativ"
   },
   {
     "id": "prep_zu_freundin",
@@ -96,7 +106,8 @@
     "options": ["zu", "in", "bei", "auf"],
     "es": "Voy a casa de mi amiga.",
     "level": "A2",
-    "note": "Destino = persona → SIEMPRE zu (dativo), nunca in/an/auf."
+    "note": "Destino = persona → SIEMPRE zu (dativo), nunca in/an/auf.",
+    "caseType": "dativ"
   },
   {
     "id": "prep_zu_tante",
@@ -105,7 +116,8 @@
     "options": ["zu", "nach", "in", "bei"],
     "es": "Vamos a casa de nuestra tía.",
     "level": "A2",
-    "note": "Destino = persona → SIEMPRE zu (dativo) → zu UNSERER Tante."
+    "note": "Destino = persona → SIEMPRE zu (dativo) → zu UNSERER Tante.",
+    "caseType": "dativ"
   },
   {
     "id": "prep_nach_hause",
@@ -114,7 +126,8 @@
     "options": ["nach", "zu", "in", "an"],
     "es": "Voy a casa.",
     "level": "A2",
-    "note": "nach Hause: fórmula fija de movimiento (a casa), sin artículo."
+    "note": "nach Hause: fórmula fija de movimiento (a casa), sin artículo.",
+    "caseType": "dativ"
   },
   {
     "id": "prep_zu_hause",
@@ -123,7 +136,8 @@
     "options": ["zu", "nach", "in", "bei"],
     "es": "Estoy en casa.",
     "level": "A2",
-    "note": "zu Hause: fórmula fija de ubicación (en casa), sin artículo."
+    "note": "zu Hause: fórmula fija de ubicación (en casa), sin artículo.",
+    "caseType": "dativ"
   },
   {
     "id": "prep_aus_schweiz",
@@ -132,7 +146,8 @@
     "options": ["aus", "von", "nach", "zu"],
     "es": "Vengo de Suiza.",
     "level": "A2",
-    "note": "aus = procedencia (país/lugar) → siempre dativo → aus DER Schweiz."
+    "note": "aus = procedencia (país/lugar) → siempre dativo → aus DER Schweiz.",
+    "caseType": "dativ"
   },
   {
     "id": "prep_mit_bus",
@@ -141,7 +156,8 @@
     "options": ["mit", "in", "auf", "bei"],
     "es": "Voy en autobús.",
     "level": "A2",
-    "note": "mit = medio de transporte → siempre dativo → mit DEM Bus."
+    "note": "mit = medio de transporte → siempre dativo → mit DEM Bus.",
+    "caseType": "dativ"
   },
   {
     "id": "prep_von_arbeit",
@@ -150,7 +166,8 @@
     "options": ["von", "aus", "nach", "zu"],
     "es": "Vengo del trabajo.",
     "level": "A2",
-    "note": "von = punto de partida → siempre dativo → von DER Arbeit."
+    "note": "von = punto de partida → siempre dativo → von DER Arbeit.",
+    "caseType": "dativ"
   },
   {
     "id": "prep_bei_eltern",
@@ -159,7 +176,8 @@
     "options": ["bei", "mit", "zu", "in"],
     "es": "Vivo con mis padres.",
     "level": "A2",
-    "note": "bei = en casa de → siempre dativo → bei MEINEN Eltern."
+    "note": "bei = en casa de → siempre dativo → bei MEINEN Eltern.",
+    "caseType": "dativ"
   },
   {
     "id": "prep_nach_berlin",
@@ -168,7 +186,8 @@
     "options": ["nach", "zu", "in", "an"],
     "es": "Voy a Berlín.",
     "level": "A2",
-    "note": "nach = ciudades/países sin artículo → siempre dativo, sin artículo."
+    "note": "nach = ciudades/países sin artículo → siempre dativo, sin artículo.",
+    "caseType": "dativ"
   },
   {
     "id": "prep_durch_park",
@@ -177,7 +196,8 @@
     "options": ["durch", "in", "um", "über"],
     "es": "Caminamos por el parque.",
     "level": "A2",
-    "note": "durch = atravesar → siempre acusativo → durch DEN Park."
+    "note": "durch = atravesar → siempre acusativo → durch DEN Park.",
+    "caseType": "akkusativ"
   },
   {
     "id": "prep_um_tisch",
@@ -186,7 +206,8 @@
     "options": ["um", "an", "auf", "neben"],
     "es": "Estamos sentados alrededor de la mesa.",
     "level": "A2",
-    "note": "um = rodear → siempre acusativo → um DEN Tisch."
+    "note": "um = rodear → siempre acusativo → um DEN Tisch.",
+    "caseType": "akkusativ"
   },
   {
     "id": "prep_gegen_wand",
@@ -195,7 +216,8 @@
     "options": ["gegen", "an", "in", "auf"],
     "es": "El coche choca contra la pared.",
     "level": "B1",
-    "note": "gegen = contra → siempre acusativo → gegen DIE Wand."
+    "note": "gegen = contra → siempre acusativo → gegen DIE Wand.",
+    "caseType": "akkusativ"
   },
   {
     "id": "prep_zum_arzt",
@@ -204,7 +226,8 @@
     "options": ["zum", "zur", "ins", "zu"],
     "es": "Voy al médico.",
     "level": "B1",
-    "note": "Persona → zu; contracción obligatoria zu + dem = zum Arzt."
+    "note": "Persona → zu; contracción obligatoria zu + dem = zum Arzt.",
+    "caseType": "dativ"
   },
   {
     "id": "prep_zur_uni",
@@ -213,7 +236,8 @@
     "options": ["zur", "zum", "in", "ins"],
     "es": "Voy a la universidad.",
     "level": "B1",
-    "note": "Contracción obligatoria zu + der = zur Universität (femenino, dativo)."
+    "note": "Contracción obligatoria zu + der = zur Universität (femenino, dativo).",
+    "caseType": "dativ"
   },
   {
     "id": "prep_ins_kino_mov",
@@ -222,7 +246,8 @@
     "options": ["ins", "im", "zum", "in"],
     "es": "Vamos al cine.",
     "level": "B1",
-    "note": "Movimiento → acusativo; contracción obligatoria in + das = ins Kino."
+    "note": "Movimiento → acusativo; contracción obligatoria in + das = ins Kino.",
+    "caseType": "akkusativ"
   },
   {
     "id": "prep_am_fenster",
@@ -231,7 +256,8 @@
     "options": ["am", "im", "an", "auf"],
     "es": "El cuadro cuelga en la ventana.",
     "level": "B1",
-    "note": "Ubicación → dativo; contracción obligatoria an + dem = am Fenster."
+    "note": "Ubicación → dativo; contracción obligatoria an + dem = am Fenster.",
+    "caseType": "dativ"
   },
   {
     "id": "prep_im_kino_ubic",
@@ -240,7 +266,8 @@
     "options": ["im", "ins", "am", "in"],
     "es": "Estoy en el cine.",
     "level": "B1",
-    "note": "Ubicación → dativo; contracción obligatoria in + dem = im Kino."
+    "note": "Ubicación → dativo; contracción obligatoria in + dem = im Kino.",
+    "caseType": "dativ"
   },
   {
     "id": "prep_hinter_haus",
@@ -249,7 +276,8 @@
     "options": ["hinter", "vor", "neben", "unter"],
     "es": "Los niños juegan detrás de la casa.",
     "level": "A2",
-    "note": "hinter + ubicación → dativo → hinter DEM Haus."
+    "note": "hinter + ubicación → dativo → hinter DEM Haus.",
+    "caseType": "dativ"
   },
   {
     "id": "prep_in_apotheke",
@@ -258,7 +286,8 @@
     "options": ["in", "auf", "zu", "an"],
     "es": "Voy a la farmacia.",
     "level": "A2",
-    "note": "in + movimiento → acusativo → in DIE Apotheke (femenino)."
+    "note": "in + movimiento → acusativo → in DIE Apotheke (femenino).",
+    "caseType": "akkusativ"
   },
   {
     "id": "prep_in_tasche",
@@ -267,6 +296,7 @@
     "options": ["in", "auf", "an", "unter"],
     "es": "Meto el bolígrafo en el bolso.",
     "level": "A2",
-    "note": "in + movimiento → acusativo → in DIE Tasche (femenino)."
+    "note": "in + movimiento → acusativo → in DIE Tasche (femenino).",
+    "caseType": "akkusativ"
   }
 ]
