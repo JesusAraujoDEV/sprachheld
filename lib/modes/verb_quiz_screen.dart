@@ -6,6 +6,7 @@ import '../data/repository.dart';
 import '../engine/question.dart';
 import '../engine/srs.dart';
 import '../models/verb.dart';
+import '../models/verb_direction.dart';
 import '../state/progress_notifier.dart';
 import '../theme/app_theme.dart';
 import '../widgets/glow_card_face.dart';
@@ -14,14 +15,12 @@ import '../widgets/ranking_result_dialog.dart';
 
 const _sessionSize = 12;
 
-enum _Direction { deToEs, esToDe }
-
 /// Quiz de opción múltiple bidireccional (diseño de ux-architect): a veces
 /// alemán→español, a veces español→alemán, mezclado en la sesión. Reemplaza
 /// el flip-card de verbos — el usuario pidió específicamente este formato.
 class _VerbQuizItem {
   final Verb verb;
-  final _Direction direction;
+  final VerbDirection direction;
   final List<String> options;
   final String correct;
 
@@ -32,7 +31,7 @@ class _VerbQuizItem {
     required this.correct,
   });
 
-  String get prompt => direction == _Direction.deToEs ? verb.infinitiv : verb.es;
+  String get prompt => direction == VerbDirection.deToEs ? verb.infinitiv : verb.es;
 }
 
 class VerbQuizScreen extends StatefulWidget {
@@ -42,7 +41,15 @@ class VerbQuizScreen extends StatefulWidget {
   /// del selector en Home). Null = todos.
   final int? maxRank;
 
-  const VerbQuizScreen({required this.progress, this.maxRank, super.key});
+  /// Direction for the quiz session.
+  final VerbDirection direction;
+
+  const VerbQuizScreen({
+    required this.progress,
+    this.maxRank,
+    this.direction = VerbDirection.mixed,
+    super.key,
+  });
 
   @override
   State<VerbQuizScreen> createState() => _VerbQuizScreenState();
@@ -98,8 +105,15 @@ class _VerbQuizScreenState extends State<VerbQuizScreen> {
   }
 
   Question _buildQuestion(Verb v, List<Verb> deck, Random rnd) {
-    final direction = rnd.nextBool() ? _Direction.deToEs : _Direction.esToDe;
-    String valueOf(Verb x) => direction == _Direction.deToEs ? x.es : x.infinitiv;
+    final VerbDirection dir;
+    switch (widget.direction) {
+      case VerbDirection.mixed:
+        dir = rnd.nextBool() ? VerbDirection.deToEs : VerbDirection.esToDe;
+      case VerbDirection.deToEs:
+      case VerbDirection.esToDe:
+        dir = widget.direction;
+    }
+    String valueOf(Verb x) => dir == VerbDirection.deToEs ? x.es : x.infinitiv;
     final correct = valueOf(v);
 
     var pool = deck
@@ -114,7 +128,7 @@ class _VerbQuizScreenState extends State<VerbQuizScreen> {
     return Question(
       id: v.id,
       mode: QuizMode.flashcard,
-      prompt: _VerbQuizItem(verb: v, direction: direction, options: options, correct: correct),
+      prompt: _VerbQuizItem(verb: v, direction: dir, options: options, correct: correct),
       answer: correct,
     );
   }
