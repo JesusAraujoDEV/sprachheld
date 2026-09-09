@@ -6,6 +6,7 @@ import '../models/adjective.dart';
 import '../models/gender_rule.dart';
 import '../models/noun.dart';
 import '../models/phrase.dart';
+import '../models/possessive_pronoun.dart';
 import '../models/preposition.dart';
 import '../models/preposition_item.dart';
 import '../models/verb.dart';
@@ -38,6 +39,9 @@ class DataRepository {
 
   static Future<List<PrepositionItem>> loadPrepositionItems() =>
       _loadList('assets/data/preposition-double.json', PrepositionItem.fromJson);
+
+  static Future<List<PossessivePronoun>> loadPossessivePronouns() =>
+      _loadList('assets/data/possessive-pronouns.json', PossessivePronoun.fromJson);
 
   static Future<List<T>> _loadList<T>(
     String assetPath,

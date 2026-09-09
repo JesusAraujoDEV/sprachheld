@@ -27,6 +27,15 @@ void main() {
     await tester.pump(const Duration(milliseconds: 300));
 
     await tester.tap(find.text('Top 100'));
+    // El sheet pasa a un 2º paso (¿Alemán→Español, Español→Alemán o Ambas?)
+    // antes de navegar al quiz.
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 300));
+
+    // La 1ª tarjeta de dirección es la única garantizada visible sin scroll
+    // en el viewport de test (800x600).
+    await tester.ensureVisible(find.text('Verbo en alemán y opciones en español'));
+    await tester.tap(find.text('Verbo en alemán y opciones en español'));
     await tester.pump(); // dispara la navegación
 
     // Cargar y parsear assets/data/verbs.json (ya con miles de verbos)

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../modes/conjugation_table_screen.dart';
 import '../../modes/gender_tips_screen.dart';
+import '../../modes/possessive_table_screen.dart';
 import '../../state/progress_notifier.dart';
 import '../../theme/app_theme.dart';
 import '../leaderboard_screen.dart';
@@ -33,6 +34,12 @@ class LookupList extends StatelessWidget {
         subtitle: 'Reglas de género, una por una',
         icon: Icons.lightbulb_outline_rounded,
         onTap: () => _push(context, GenderTipsScreen(progress: progress)),
+      ),
+      (
+        title: 'Possessivpronomen',
+        subtitle: 'Tabla: pronombre → posesivo',
+        icon: Icons.group_outlined,
+        onTap: () => _push(context, const PossessiveTableScreen()),
       ),
     ];
     return Container(

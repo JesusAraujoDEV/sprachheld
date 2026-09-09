@@ -1,0 +1,11 @@
+[
+  { "id": "ich", "pronoun": "ich", "pronounEs": "yo", "possessive": "mein", "example": "mein Name" },
+  { "id": "du", "pronoun": "du", "pronounEs": "tú", "possessive": "dein", "example": "deine Tasche" },
+  { "id": "er", "pronoun": "er", "pronounEs": "él", "possessive": "sein", "example": "sein Bruder" },
+  { "id": "sie_f", "pronoun": "sie", "pronounEs": "ella", "possessive": "ihr", "example": "ihr Auto" },
+  { "id": "es", "pronoun": "es", "pronounEs": "eso/ello", "possessive": "sein", "example": "sein Name" },
+  { "id": "wir", "pronoun": "wir", "pronounEs": "nosotros", "possessive": "unser", "example": "unsere Kinder" },
+  { "id": "ihr", "pronoun": "ihr", "pronounEs": "vosotros/ustedes", "possessive": "euer", "example": "euer Haus" },
+  { "id": "sie_pl", "pronoun": "sie", "pronounEs": "ellos/ellas", "possessive": "ihr", "example": "ihre Nummer" },
+  { "id": "sie_formal", "pronoun": "Sie", "pronounEs": "usted (formal)", "possessive": "Ihr", "example": "Ihr Auto" }
+]

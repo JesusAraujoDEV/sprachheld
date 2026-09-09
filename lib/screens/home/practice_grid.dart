@@ -56,6 +56,15 @@ class PracticeGrid extends StatelessWidget {
         accent: kSecondary,
         onTap: () => _push(context, ClockQuizScreen(progress: progress)),
       ),
+      (
+        title: 'Posesivos',
+        icon: Icons.group_outlined,
+        accent: kGenderDie,
+        onTap: () => _push(
+          context,
+          FillPhraseScreen(progress: progress, asset: 'assets/data/possessive-phrases.json'),
+        ),
+      ),
     ];
     return GridView.count(
       crossAxisCount: 2,

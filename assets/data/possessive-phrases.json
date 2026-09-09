@@ -1,0 +1,92 @@
+[
+  {
+    "id": "poss_er_bruder",
+    "sentence": "Das ist Peter. ___ Bruder heißt Tom.",
+    "answer": "Sein",
+    "options": ["Sein", "Ihr", "Ihre", "Seine"],
+    "es": "Ese es Peter. Su hermano se llama Tom.",
+    "level": "A1",
+    "note": "er → sein. der Bruder (masc.) en Nominativ → sein (sin -e)."
+  },
+  {
+    "id": "poss_er_nummer",
+    "sentence": "Und Peter? ___ Nummer ist 862098.",
+    "answer": "Seine",
+    "options": ["Sein", "Seine", "Ihr", "Ihre"],
+    "es": "¿Y Peter? Su número es 862098.",
+    "level": "A1",
+    "note": "er → sein. die Nummer (fem.) → seine (+e)."
+  },
+  {
+    "id": "poss_sie_auto",
+    "sentence": "Das ist Marisa. ___ Auto ist neu.",
+    "answer": "Ihr",
+    "options": ["Ihr", "Ihre", "Sein", "Seine"],
+    "es": "Esa es Marisa. Su auto es nuevo.",
+    "level": "A1",
+    "note": "sie (ella) → ihr. das Auto (neutro) → ihr (sin -e)."
+  },
+  {
+    "id": "poss_sie_nummer",
+    "sentence": "Und Marisa? ___ Nummer ist 465230.",
+    "answer": "Ihre",
+    "options": ["Ihr", "Ihre", "Sein", "Seine"],
+    "es": "¿Y Marisa? Su número es 465230.",
+    "level": "A1",
+    "note": "sie (ella) → ihr. die Nummer (fem.) → ihre (+e)."
+  },
+  {
+    "id": "poss_plural_nummer",
+    "sentence": "Brigitte und David? ___ Nummer ist 756066.",
+    "answer": "Ihre",
+    "options": ["Ihre", "Sein", "Seine", "Ihr"],
+    "es": "¿Brigitte y David? Su número es 756066.",
+    "level": "A1",
+    "note": "sie (ellos, plural) → ihr. die Nummer (fem.) → ihre (+e). Mismo 'ihr' que sie=ella, pero se refiere a plural."
+  },
+  {
+    "id": "poss_ich_name",
+    "sentence": "___ Name ist Jesús.",
+    "answer": "Mein",
+    "options": ["Mein", "Meine", "Dein", "Deine"],
+    "es": "Mi nombre es Jesús.",
+    "level": "A1",
+    "note": "ich → mein. der Name (masc.) → mein (sin -e)."
+  },
+  {
+    "id": "poss_du_tasche",
+    "sentence": "Ist das ___ Tasche?",
+    "answer": "deine",
+    "options": ["dein", "deine", "meine", "mein"],
+    "es": "¿Es esa tu bolsa?",
+    "level": "A1",
+    "note": "du → dein. die Tasche (fem.) → deine (+e)."
+  },
+  {
+    "id": "poss_wir_kinder",
+    "sentence": "___ Kinder spielen im Park.",
+    "answer": "Unsere",
+    "options": ["Unser", "Unsere", "Euer", "Eure"],
+    "es": "Nuestros hijos juegan en el parque.",
+    "level": "A1",
+    "note": "wir → unser. die Kinder (plural) → unsere (+e)."
+  },
+  {
+    "id": "poss_ihr_haus",
+    "sentence": "Wie groß ist ___ Haus?",
+    "answer": "euer",
+    "options": ["euer", "eure", "unser", "unsere"],
+    "es": "¿Qué tan grande es su casa (de ustedes)?",
+    "level": "A1",
+    "note": "ihr (ustedes/vosotros) → euer. das Haus (neutro) → euer (sin -e)."
+  },
+  {
+    "id": "poss_formal_sie",
+    "sentence": "Herr Müller, ist das ___ Auto?",
+    "answer": "Ihr",
+    "options": ["Ihr", "Ihre", "ihr", "sein"],
+    "es": "Señor Müller, ¿es ese su auto?",
+    "level": "A1",
+    "note": "Sie formal (usted) → Ihr, siempre con mayúscula. das Auto (neutro) → Ihr (sin -e)."
+  }
+]
