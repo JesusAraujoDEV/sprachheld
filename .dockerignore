@@ -1,0 +1,10 @@
+build/
+.dart_tool/
+.git/
+android/
+ios/
+windows/
+linux/
+macos/
+docs/
+test/

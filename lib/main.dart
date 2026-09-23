@@ -38,6 +38,17 @@ class SprachheldApp extends StatelessWidget {
       title: 'Sprachheld',
       debugShowCheckedModeBanner: false,
       theme: buildAppTheme(),
+      // Web/escritorio: columna centrada tipo teléfono en vez de estirar la UI.
+      // En un teléfono el maxWidth no aplica (ponytail: 600 fijo, sin breakpoints).
+      builder: (context, child) => ColoredBox(
+        color: kBackground,
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 600),
+            child: child,
+          ),
+        ),
+      ),
       home: FutureBuilder<_Bootstrap>(
         future: _bootstrap(),
         builder: (context, snapshot) {
