@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../data/repository.dart';
 import '../models/possessive_pronoun.dart';
 import '../theme/app_theme.dart';
+import '../theme/breakpoints.dart';
 import '../widgets/audio_button.dart';
 import '../widgets/aura_background.dart';
 
@@ -40,11 +41,18 @@ class _PossessiveTableScreenState extends State<PossessiveTableScreen> {
         child: SafeArea(
           child: rows == null
               ? const Center(child: CircularProgressIndicator())
-              : ListView.separated(
-                  padding: const EdgeInsets.all(24),
-                  itemCount: rows.length,
-                  separatorBuilder: (_, _) => const Divider(color: kOutlineVariant, height: 24),
-                  itemBuilder: (context, i) => _RowTile(row: rows[i]),
+              : Center(
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxWidth: context.isWide ? kReadableMaxWidth : double.infinity,
+                    ),
+                    child: ListView.separated(
+                      padding: const EdgeInsets.all(24),
+                      itemCount: rows.length,
+                      separatorBuilder: (_, _) => const Divider(color: kOutlineVariant, height: 24),
+                      itemBuilder: (context, i) => _RowTile(row: rows[i]),
+                    ),
+                  ),
                 ),
         ),
       ),

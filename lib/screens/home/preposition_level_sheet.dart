@@ -4,6 +4,7 @@ import '../../modes/fill_phrase_screen.dart';
 import '../../modes/preposition_double_screen.dart';
 import '../../state/progress_notifier.dart';
 import '../../theme/app_theme.dart';
+import '../../theme/breakpoints.dart';
 
 /// Bottom sheet "¿Qué querés practicar?" (Nivel 1 / Nivel 2 de preposiciones),
 /// invocado desde el tile "Preposiciones" del Home.
@@ -11,6 +12,7 @@ void showPrepositionLevelSheet(BuildContext context, ProgressNotifier progress) 
   showModalBottomSheet<void>(
     context: context,
     backgroundColor: kSurfaceContainer,
+    constraints: const BoxConstraints(maxWidth: kModalMaxWidth),
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
     ),

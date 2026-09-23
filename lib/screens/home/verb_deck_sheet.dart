@@ -4,6 +4,7 @@ import '../../models/verb_direction.dart';
 import '../../modes/verb_quiz_screen.dart';
 import '../../state/progress_notifier.dart';
 import '../../theme/app_theme.dart';
+import '../../theme/breakpoints.dart';
 import 'verb_deck/direction_option_card.dart';
 
 const _rankOptions = [
@@ -40,6 +41,7 @@ void showVerbDeckSheet(BuildContext context, ProgressNotifier progress) {
   showModalBottomSheet<void>(
     context: context,
     backgroundColor: kSurfaceContainer,
+    constraints: const BoxConstraints(maxWidth: kModalMaxWidth),
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
     ),
