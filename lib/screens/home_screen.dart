@@ -4,18 +4,21 @@ import '../modes/timed_arcade_screen.dart';
 import '../state/config_notifier.dart';
 import '../state/progress_notifier.dart';
 import '../theme/app_theme.dart';
+import '../theme/breakpoints.dart';
 import '../widgets/aura_background.dart';
 import '../widgets/mode_card.dart';
-import '../widgets/player_name_tile.dart';
-import '../widgets/stat_chip.dart';
-import '../version.dart';
-import 'home/contact_dialog.dart';
+import 'home/home_header.dart';
+import 'home/home_section_header.dart';
+import 'home/home_settings.dart';
+import 'home/home_stats.dart';
+import 'home/home_wide_layout.dart';
 import 'home/lookup_list.dart';
 import 'home/practice_grid.dart';
 
 /// Home: modo destacado (Contrarreloj) → grid "Practicar" → lista "Consulta
-/// y progreso" → ajustes. Reordenado para que 6 modos de práctica + 3 de
-/// consulta no se sientan como una lista sin jerarquía (docs/PLAN-hora.md §7).
+/// y progreso" → ajustes. En escritorio (context.isWide) reordena las mismas
+/// piezas en dos paneles vía [HomeWideLayout]; móvil/tablet mantienen la
+/// columna única idéntica a hoy (docs/PLAN-hora.md §7, ux-architect).
 class HomeScreen extends StatelessWidget {
   final ConfigNotifier config;
   final ProgressNotifier progress;
@@ -28,98 +31,48 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Colors.transparent,
       body: AuraBackground(
         child: SafeArea(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(24),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '🦸 Sprachheld',
-                  style: Theme.of(context).textTheme.displayLarge?.copyWith(fontSize: 32),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  'Practica alemán',
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: kOnSurfaceVariant),
-                ),
-                const SizedBox(height: 20),
-                ListenableBuilder(listenable: progress, builder: (context, _) => _buildStats(context)),
-                const SizedBox(height: 24),
-                ModeCard(
-                  title: 'Contrarreloj',
-                  subtitle: '60 segundos, racha y puntos',
-                  accent: kError,
-                  onTap: () => _push(context, TimedArcadeScreen(progress: progress)),
-                ),
-                const SizedBox(height: 24),
-                _sectionHeader(context, 'Practicar'),
-                const SizedBox(height: 12),
-                PracticeGrid(progress: progress),
-                const SizedBox(height: 24),
-                _sectionHeader(context, 'Consulta y progreso'),
-                const SizedBox(height: 12),
-                LookupList(progress: progress),
-                const SizedBox(height: 32),
-                ListenableBuilder(
-                  listenable: config,
-                  builder: (context, _) => SwitchListTile(
-                    contentPadding: EdgeInsets.zero,
-                    value: config.ttsEnabled,
-                    onChanged: config.setTtsEnabled,
-                    title: const Text('Pronunciación (TTS)'),
-                    activeThumbColor: kPrimary,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                const PlayerNameTile(),
-                const SizedBox(height: 24),
-                Center(
-                  child: InkWell(
-                    onTap: () => showContactDialog(context),
-                    child: Text(
-                      'Desarrollado por Jesús Araujo · v$kAppVersion',
-                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                            color: kOnSurfaceVariant.withValues(alpha: 0.6),
-                          ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          child: context.isWide
+              ? HomeWideLayout(config: config, progress: progress)
+              : _mobileLayout(context),
         ),
       ),
     );
   }
 
-  Widget _sectionHeader(BuildContext context, String title) {
-    return Text(
-      title,
-      style: Theme.of(context).textTheme.labelLarge?.copyWith(color: kOnSurfaceVariant),
-    );
-  }
-
-  Widget _buildStats(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      decoration: BoxDecoration(
-        color: kSurfaceContainer,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: kOutline),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  Widget _mobileLayout(BuildContext context) {
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(24),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          StatChip(icon: '🔥', label: '${progress.streakDays} días'),
-          StatChip(icon: '⭐', label: '${progress.xp} XP'),
-          StatChip(icon: '✅', label: '${progress.masteredCount} dominados'),
-          StatChip(icon: '📌', label: '${progress.weakCount} débiles'),
+          const HomeHeader(),
+          const SizedBox(height: 20),
+          HomeStats(progress: progress),
+          const SizedBox(height: 24),
+          ModeCard(
+            title: 'Contrarreloj',
+            subtitle: '60 segundos, racha y puntos',
+            accent: kError,
+            onTap: () => _openArcade(context),
+          ),
+          const SizedBox(height: 24),
+          const HomeSectionHeader('Practicar'),
+          const SizedBox(height: 12),
+          PracticeGrid(progress: progress),
+          const SizedBox(height: 24),
+          const HomeSectionHeader('Consulta y progreso'),
+          const SizedBox(height: 12),
+          LookupList(progress: progress),
+          const SizedBox(height: 32),
+          HomeSettings(config: config),
         ],
       ),
     );
   }
 
-  void _push(BuildContext context, Widget screen) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (_) => screen));
+  void _openArcade(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (_) => TimedArcadeScreen(progress: progress)),
+    );
   }
 }

@@ -7,6 +7,7 @@ import 'services/storage_service.dart';
 import 'state/config_notifier.dart';
 import 'state/progress_notifier.dart';
 import 'theme/app_theme.dart';
+import 'theme/breakpoints.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,13 +39,16 @@ class SprachheldApp extends StatelessWidget {
       title: 'Sprachheld',
       debugShowCheckedModeBanner: false,
       theme: buildAppTheme(),
-      // Web/escritorio: columna centrada tipo teléfono en vez de estirar la UI.
-      // En un teléfono el maxWidth no aplica (ponytail: 600 fijo, sin breakpoints).
+      // Web/escritorio: contenido centrado con un tope de ancho generoso para
+      // que no se estire en monitores ultra-anchos. Bajo kMaxContentWidth el
+      // clamp nunca actúa, así que en móvil (< 600) el layout es idéntico a
+      // no tener builder; el layout ancho lo deciden las pantallas vía
+      // breakpoints (context.isWide), no este tope.
       builder: (context, child) => ColoredBox(
         color: kBackground,
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 600),
+            constraints: const BoxConstraints(maxWidth: kMaxContentWidth),
             child: child,
           ),
         ),
