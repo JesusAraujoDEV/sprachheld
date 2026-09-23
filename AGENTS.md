@@ -27,7 +27,7 @@ Full plan (v1 scope, content model, quiz modes, roadmap): [`docs/PLAN.md`](docs/
 | App | Flutter (Dart), single codebase for mobile + web + desktop |
 | Content | Static JSON assets bundled with the app |
 | Persistence | `shared_preferences` |
-| Audio | `flutter_tts` (native TTS per platform) |
+| Audio | `flutter_tts` (native TTS per platform); web uses Piper WASM (ADR 0002) |
 | Distribution | Static web build + APK/IPA |
 
 Locked decisions (no re-discuss): no backend, no accounts, no multiplayer, no state-management package (plain `ChangeNotifier`/`setState`), no dependency beyond `shared_preferences` and `flutter_tts` without an ADR.

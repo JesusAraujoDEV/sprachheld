@@ -31,6 +31,13 @@
 
   <title>sprachheld</title>
   <link rel="manifest" href="manifest.json">
+
+  <!-- Voz alemana en el navegador (Piper WASM). El import map resuelve el
+       import "onnxruntime-web/wasm" de web/piper/piper-tts-web.js. -->
+  <script type="importmap">
+    {"imports": {"onnxruntime-web/wasm": "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.18.0/wasm/+esm"}}
+  </script>
+  <script type="module" src="piper_bridge.js"></script>
 </head>
 <body>
   <!--
