@@ -6,6 +6,7 @@ import '../../modes/gender_quiz_screen.dart';
 import '../../modes/write_conjugation_screen.dart';
 import '../../state/progress_notifier.dart';
 import '../../theme/app_theme.dart';
+import '../../theme/breakpoints.dart';
 import '../../widgets/mode_tile.dart';
 import 'preposition_level_sheet.dart';
 import 'verb_deck_sheet.dart';
@@ -67,7 +68,7 @@ class PracticeGrid extends StatelessWidget {
       ),
     ];
     return GridView.count(
-      crossAxisCount: 2,
+      crossAxisCount: context.isWide ? 3 : 2,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       childAspectRatio: 1.3,
