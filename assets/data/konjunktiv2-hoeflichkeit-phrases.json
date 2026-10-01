@@ -1,0 +1,182 @@
+[
+  {
+    "id": "hoefl_haette_kaffee",
+    "sentence": "Ich ___ gern einen Kaffee, bitte.",
+    "answer": "hätte",
+    "options": ["hätte", "möchte", "könnten"],
+    "es": "Quisiera un café, por favor.",
+    "level": "A1",
+    "note": "'Ich hätte gern ...' pide un objeto/comida con cortesía. Fórmula fija de A1."
+  },
+  {
+    "id": "hoefl_haette_wasser",
+    "sentence": "Ich ___ gern ein Glas Wasser.",
+    "answer": "hätte",
+    "options": ["hätte", "möchte", "könnten"],
+    "es": "Quisiera un vaso de agua.",
+    "level": "A1",
+    "note": "'Ich hätte gern ...' para pedir algo en un restaurante/tienda."
+  },
+  {
+    "id": "hoefl_haette_brot",
+    "sentence": "Ich hätte ___ zwei Brötchen, bitte.",
+    "answer": "gern",
+    "options": ["gern", "bitte", "schon"],
+    "es": "Quisiera dos panecillos, por favor.",
+    "level": "A1",
+    "note": "La fórmula es 'Ich hätte gern ...'; 'gern' es la palabra clave de cortesía."
+  },
+  {
+    "id": "hoefl_haette_rechnung",
+    "sentence": "Ich ___ gern die Rechnung, bitte.",
+    "answer": "hätte",
+    "options": ["hätte", "möchte", "könnten"],
+    "es": "Quisiera la cuenta, por favor.",
+    "level": "A1",
+    "note": "'Ich hätte gern ...' sirve también para pedir la cuenta."
+  },
+  {
+    "id": "hoefl_haette_tee",
+    "sentence": "Ich hätte ___ einen Tee mit Zitrone.",
+    "answer": "gern",
+    "options": ["gern", "bitte", "noch"],
+    "es": "Quisiera un té con limón.",
+    "level": "A1",
+    "note": "'Ich hätte gern ...' + objeto. 'gern' completa la fórmula."
+  },
+  {
+    "id": "hoefl_haette_stueck",
+    "sentence": "Ich ___ gern ein Stück Kuchen.",
+    "answer": "hätte",
+    "options": ["hätte", "möchte", "könnten"],
+    "es": "Quisiera un trozo de pastel.",
+    "level": "A1",
+    "note": "'Ich hätte gern ...' en una cafetería."
+  },
+  {
+    "id": "hoefl_moechte_bezahlen",
+    "sentence": "Ich ___ bitte bezahlen.",
+    "answer": "möchte",
+    "options": ["hätte", "möchte", "könnten"],
+    "es": "Quisiera pagar, por favor.",
+    "level": "A1",
+    "note": "'Ich möchte + Verb' pide una acción con cortesía."
+  },
+  {
+    "id": "hoefl_moechte_bestellen",
+    "sentence": "Ich ___ gern bestellen.",
+    "answer": "möchte",
+    "options": ["hätte", "möchte", "könnten"],
+    "es": "Quisiera ordenar.",
+    "level": "A1",
+    "note": "'Ich möchte + Verb' para pedir hacer algo (aquí: ordenar)."
+  },
+  {
+    "id": "hoefl_moechte_reservieren",
+    "sentence": "Ich ___ einen Tisch für zwei Personen reservieren.",
+    "answer": "möchte",
+    "options": ["hätte", "möchte", "könnten"],
+    "es": "Quisiera reservar una mesa para dos personas.",
+    "level": "A2",
+    "note": "'Ich möchte + Verb' en el restaurante."
+  },
+  {
+    "id": "hoefl_moechte_anprobieren",
+    "sentence": "Ich ___ diese Schuhe anprobieren.",
+    "answer": "möchte",
+    "options": ["hätte", "möchte", "könnten"],
+    "es": "Quisiera probarme estos zapatos.",
+    "level": "A2",
+    "note": "'Ich möchte + Verb' en una tienda de ropa."
+  },
+  {
+    "id": "hoefl_moechte_umtauschen",
+    "sentence": "Ich ___ diese Jacke umtauschen.",
+    "answer": "möchte",
+    "options": ["hätte", "möchte", "könnten"],
+    "es": "Quisiera cambiar esta chaqueta.",
+    "level": "A2",
+    "note": "'Ich möchte + Verb' para pedir un cambio en la tienda."
+  },
+  {
+    "id": "hoefl_moechte_sehen",
+    "sentence": "Ich ___ die Speisekarte sehen, bitte.",
+    "answer": "möchte",
+    "options": ["hätte", "möchte", "könnten"],
+    "es": "Quisiera ver el menú, por favor.",
+    "level": "A1",
+    "note": "'Ich möchte + Verb' (sehen) para pedir el menú."
+  },
+  {
+    "id": "hoefl_koennten_helfen",
+    "sentence": "___ Sie mir bitte helfen?",
+    "answer": "Könnten",
+    "options": ["Könnten", "Hätte", "Möchte"],
+    "es": "¿Podría ayudarme, por favor?",
+    "level": "A1",
+    "note": "'Könnten Sie ...?' pide un favor de forma formal (usted)."
+  },
+  {
+    "id": "hoefl_koennten_wiederholen",
+    "sentence": "___ Sie das bitte wiederholen?",
+    "answer": "Könnten",
+    "options": ["Könnten", "Hätte", "Möchte"],
+    "es": "¿Podría repetir eso, por favor?",
+    "level": "A1",
+    "note": "'Könnten Sie ...?' + Verb al final, formal."
+  },
+  {
+    "id": "hoefl_koennten_bringen",
+    "sentence": "___ Sie mir die Rechnung bringen?",
+    "answer": "Könnten",
+    "options": ["Könnten", "Hätte", "Möchte"],
+    "es": "¿Podría traerme la cuenta?",
+    "level": "A1",
+    "note": "'Könnten Sie ...?' para un favor en el restaurante."
+  },
+  {
+    "id": "hoefl_koennten_zeigen",
+    "sentence": "___ Sie mir den Weg zum Bahnhof zeigen?",
+    "answer": "Könnten",
+    "options": ["Könnten", "Hätte", "Möchte"],
+    "es": "¿Podría indicarme el camino a la estación?",
+    "level": "A2",
+    "note": "'Könnten Sie ...?' para pedir indicaciones en la calle."
+  },
+  {
+    "id": "hoefl_koennten_sprechen",
+    "sentence": "___ Sie bitte langsamer sprechen?",
+    "answer": "Könnten",
+    "options": ["Könnten", "Hätte", "Möchte"],
+    "es": "¿Podría hablar más despacio, por favor?",
+    "level": "A1",
+    "note": "'Könnten Sie ...?' para pedir hablar más lento."
+  },
+  {
+    "id": "hoefl_koennten_oeffnen",
+    "sentence": "___ Sie bitte das Fenster öffnen?",
+    "answer": "Könnten",
+    "options": ["Könnten", "Hätte", "Möchte"],
+    "es": "¿Podría abrir la ventana, por favor?",
+    "level": "A1",
+    "note": "'Könnten Sie ...?' para pedir un favor cotidiano."
+  },
+  {
+    "id": "hoefl_haette_suppe",
+    "sentence": "Ich ___ gern noch eine Suppe, bitte.",
+    "answer": "hätte",
+    "options": ["hätte", "möchte", "könnten"],
+    "es": "Quisiera otra sopa más, por favor.",
+    "level": "A1",
+    "note": "'Ich hätte gern ...' para pedir más comida."
+  },
+  {
+    "id": "hoefl_moechte_zahlen",
+    "sentence": "Wir ___ zusammen zahlen, bitte.",
+    "answer": "möchten",
+    "options": ["möchten", "hätten", "könnten"],
+    "es": "Quisiéramos pagar juntos, por favor.",
+    "level": "A2",
+    "note": "'Wir möchten + Verb': misma fórmula en plural (nosotros) para pedir pagar."
+  }
+]
