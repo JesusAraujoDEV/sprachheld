@@ -66,6 +66,42 @@ class PracticeGrid extends StatelessWidget {
           FillPhraseScreen(progress: progress, asset: 'assets/data/possessive-phrases.json'),
         ),
       ),
+      (
+        title: 'Akkusativ: ihn/sie/es',
+        icon: Icons.swap_horiz_rounded,
+        accent: kGenderDer,
+        onTap: () => _push(
+          context,
+          FillPhraseScreen(
+            progress: progress,
+            asset: 'assets/data/akkusativ-pronomen-phrases.json',
+          ),
+        ),
+      ),
+      (
+        title: 'Demostrativos',
+        icon: Icons.touch_app_outlined,
+        accent: kGenderDas,
+        onTap: () => _push(
+          context,
+          FillPhraseScreen(
+            progress: progress,
+            asset: 'assets/data/demonstrativ-phrases.json',
+          ),
+        ),
+      ),
+      (
+        title: 'Cortesía (höflich)',
+        icon: Icons.waving_hand_outlined,
+        accent: kSecondary,
+        onTap: () => _push(
+          context,
+          FillPhraseScreen(
+            progress: progress,
+            asset: 'assets/data/konjunktiv2-hoeflichkeit-phrases.json',
+          ),
+        ),
+      ),
     ];
     return GridView.count(
       crossAxisCount: context.isWide ? 3 : 2,

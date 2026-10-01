@@ -210766,5 +210766,69 @@
     ],
     "examples": [],
     "frequencyRank": 120
+  },
+  {
+    "id": "duerfen",
+    "infinitiv": "dürfen",
+    "es": "poder/tener permiso",
+    "level": "A1",
+    "regularity": "irregular",
+    "separable": false,
+    "aux": "haben",
+    "partizipII": "gedurft",
+    "praesens": [
+      "darf",
+      "darfst",
+      "darf",
+      "dürfen",
+      "dürft",
+      "dürfen"
+    ],
+    "praeteritum": [
+      "durfte",
+      "durftest",
+      "durfte",
+      "durften",
+      "durftet",
+      "durften"
+    ],
+    "examples": [
+      "Darf ich hier rauchen?",
+      "Kinder dürfen nicht allein schwimmen."
+    ],
+    "conjugationNote": "Verbo modal: ich/er sin terminación, pierde el Umlaut en Präteritum.",
+    "frequencyRank": 101
+  },
+  {
+    "id": "sollen",
+    "infinitiv": "sollen",
+    "es": "deber/tener que",
+    "level": "A1",
+    "regularity": "irregular",
+    "separable": false,
+    "aux": "haben",
+    "partizipII": "gesollt",
+    "praesens": [
+      "soll",
+      "sollst",
+      "soll",
+      "sollen",
+      "sollt",
+      "sollen"
+    ],
+    "praeteritum": [
+      "sollte",
+      "solltest",
+      "sollte",
+      "sollten",
+      "solltet",
+      "sollten"
+    ],
+    "examples": [
+      "Du sollst mehr Wasser trinken.",
+      "Was soll ich machen?"
+    ],
+    "conjugationNote": "Verbo modal: ich/er sin terminación, sin Umlaut.",
+    "frequencyRank": 102
   }
 ]

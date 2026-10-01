@@ -1,0 +1,119 @@
+[
+  {
+    "id": "art_der",
+    "kind": "article",
+    "label": "masculino (der)",
+    "nominativ": "der",
+    "akkusativ": "den",
+    "dativ": "dem",
+    "example": "Ich sehe den Mann. Ich helfe dem Mann."
+  },
+  {
+    "id": "art_die",
+    "kind": "article",
+    "label": "femenino (die)",
+    "nominativ": "die",
+    "akkusativ": "die",
+    "dativ": "der",
+    "example": "Ich sehe die Frau. Ich helfe der Frau."
+  },
+  {
+    "id": "art_das",
+    "kind": "article",
+    "label": "neutro (das)",
+    "nominativ": "das",
+    "akkusativ": "das",
+    "dativ": "dem",
+    "example": "Ich sehe das Kind. Ich helfe dem Kind."
+  },
+  {
+    "id": "art_plural",
+    "kind": "article",
+    "label": "plural (die)",
+    "nominativ": "die",
+    "akkusativ": "die",
+    "dativ": "den",
+    "example": "Ich sehe die Kinder. Ich helfe den Kindern."
+  },
+  {
+    "id": "pron_ich",
+    "kind": "pronoun",
+    "label": "yo",
+    "nominativ": "ich",
+    "akkusativ": "mich",
+    "dativ": "mir",
+    "example": "Er sieht mich. Er hilft mir."
+  },
+  {
+    "id": "pron_du",
+    "kind": "pronoun",
+    "label": "tú",
+    "nominativ": "du",
+    "akkusativ": "dich",
+    "dativ": "dir",
+    "example": "Er sieht dich. Er hilft dir."
+  },
+  {
+    "id": "pron_er",
+    "kind": "pronoun",
+    "label": "él",
+    "nominativ": "er",
+    "akkusativ": "ihn",
+    "dativ": "ihm",
+    "example": "Ich sehe ihn. Ich helfe ihm."
+  },
+  {
+    "id": "pron_sie_f",
+    "kind": "pronoun",
+    "label": "ella",
+    "nominativ": "sie",
+    "akkusativ": "sie",
+    "dativ": "ihr",
+    "example": "Ich sehe sie. Ich helfe ihr."
+  },
+  {
+    "id": "pron_es",
+    "kind": "pronoun",
+    "label": "eso/ello",
+    "nominativ": "es",
+    "akkusativ": "es",
+    "dativ": "ihm",
+    "example": "Ich sehe es. Ich gebe ihm Wasser."
+  },
+  {
+    "id": "pron_wir",
+    "kind": "pronoun",
+    "label": "nosotros",
+    "nominativ": "wir",
+    "akkusativ": "uns",
+    "dativ": "uns",
+    "example": "Er sieht uns. Er hilft uns."
+  },
+  {
+    "id": "pron_ihr",
+    "kind": "pronoun",
+    "label": "vosotros/ustedes",
+    "nominativ": "ihr",
+    "akkusativ": "euch",
+    "dativ": "euch",
+    "example": "Ich sehe euch. Ich helfe euch."
+  },
+  {
+    "id": "pron_sie_pl",
+    "kind": "pronoun",
+    "label": "ellos/ellas",
+    "nominativ": "sie",
+    "akkusativ": "sie",
+    "dativ": "ihnen",
+    "example": "Ich sehe sie. Ich helfe ihnen."
+  },
+  {
+    "id": "pron_sie_formal",
+    "kind": "pronoun",
+    "label": "usted (formal)",
+    "nominativ": "Sie",
+    "akkusativ": "Sie",
+    "dativ": "Ihnen",
+    "example": "Ich sehe Sie. Ich helfe Ihnen."
+  }
+]

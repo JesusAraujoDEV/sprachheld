@@ -1,0 +1,218 @@
+[
+  {
+    "id": "akkpron_apfel",
+    "sentence": "Der Apfel ist reif, du kannst ___ jetzt essen.",
+    "answer": "ihn",
+    "options": ["ihn", "sie", "es"],
+    "es": "La manzana está madura, puedes comerla ahora.",
+    "level": "A1",
+    "note": "der Apfel (masc.) → en Akkusativ el pronombre es 'ihn'."
+  },
+  {
+    "id": "akkpron_kaffee",
+    "sentence": "Der Kaffee ist noch heiß, trink ___ langsam!",
+    "answer": "ihn",
+    "options": ["ihn", "sie", "es"],
+    "es": "El café todavía está caliente, ¡bébelo despacio!",
+    "level": "A1",
+    "note": "der Kaffee (masc.) → 'ihn' en Akkusativ."
+  },
+  {
+    "id": "akkpron_film",
+    "sentence": "Der Film ist gut, ich möchte ___ noch einmal sehen.",
+    "answer": "ihn",
+    "options": ["ihn", "sie", "es"],
+    "es": "La película es buena, quiero verla otra vez.",
+    "level": "A1",
+    "note": "der Film (masc.) → 'ihn' en Akkusativ."
+  },
+  {
+    "id": "akkpron_tisch",
+    "sentence": "Der Tisch ist schmutzig, ich muss ___ putzen.",
+    "answer": "ihn",
+    "options": ["ihn", "sie", "es"],
+    "es": "La mesa está sucia, tengo que limpiarla.",
+    "level": "A1",
+    "note": "der Tisch (masc.) → 'ihn' en Akkusativ."
+  },
+  {
+    "id": "akkpron_hund",
+    "sentence": "Der Hund hat Hunger, kannst du ___ füttern?",
+    "answer": "ihn",
+    "options": ["ihn", "sie", "es"],
+    "es": "El perro tiene hambre, ¿puedes alimentarlo?",
+    "level": "A1",
+    "note": "der Hund (masc.) → 'ihn' en Akkusativ."
+  },
+  {
+    "id": "akkpron_wagen",
+    "sentence": "Der Wagen ist alt, wir verkaufen ___ bald.",
+    "answer": "ihn",
+    "options": ["ihn", "sie", "es"],
+    "es": "El coche es viejo, lo venderemos pronto.",
+    "level": "A2",
+    "note": "der Wagen (masc.) → 'ihn' en Akkusativ."
+  },
+  {
+    "id": "akkpron_kuchen",
+    "sentence": "Der Kuchen schmeckt lecker, ich kaufe ___ morgen wieder.",
+    "answer": "ihn",
+    "options": ["ihn", "sie", "es"],
+    "es": "El pastel sabe rico, lo compraré mañana de nuevo.",
+    "level": "A1",
+    "note": "der Kuchen (masc.) → 'ihn' en Akkusativ."
+  },
+  {
+    "id": "akkpron_brief",
+    "sentence": "Der Brief ist wichtig, ich schreibe ___ heute Abend.",
+    "answer": "ihn",
+    "options": ["ihn", "sie", "es"],
+    "es": "La carta es importante, la escribo esta noche.",
+    "level": "A2",
+    "note": "der Brief (masc.) → 'ihn' en Akkusativ."
+  },
+  {
+    "id": "akkpron_banane",
+    "sentence": "Die Banane ist schlecht, du darfst ___ nicht mehr essen.",
+    "answer": "sie",
+    "options": ["ihn", "sie", "es"],
+    "es": "La banana está mala, ya no puedes comerla.",
+    "level": "A1",
+    "note": "die Banane (fem.) → en Akkusativ el pronombre es 'sie'."
+  },
+  {
+    "id": "akkpron_milch",
+    "sentence": "Die Milch ist frisch, ich trinke ___ gern.",
+    "answer": "sie",
+    "options": ["ihn", "sie", "es"],
+    "es": "La leche está fresca, me gusta beberla.",
+    "level": "A1",
+    "note": "die Milch (fem.) → 'sie' en Akkusativ."
+  },
+  {
+    "id": "akkpron_zeitung",
+    "sentence": "Die Zeitung ist neu, ich lese ___ am Morgen.",
+    "answer": "sie",
+    "options": ["ihn", "sie", "es"],
+    "es": "El periódico es nuevo, lo leo por la mañana.",
+    "level": "A1",
+    "note": "die Zeitung (fem.) → 'sie' en Akkusativ."
+  },
+  {
+    "id": "akkpron_katze",
+    "sentence": "Die Katze ist süß, die Kinder mögen ___ sehr.",
+    "answer": "sie",
+    "options": ["ihn", "sie", "es"],
+    "es": "El gato es lindo, a los niños les gusta mucho.",
+    "level": "A1",
+    "note": "die Katze (fem.) → 'sie' en Akkusativ."
+  },
+  {
+    "id": "akkpron_tasche",
+    "sentence": "Die Tasche ist praktisch, ich kaufe ___ heute.",
+    "answer": "sie",
+    "options": ["ihn", "sie", "es"],
+    "es": "El bolso es práctico, lo compro hoy.",
+    "level": "A1",
+    "note": "die Tasche (fem.) → 'sie' en Akkusativ."
+  },
+  {
+    "id": "akkpron_suppe",
+    "sentence": "Die Suppe ist kalt, ich möchte ___ nicht essen.",
+    "answer": "sie",
+    "options": ["ihn", "sie", "es"],
+    "es": "La sopa está fría, no quiero comerla.",
+    "level": "A1",
+    "note": "die Suppe (fem.) → 'sie' en Akkusativ."
+  },
+  {
+    "id": "akkpron_jacke",
+    "sentence": "Die Jacke ist warm, ich brauche ___ im Winter.",
+    "answer": "sie",
+    "options": ["ihn", "sie", "es"],
+    "es": "La chaqueta es cálida, la necesito en invierno.",
+    "level": "A1",
+    "note": "die Jacke (fem.) → 'sie' en Akkusativ."
+  },
+  {
+    "id": "akkpron_blume",
+    "sentence": "Die Blume ist schön, ich gieße ___ jeden Tag.",
+    "answer": "sie",
+    "options": ["ihn", "sie", "es"],
+    "es": "La flor es bonita, la riego todos los días.",
+    "level": "A2",
+    "note": "die Blume (fem.) → 'sie' en Akkusativ."
+  },
+  {
+    "id": "akkpron_buch",
+    "sentence": "Das Buch ist spannend, ich lese ___ am Wochenende.",
+    "answer": "es",
+    "options": ["ihn", "sie", "es"],
+    "es": "El libro es emocionante, lo leo el fin de semana.",
+    "level": "A1",
+    "note": "das Buch (neutro) → en Akkusativ el pronombre es 'es'."
+  },
+  {
+    "id": "akkpron_auto",
+    "sentence": "Das Auto ist schnell, mein Vater fährt ___ gern.",
+    "answer": "es",
+    "options": ["ihn", "sie", "es"],
+    "es": "El auto es rápido, a mi papá le gusta conducirlo.",
+    "level": "A1",
+    "note": "das Auto (neutro) → 'es' en Akkusativ."
+  },
+  {
+    "id": "akkpron_brot",
+    "sentence": "Das Brot ist frisch, wir essen ___ zum Frühstück.",
+    "answer": "es",
+    "options": ["ihn", "sie", "es"],
+    "es": "El pan está fresco, lo comemos en el desayuno.",
+    "level": "A1",
+    "note": "das Brot (neutro) → 'es' en Akkusativ."
+  },
+  {
+    "id": "akkpron_bier",
+    "sentence": "Das Bier ist kalt, er trinkt ___ nach der Arbeit.",
+    "answer": "es",
+    "options": ["ihn", "sie", "es"],
+    "es": "La cerveza está fría, él la bebe después del trabajo.",
+    "level": "A1",
+    "note": "das Bier (neutro) → 'es' en Akkusativ."
+  },
+  {
+    "id": "akkpron_handy",
+    "sentence": "Das Handy ist neu, ich brauche ___ für die Arbeit.",
+    "answer": "es",
+    "options": ["ihn", "sie", "es"],
+    "es": "El celular es nuevo, lo necesito para el trabajo.",
+    "level": "A1",
+    "note": "das Handy (neutro) → 'es' en Akkusativ."
+  },
+  {
+    "id": "akkpron_fenster",
+    "sentence": "Das Fenster ist offen, kannst du ___ bitte schließen?",
+    "answer": "es",
+    "options": ["ihn", "sie", "es"],
+    "es": "La ventana está abierta, ¿puedes cerrarla por favor?",
+    "level": "A1",
+    "note": "das Fenster (neutro) → 'es' en Akkusativ."
+  },
+  {
+    "id": "akkpron_ei",
+    "sentence": "Das Ei ist gekocht, ich esse ___ zum Frühstück.",
+    "answer": "es",
+    "options": ["ihn", "sie", "es"],
+    "es": "El huevo está cocido, lo como en el desayuno.",
+    "level": "A1",
+    "note": "das Ei (neutro) → 'es' en Akkusativ."
+  },
+  {
+    "id": "akkpron_hemd",
+    "sentence": "Das Hemd ist schmutzig, ich wasche ___ heute.",
+    "answer": "es",
+    "options": ["ihn", "sie", "es"],
+    "es": "La camisa está sucia, la lavo hoy.",
+    "level": "A1",
+    "note": "das Hemd (neutro) → 'es' en Akkusativ."
+  }
+]

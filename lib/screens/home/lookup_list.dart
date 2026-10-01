@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../modes/article_declension_table_screen.dart';
 import '../../modes/conjugation_table_screen.dart';
 import '../../modes/gender_tips_screen.dart';
 import '../../modes/possessive_table_screen.dart';
@@ -40,6 +41,12 @@ class LookupList extends StatelessWidget {
         subtitle: 'Tabla: pronombre → posesivo',
         icon: Icons.group_outlined,
         onTap: () => _push(context, const PossessiveTableScreen()),
+      ),
+      (
+        title: 'Declinación: Artikel & Pronomen',
+        subtitle: 'der/die/das y pronombres en los 3 casos',
+        icon: Icons.table_chart_outlined,
+        onTap: () => _push(context, const ArticleDeclensionTableScreen()),
       ),
     ];
     return Container(

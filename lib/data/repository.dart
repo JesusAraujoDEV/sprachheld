@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 
 import '../models/adjective.dart';
+import '../models/article_declension.dart';
 import '../models/gender_rule.dart';
 import '../models/noun.dart';
 import '../models/phrase.dart';
@@ -42,6 +43,9 @@ class DataRepository {
 
   static Future<List<PossessivePronoun>> loadPossessivePronouns() =>
       _loadList('assets/data/possessive-pronouns.json', PossessivePronoun.fromJson);
+
+  static Future<List<ArticleDeclension>> loadArticleDeclensions() =>
+      _loadList('assets/data/article-declensions.json', ArticleDeclension.fromJson);
 
   static Future<List<T>> _loadList<T>(
     String assetPath,
