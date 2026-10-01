@@ -1,0 +1,218 @@
+[
+  {
+    "id": "dem_tee",
+    "sentence": "Ich mag ___ Tee nicht trinken.",
+    "answer": "diesen",
+    "options": ["diesen", "diese", "dieses"],
+    "es": "No quiero beber este té.",
+    "level": "A1",
+    "note": "der Tee (masc.) → en Akkusativ 'diesen'."
+  },
+  {
+    "id": "dem_kuchen",
+    "sentence": "Ich möchte ___ Kuchen kaufen.",
+    "answer": "diesen",
+    "options": ["diesen", "diese", "dieses"],
+    "es": "Quiero comprar este pastel.",
+    "level": "A1",
+    "note": "der Kuchen (masc.) → 'diesen' en Akkusativ."
+  },
+  {
+    "id": "dem_film",
+    "sentence": "Hast du ___ Film schon gesehen?",
+    "answer": "diesen",
+    "options": ["diesen", "diese", "dieses"],
+    "es": "¿Ya has visto esta película?",
+    "level": "A1",
+    "note": "der Film (masc.) → 'diesen' en Akkusativ."
+  },
+  {
+    "id": "dem_stuhl",
+    "sentence": "Kannst du ___ Stuhl in die Küche bringen?",
+    "answer": "diesen",
+    "options": ["diesen", "diese", "dieses"],
+    "es": "¿Puedes llevar esta silla a la cocina?",
+    "level": "A1",
+    "note": "der Stuhl (masc.) → 'diesen' en Akkusativ."
+  },
+  {
+    "id": "dem_apfel",
+    "sentence": "Ich esse ___ Apfel sehr gern.",
+    "answer": "diesen",
+    "options": ["diesen", "diese", "dieses"],
+    "es": "Como esta manzana con mucho gusto.",
+    "level": "A1",
+    "note": "der Apfel (masc.) → 'diesen' en Akkusativ."
+  },
+  {
+    "id": "dem_mantel",
+    "sentence": "Ich finde ___ Mantel zu teuer.",
+    "answer": "diesen",
+    "options": ["diesen", "diese", "dieses"],
+    "es": "Encuentro este abrigo demasiado caro.",
+    "level": "A2",
+    "note": "der Mantel (masc.) → 'diesen' en Akkusativ."
+  },
+  {
+    "id": "dem_wein",
+    "sentence": "Möchten Sie ___ Wein probieren?",
+    "answer": "diesen",
+    "options": ["diesen", "diese", "dieses"],
+    "es": "¿Quiere probar este vino?",
+    "level": "A2",
+    "note": "der Wein (masc.) → 'diesen' en Akkusativ."
+  },
+  {
+    "id": "dem_rock",
+    "sentence": "Ich kaufe ___ Rock für die Party.",
+    "answer": "diesen",
+    "options": ["diesen", "diese", "dieses"],
+    "es": "Compro esta falda para la fiesta.",
+    "level": "A1",
+    "note": "der Rock (masc.) → 'diesen' en Akkusativ."
+  },
+  {
+    "id": "dem_pizza",
+    "sentence": "Ich mag ___ Pizza nicht essen.",
+    "answer": "diese",
+    "options": ["diesen", "diese", "dieses"],
+    "es": "No quiero comer esta pizza.",
+    "level": "A1",
+    "note": "die Pizza (fem.) → en Akkusativ 'diese'."
+  },
+  {
+    "id": "dem_tasche",
+    "sentence": "Ich möchte ___ Tasche kaufen.",
+    "answer": "diese",
+    "options": ["diesen", "diese", "dieses"],
+    "es": "Quiero comprar este bolso.",
+    "level": "A1",
+    "note": "die Tasche (fem.) → 'diese' en Akkusativ."
+  },
+  {
+    "id": "dem_zeitung",
+    "sentence": "Hast du ___ Zeitung schon gelesen?",
+    "answer": "diese",
+    "options": ["diesen", "diese", "dieses"],
+    "es": "¿Ya has leído este periódico?",
+    "level": "A1",
+    "note": "die Zeitung (fem.) → 'diese' en Akkusativ."
+  },
+  {
+    "id": "dem_milch",
+    "sentence": "Ich trinke ___ Milch nicht gern.",
+    "answer": "diese",
+    "options": ["diesen", "diese", "dieses"],
+    "es": "No me gusta beber esta leche.",
+    "level": "A1",
+    "note": "die Milch (fem.) → 'diese' en Akkusativ."
+  },
+  {
+    "id": "dem_jacke",
+    "sentence": "Ich finde ___ Jacke sehr schön.",
+    "answer": "diese",
+    "options": ["diesen", "diese", "dieses"],
+    "es": "Encuentro esta chaqueta muy bonita.",
+    "level": "A1",
+    "note": "die Jacke (fem.) → 'diese' en Akkusativ."
+  },
+  {
+    "id": "dem_suppe",
+    "sentence": "Ich möchte ___ Suppe nicht essen.",
+    "answer": "diese",
+    "options": ["diesen", "diese", "dieses"],
+    "es": "No quiero comer esta sopa.",
+    "level": "A1",
+    "note": "die Suppe (fem.) → 'diese' en Akkusativ."
+  },
+  {
+    "id": "dem_blume",
+    "sentence": "Ich kaufe ___ Blume für meine Mutter.",
+    "answer": "diese",
+    "options": ["diesen", "diese", "dieses"],
+    "es": "Compro esta flor para mi madre.",
+    "level": "A1",
+    "note": "die Blume (fem.) → 'diese' en Akkusativ."
+  },
+  {
+    "id": "dem_hose",
+    "sentence": "Ich mag ___ Hose nicht tragen.",
+    "answer": "diese",
+    "options": ["diesen", "diese", "dieses"],
+    "es": "No me gusta usar este pantalón.",
+    "level": "A2",
+    "note": "die Hose (fem.) → 'diese' en Akkusativ."
+  },
+  {
+    "id": "dem_buch",
+    "sentence": "Ich mag ___ Buch nicht lesen.",
+    "answer": "dieses",
+    "options": ["diesen", "diese", "dieses"],
+    "es": "No quiero leer este libro.",
+    "level": "A1",
+    "note": "das Buch (neutro) → en Akkusativ 'dieses'."
+  },
+  {
+    "id": "dem_auto",
+    "sentence": "Ich möchte ___ Auto kaufen.",
+    "answer": "dieses",
+    "options": ["diesen", "diese", "dieses"],
+    "es": "Quiero comprar este auto.",
+    "level": "A1",
+    "note": "das Auto (neutro) → 'dieses' en Akkusativ."
+  },
+  {
+    "id": "dem_brot",
+    "sentence": "Ich esse ___ Brot zum Frühstück.",
+    "answer": "dieses",
+    "options": ["diesen", "diese", "dieses"],
+    "es": "Como este pan en el desayuno.",
+    "level": "A1",
+    "note": "das Brot (neutro) → 'dieses' en Akkusativ."
+  },
+  {
+    "id": "dem_hemd",
+    "sentence": "Ich finde ___ Hemd zu klein.",
+    "answer": "dieses",
+    "options": ["diesen", "diese", "dieses"],
+    "es": "Encuentro esta camisa demasiado pequeña.",
+    "level": "A1",
+    "note": "das Hemd (neutro) → 'dieses' en Akkusativ."
+  },
+  {
+    "id": "dem_handy",
+    "sentence": "Ich möchte ___ Handy nicht kaufen.",
+    "answer": "dieses",
+    "options": ["diesen", "diese", "dieses"],
+    "es": "No quiero comprar este celular.",
+    "level": "A1",
+    "note": "das Handy (neutro) → 'dieses' en Akkusativ."
+  },
+  {
+    "id": "dem_bier",
+    "sentence": "Ich trinke ___ Bier sehr gern.",
+    "answer": "dieses",
+    "options": ["diesen", "diese", "dieses"],
+    "es": "Bebo esta cerveza con mucho gusto.",
+    "level": "A1",
+    "note": "das Bier (neutro) → 'dieses' en Akkusativ."
+  },
+  {
+    "id": "dem_fahrrad",
+    "sentence": "Ich kaufe ___ Fahrrad für den Sommer.",
+    "answer": "dieses",
+    "options": ["diesen", "diese", "dieses"],
+    "es": "Compro esta bicicleta para el verano.",
+    "level": "A2",
+    "note": "das Fahrrad (neutro) → 'dieses' en Akkusativ."
+  },
+  {
+    "id": "dem_kleid",
+    "sentence": "Ich möchte ___ Kleid für die Hochzeit tragen.",
+    "answer": "dieses",
+    "options": ["diesen", "diese", "dieses"],
+    "es": "Quiero usar este vestido para la boda.",
+    "level": "A2",
+    "note": "das Kleid (neutro) → 'dieses' en Akkusativ."
+  }
+]
