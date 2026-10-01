@@ -6,7 +6,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:sprachheld/data/repository.dart';
-
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -93,6 +92,40 @@ void main() {
           reason: '${it.id}: la preposición "${it.prep}" no está en prepOptions');
       expect(it.articleOptions.contains(it.article), isTrue,
           reason: '${it.id}: el artículo "${it.article}" no está en articleOptions');
+    }
+  });
+
+  for (final asset in const [
+    'assets/data/akkusativ-pronomen-phrases.json',
+    'assets/data/demonstrativ-phrases.json',
+    'assets/data/konjunktiv2-hoeflichkeit-phrases.json',
+  ]) {
+    test('$asset: answer siempre está entre options, hay hueco e ids únicos',
+        () async {
+      final phrases = await DataRepository.loadPhrases(asset);
+      expect(phrases, isNotEmpty, reason: '$asset está vacío');
+      final ids = phrases.map((p) => p.id).toList();
+      expect(ids.toSet().length, ids.length, reason: '$asset: hay ids duplicados');
+      for (final p in phrases) {
+        expect(p.options.contains(p.answer), isTrue,
+            reason: '${p.id}: la respuesta "${p.answer}" no está en las opciones');
+        expect(p.sentence.contains('___'), isTrue, reason: '${p.id}: falta el hueco ___');
+      }
+    });
+  }
+
+  test('article-declensions.json: ids únicos y campos de caso no vacíos', () async {
+    final rows = await DataRepository.loadArticleDeclensions();
+    expect(rows, isNotEmpty);
+    final ids = rows.map((r) => r.id).toList();
+    expect(ids.toSet().length, ids.length, reason: 'hay ids de declinación duplicados');
+    for (final r in rows) {
+      expect(r.label.isNotEmpty, isTrue, reason: '${r.id}: label vacío');
+      expect(r.nominativ.isNotEmpty, isTrue, reason: '${r.id}: nominativ vacío');
+      expect(r.akkusativ.isNotEmpty, isTrue, reason: '${r.id}: akkusativ vacío');
+      expect(r.dativ.isNotEmpty, isTrue, reason: '${r.id}: dativ vacío');
+      expect(const {'article', 'pronoun'}.contains(r.kind), isTrue,
+          reason: '${r.id}: kind "${r.kind}" debe ser article o pronoun');
     }
   });
 
