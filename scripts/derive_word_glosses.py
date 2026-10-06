@@ -269,6 +269,30 @@ FUNCTION_WORDS = {
 # palabra de toda frase tenga glosa. Minuscula sin excepcion.
 PHRASE_EXTRAS = {
     # Adjetivos que no estan en adjectives.json
+    # Correcciones de glosas donde el sustantivo fuente trae un sentido
+    # secundario/raro que confunde en el contexto de las frases (no se toca
+    # nouns.json, que es contenido de dominio; ver work-log follow-up).
+    "reif": "maduro",
+    "alt": "viejo",
+    "klein": "pequeño",
+    "kaffee": "el café (bebida)",
+    "tee": "el té",
+    "wagen": "el coche / el carro",
+    "lecker": "delicioso / rico",
+    "hochzeit": "la boda",
+    "rock": "la falda",
+    "post": "el correo",
+    "stift": "el bolígrafo / lápiz",
+    "glas": "el vaso",
+    "zeigen": "mostrar",
+    "schule": "la escuela",
+    "stelle": "pongo / coloco (de stellen)",
+    "putzen": "limpiar",
+    "lege": "pongo / coloco (de legen)",
+    # Nombres propios adicionales (apellido y nombre que aparecen en frases)
+    "müller": "Müller (apellido)",
+    "tom": "Tom (nombre)",
+    # Adjetivos
     "frisch": "fresco",
     "heiß": "caliente",
     "kalt": "frío",
@@ -335,8 +359,11 @@ def add_from_nouns(glosses: dict) -> None:
 
 
 def add_from_adjectives(glosses: dict) -> None:
+    # Un adjetivo comun le gana a un sustantivo nominalizado homografo
+    # ('gut' adjetivo "bueno", no el sustantivo "das Gut"; 'alt' -> "viejo",
+    # no "la contralto'). force=True porque los sustantivos corren antes.
     for adj in load_json("adjectives.json"):
-        add(glosses, adj.get("de", ""), adj.get("es", ""))
+        add(glosses, adj.get("de", ""), adj.get("es", ""), force=True)
 
 
 def add_from_verbs(glosses: dict) -> None:
@@ -398,7 +425,7 @@ def main() -> None:
     for key, meaning in FUNCTION_WORDS.items():
         add(glosses, key, meaning, force=True)
     for key, meaning in PHRASE_EXTRAS.items():
-        add(glosses, key, meaning)
+        add(glosses, key, meaning, force=True)
 
     verify_phrase_coverage(glosses)
 
