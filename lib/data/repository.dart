@@ -47,6 +47,22 @@ class DataRepository {
   static Future<List<ArticleDeclension>> loadArticleDeclensions() =>
       _loadList('assets/data/article-declensions.json', ArticleDeclension.fromJson);
 
+  /// Mapa plano `palabra (minúscula) → significado en español` para la
+  /// traducción al tocar. Se pide en cada pantalla de quiz, así que se cachea
+  /// en memoria la primera vez (a diferencia de los mazos, que se cargan una
+  /// vez por sesión de todos modos). Es un mapa, no una lista: no usa
+  /// [_loadList] ni un modelo propio.
+  static Future<Map<String, String>>? _glossesCache;
+
+  static Future<Map<String, String>> loadWordGlosses() =>
+      _glossesCache ??= _loadGlosses();
+
+  static Future<Map<String, String>> _loadGlosses() async {
+    final raw = await rootBundle.loadString('assets/data/word-glosses.json');
+    final decoded = jsonDecode(raw) as Map<String, dynamic>;
+    return decoded.map((key, value) => MapEntry(key, value as String));
+  }
+
   static Future<List<T>> _loadList<T>(
     String assetPath,
     T Function(Map<String, dynamic>) fromJson,
