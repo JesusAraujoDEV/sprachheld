@@ -11,6 +11,7 @@ import '../state/progress_notifier.dart';
 import '../theme/app_theme.dart';
 import '../widgets/audio_button.dart';
 import '../widgets/quiz_shell.dart';
+import '../widgets/tappable_german_text.dart';
 import 'write_conjugation/distractor_pool.dart';
 import 'write_conjugation/tense_selector.dart';
 import 'write_conjugation/write_conjugation_options.dart';
@@ -43,6 +44,7 @@ class _State extends State<WriteConjugationScreen> {
   String? _chosen;
   bool _useMcq = false;
   TenseFilter _tense = TenseFilter.both;
+  Map<String, String> _glossary = const {};
   final _ctrl = TextEditingController();
   final _focus = FocusNode();
 
@@ -53,6 +55,7 @@ class _State extends State<WriteConjugationScreen> {
 
   Future<void> _load() async {
     final verbs = await DataRepository.loadVerbs();
+    final glossary = await DataRepository.loadWordGlosses();
     final qs = <Question>[];
     for (final v in verbs) {
       for (var i = 0; i < 6; i++) {
@@ -61,7 +64,7 @@ class _State extends State<WriteConjugationScreen> {
       }
     }
     final s = buildSession(qs, SessionOptions(size: 12, srs: widget.progress.states));
-    if (mounted) setState(() => _session = s);
+    if (mounted) setState(() { _glossary = glossary; _session = s; });
   }
 
   Question _q(Verb v, int p, String t, String a) => Question(
@@ -123,7 +126,11 @@ class _State extends State<WriteConjugationScreen> {
             TenseSelector(selected: _tense, onChanged: _onTenseChanged),
             const SizedBox(height: 16),
             Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Flexible(child: Text(item.verb.infinitiv, style: Theme.of(context).textTheme.displayLarge)),
+              Flexible(child: TappableGermanText(
+                sentence: item.verb.infinitiv,
+                glossary: _glossary,
+                style: Theme.of(context).textTheme.displayLarge,
+              )),
               AudioButton(text: item.verb.infinitiv),
             ]),
             Text(item.verb.es, textAlign: TextAlign.center, style: Theme.of(context).textTheme.labelSmall),
