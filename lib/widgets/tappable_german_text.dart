@@ -48,10 +48,23 @@ class TappableGermanText extends StatelessWidget {
 
   Widget _wordSpan(BuildContext context, String token) {
     final word = _stripPunctuation(token);
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: word.isEmpty ? null : () => _showPopup(context, word),
-      child: Text(token, style: style),
+    if (word.isEmpty) return Text(token, style: style);
+    // Pista visual de que la palabra es tocable: manito del cursor en web
+    // (MouseRegion no hace nada en móvil) + subrayado punteado sutil.
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () => _showPopup(context, word),
+        child: Text(
+          token,
+          style: (style ?? const TextStyle()).copyWith(
+            decoration: TextDecoration.underline,
+            decorationStyle: TextDecorationStyle.dotted,
+            decorationColor: (style?.color ?? kOnSurface).withValues(alpha: 0.5),
+          ),
+        ),
+      ),
     );
   }
 
