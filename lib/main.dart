@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -49,7 +50,10 @@ class SprachheldApp extends StatelessWidget {
         child: Center(
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: kMaxContentWidth),
-            child: child,
+            // Flutter no selecciona texto por defecto; sin esto no se puede
+            // copiar nada en la web. Solo en web: en móvil el long-press ya
+            // tiene otros usos (abrir menú, etc.) y no hace falta.
+            child: kIsWeb ? SelectionArea(child: child!) : child,
           ),
         ),
       ),
