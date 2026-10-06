@@ -9,6 +9,7 @@ import '../theme/app_theme.dart';
 import '../widgets/audio_button.dart';
 import '../widgets/option_chip.dart';
 import '../widgets/quiz_shell.dart';
+import '../widgets/tappable_german_text.dart';
 
 /// "Completar la frase": oración con hueco + chips de opción. docs/PLAN.md §6.3.
 ///
@@ -39,6 +40,7 @@ class _FillPhraseScreenState extends State<FillPhraseScreen> {
   int _index = 0;
   int _correct = 0;
   String? _chosen;
+  Map<String, String> _glossary = const {};
 
   @override
   void initState() {
@@ -48,6 +50,7 @@ class _FillPhraseScreenState extends State<FillPhraseScreen> {
 
   Future<void> _load() async {
     var phrases = await DataRepository.loadPhrases(widget.asset);
+    final glossary = await DataRepository.loadWordGlosses();
     if (widget.caseFilter != null) {
       phrases = phrases.where((p) => p.caseType == widget.caseFilter).toList();
     }
@@ -59,7 +62,12 @@ class _FillPhraseScreenState extends State<FillPhraseScreen> {
       questions,
       SessionOptions(size: questions.length, srs: widget.progress.states),
     );
-    if (mounted) setState(() => _session = session);
+    if (mounted) {
+      setState(() {
+        _glossary = glossary;
+        _session = session;
+      });
+    }
   }
 
   Phrase get _current => _session![_index].prompt as Phrase;
@@ -130,9 +138,9 @@ class _FillPhraseScreenState extends State<FillPhraseScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Flexible(
-                    child: Text(
-                      sentence,
-                      textAlign: TextAlign.center,
+                    child: TappableGermanText(
+                      sentence: sentence,
+                      glossary: _glossary,
                       style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                             color: _chosen == null
                                 ? kOnSurface
