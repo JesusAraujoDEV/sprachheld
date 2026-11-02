@@ -1,0 +1,13 @@
+{
+  "name": "sprachheld-ranking-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Minimal ranking API for Sprachheld (ADR 0003) — replaces Supabase, same contract.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "pg": "^8.13.1"
+  }
+}
