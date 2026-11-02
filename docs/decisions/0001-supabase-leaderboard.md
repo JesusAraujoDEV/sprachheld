@@ -1,6 +1,6 @@
 # 0001 — Añadir Supabase para un ranking online opcional
 
-- **Status**: Accepted
+- **Status**: Superseded by [0003](0003-self-hosted-ranking-api.md)
 - **Date**: 2026-08-19
 - **Owner role**: system-architect (con lente security-compliance)
 - **Affects**: `lib/services/`, `lib/main.dart`, `pubspec.yaml`, nuevo `supabase/` (migraciones)

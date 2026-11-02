@@ -30,7 +30,7 @@ Full plan (v1 scope, content model, quiz modes, roadmap): [`docs/PLAN.md`](docs/
 | Audio | `flutter_tts` (native TTS per platform); web uses Piper WASM (ADR 0002) |
 | Distribution | Static web build + APK/IPA |
 
-Locked decisions (no re-discuss): no backend, no accounts, no multiplayer, no state-management package (plain `ChangeNotifier`/`setState`), no dependency beyond `shared_preferences` and `flutter_tts` without an ADR.
+Locked decisions (no re-discuss): no accounts, no multiplayer, no state-management package (plain `ChangeNotifier`/`setState`), no dependency beyond `shared_preferences`, `flutter_tts` and `http` without an ADR. "No backend" was lifted by [ADR 0003](docs/decisions/0003-self-hosted-ranking-api.md): there is a minimal self-hosted ranking API (`server/`), but gameplay and progress stay 100% local — the backend is opt-in, best-effort, and never a requirement to play.
 
 ## Architecture rules
 
