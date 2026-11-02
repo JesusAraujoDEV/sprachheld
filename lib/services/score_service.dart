@@ -1,6 +1,10 @@
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'dart:convert';
 
-/// Un puntaje del ranking (fila de `public.scores`).
+import 'package:http/http.dart' as http;
+
+import '../config/ranking_config.dart';
+
+/// Un puntaje del ranking (fila de `sprachheld.scores`).
 class ScoreEntry {
   final String? name;
   final String mode;
@@ -31,17 +35,12 @@ class ScoreEntry {
       );
 }
 
-/// Ranking online (Supabase). TODO best-effort: nunca lanza al caller — si no
-/// hay red o Supabase falla, subir devuelve false y leer devuelve lista vacía,
-/// y la app sigue funcionando igual (offline-first, ver ADR 0001).
+/// Ranking online (API propia, ver ADR 0003). Best-effort: nunca lanza al
+/// caller — si no hay red o la API falla, subir devuelve false y leer
+/// devuelve lista vacía, y la app sigue funcionando igual (offline-first).
 class ScoreService {
-  static SupabaseClient? get _client {
-    try {
-      return Supabase.instance.client;
-    } catch (_) {
-      return null; // Supabase no se inicializó (sin red al arrancar, etc.)
-    }
-  }
+  static Uri _uri(String path, [Map<String, String>? query]) =>
+      Uri.parse('${RankingConfig.baseUrl}$path').replace(queryParameters: query);
 
   /// Sube un puntaje. Devuelve true si se guardó. [name] es opcional (alias).
   static Future<bool> submit({
@@ -53,20 +52,22 @@ class ScoreService {
     int? durationSeconds,
     String? name,
   }) async {
-    final client = _client;
-    if (client == null) return false;
     final trimmed = name?.trim();
     try {
-      await client.from('scores').insert({
-        'name': (trimmed == null || trimmed.isEmpty) ? null : trimmed,
-        'mode': mode,
-        'score': score,
-        'correct': correct,
-        'total': total,
-        'best_combo': bestCombo,
-        'duration_seconds': durationSeconds,
-      });
-      return true;
+      final response = await http.post(
+        _uri('/scores'),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({
+          'name': (trimmed == null || trimmed.isEmpty) ? null : trimmed,
+          'mode': mode,
+          'score': score,
+          'correct': correct,
+          'total': total,
+          'best_combo': bestCombo,
+          'duration_seconds': durationSeconds,
+        }),
+      );
+      return response.statusCode == 201;
     } catch (_) {
       return false;
     }
@@ -74,16 +75,15 @@ class ScoreService {
 
   /// Top [limit] puntajes de un modo, de mayor a menor score. Vacío ante error.
   static Future<List<ScoreEntry>> top(String mode, {int limit = 20}) async {
-    final client = _client;
-    if (client == null) return const [];
     try {
-      final rows = await client
-          .from('scores')
-          .select()
-          .eq('mode', mode)
-          .order('score', ascending: false)
-          .limit(limit);
-      return rows.map((r) => ScoreEntry.fromJson(r)).toList();
+      final response = await http.get(
+        _uri('/scores', {'mode': mode, 'limit': '$limit'}),
+      );
+      if (response.statusCode != 200) return const [];
+      final rows = jsonDecode(response.body) as List<dynamic>;
+      return rows
+          .map((r) => ScoreEntry.fromJson(r as Map<String, dynamic>))
+          .toList();
     } catch (_) {
       return const [];
     }
